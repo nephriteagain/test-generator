@@ -1,16 +1,18 @@
-import type { choice, action } from "../types"
+import type { choice, action, test } from "../types"
 import { Dispatch } from "react";
 
 import { checkScrollHeight } from "../helpers";
+import { History } from "../page";
 
 type ChoicesProps = {
     choices: choice[];
     unitId: string;
     questionId: string;
-    dispatch: Dispatch<action>
+    dispatch: Dispatch<action>;
+    test: test;
 }
 
-export default function Choices({choices, unitId, questionId, dispatch}: ChoicesProps) {
+export default function Choices({choices, unitId, questionId, dispatch, test}: ChoicesProps) {
     return (
         <div>
             <section>
@@ -39,14 +41,17 @@ export default function Choices({choices, unitId, questionId, dispatch}: Choices
                             />
                             <button 
                                 className="bg-red-300 px-2 py-[1px] text-sm rounded-full hover:bg-red-700 hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
-                                onClick={() => dispatch({
-                                    type: 'delete_choice',
-                                    payload: {
-                                        unitId,
-                                        questionId,
-                                        choiceId: id
-                                    }
-                                })}>
+                                onClick={() => {
+                                    dispatch({
+                                        type: 'delete_choice',
+                                        payload: {
+                                            unitId,
+                                            questionId,
+                                            choiceId: id
+                                        }
+                                    })
+                                    History.add(test)
+                                }}>
                                 X
                             </button>
                         </div>
@@ -56,13 +61,16 @@ export default function Choices({choices, unitId, questionId, dispatch}: Choices
             </section>
             <button 
                 className="text-sm bg-blue-300 px-2 py-[2px] ms-9 mt-3 rounded-md hover:scale-105 hover:bg-blue-400 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
-                onClick={() => dispatch({
-                    type: 'add_choice',
-                    payload: {
-                        unitId,
-                        questionId
-                    }
-                })}
+                onClick={() => {
+                    dispatch({
+                        type: 'add_choice',
+                        payload: {
+                            unitId,
+                            questionId
+                        }
+                    })
+                    History.add(test)
+                }}
             >
                 add choices
             </button>

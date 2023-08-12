@@ -15,7 +15,7 @@ export default function Headers({test, dispatch} : HeaderProps) {
             value={test.subject} 
             name='subject' 
             onChange={(e) => dispatch({
-                type:'change_subject', payload: {name: e.currentTarget.value}
+                type: 'change_subject', payload: { subject: e.currentTarget.value }
             })}
             className="block mb-2 px-2 w-[50%]"
             />
@@ -26,7 +26,7 @@ export default function Headers({test, dispatch} : HeaderProps) {
             value={test.author} 
             name='author' 
             onChange={(e) => dispatch({
-                type: 'change_name', payload: {subject: e.currentTarget.value}
+                type: 'change_name', payload: { name: e.currentTarget.value }
             })}
             className="block mb-2 px-2 w-[50%]"
             />           

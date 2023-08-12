@@ -2,8 +2,10 @@ import type { choice, action } from "../types"
 import { Dispatch } from "react";
 
 import Choices from "./Choices"
+import { test } from "../types";
 
 import { checkScrollHeight } from "../helpers";
+import { History } from "../page";
 
 type QuestionProps = {
     question: string;
@@ -12,10 +14,10 @@ type QuestionProps = {
     id: string;
     unitId: string;
     dispatch: Dispatch<action>
-    
+    test: test
 }
 
-export default function Question({question, choices, index, id, unitId, dispatch}: QuestionProps) {
+export default function Question({question, choices, index, id, unitId, dispatch, test}: QuestionProps) {
     return (
         <div className="mx-4 my-2 bg-zinc-200 p-2">                    
             <textarea 
@@ -41,13 +43,17 @@ export default function Question({question, choices, index, id, unitId, dispatch
                 unitId={unitId}
                 questionId={id}
                 dispatch={dispatch}
+                test={test}
             />
             <div className="flex">
                 <button 
                     className="bg-orange-200 px-2 py-[1px] text-sm ms-auto hover:scale-105 hover:bg-orange-300 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
-                    onClick={() => dispatch({
-                        type: 'delete_question', payload: {questionId: id, unitId}
-                    })}
+                    onClick={() => {
+                        dispatch({
+                            type: 'delete_question', payload: {questionId: id, unitId}
+                        })
+                        History.add(test)
+                    }}
                     >
                     delete question
                 </button>

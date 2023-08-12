@@ -31,13 +31,15 @@ export interface payload {
   questionId?: string;
   choiceId?: string;
   text?: string;
+  testData?: test|undefined
 }
 
 export interface action {
   type: (
       'change_name'|'change_subject'|'add_unit'|'change_instructions'|
       'add_question'|'edit_question'|'delete_question'|'add_choice'|
-      'delete_choice'|'edit_choice'|'delete_unit'
+      'delete_choice'|'edit_choice'|'delete_unit'|'undo_action'|
+      'redo_action'
   )
   payload?: payload
 }

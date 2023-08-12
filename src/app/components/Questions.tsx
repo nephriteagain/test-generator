@@ -1,10 +1,11 @@
 
-import type { question, action } from "../types"
+import type { question, action, test } from "../types"
 import { Dispatch } from "react";
 
 import Question from "./Question"
 
 import { checkScrollHeight } from "../helpers";
+import { History } from "../page";
 
 type QuestionsProps = {
     questions: question[];
@@ -12,9 +13,10 @@ type QuestionsProps = {
     index: number;
     id: string;
     dispatch: Dispatch<action>
+    test: test;
 }
 
-export default function Questions({questions, instructions, index, id, dispatch}: QuestionsProps) {
+export default function Questions({questions, instructions, index, id, dispatch, test}: QuestionsProps) {
     
     
     
@@ -47,6 +49,7 @@ export default function Questions({questions, instructions, index, id, dispatch}
                                 id={id}
                                 unitId={unitId}
                                 dispatch={dispatch}
+                                test={test}
                                 />
                         </section>
                     )
@@ -54,7 +57,10 @@ export default function Questions({questions, instructions, index, id, dispatch}
             </section>
             <button 
                 className="font-semibold bg-green-300 my-2 ms-4 px-2 py-[2px] rounded-md shadow-lg drop-shadow-lg hover:scale-105 hover:bg-green-400 transition-all duration-150"
-                onClick={() => dispatch({type: 'add_question', payload: {id}})}
+                onClick={() => {
+                    dispatch({type: 'add_question', payload: {id}})
+                    History.add(test)
+                }}
 
                 >
                 new question
