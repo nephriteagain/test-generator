@@ -13,13 +13,15 @@ const initial : test = {
 }
 
 
-
 export default function Main() {
     const [ test, dispatch ] = useReducer(reducer,initial)
-  
-    useEffect(() => {
-        console.log(test)
-    }, [test])
+    
+// remove before production
+    // useEffect(() => {
+    //     console.log(test)
+    // }, [test])
+// remove before production
+
 
     return (
         <div
@@ -27,19 +29,27 @@ export default function Main() {
         > 
             <Headers test={test} dispatch={dispatch}/>
         <div>
-            <button onClick={() => dispatch({type: 'add_unit'})}>
+            <button 
+                onClick={() => dispatch({type: 'add_unit'})}
+                className='bg-green-400 px-3 py-[2px] rounded-md shadow-md drop-shadow-md hover:scale-105 active:scale-95 transition-all duration-150'
+            >
                 add unit
             </button>
             {test.units.map((unit: unit,index: number) => {
             const {id, questions, instructions} = unit
             return (
-                <section key={id}>
-                    <button onClick={() => dispatch({
-                        type: 'delete_unit',
-                        payload: {
-                            unitId: id
-                        }
-                    })}>
+                <section 
+                    key={id}
+                    className='mt-4'
+                >
+                    <button 
+                        className='bg-red-300 px-2 py-[1px] text-sm rounded-md shadow-md drop-shadow-md hover:scale-105 hover:bg-red-400 active:scale-95 transition-all duration-150'
+                        onClick={() => dispatch({
+                            type: 'delete_unit',
+                            payload: {
+                                unitId: id
+                            }
+                        })}>
                         delete unit
                     </button>
                     <Questions                 
