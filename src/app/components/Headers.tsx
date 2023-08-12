@@ -23,7 +23,7 @@ export default function Headers({test, dispatch} : HeaderProps) {
                     type: 'change_subject', payload: { subject: e.currentTarget.value }
                 })
             }}
-            className="block mb-2 px-2 w-[50%]"
+            className="font-bold text-lg block mb-2 px-2 w-[50%] shadow-sm"
             />
             
             <input 
@@ -34,7 +34,7 @@ export default function Headers({test, dispatch} : HeaderProps) {
             onChange={(e) => dispatch({
                 type: 'change_name', payload: { name: e.currentTarget.value }
             })}
-            className="block mb-2 px-2 w-[50%]"
+            className="font-semibold block mb-2 px-2 w-[50%] shadow-sm"
             />           
         </div>
     )

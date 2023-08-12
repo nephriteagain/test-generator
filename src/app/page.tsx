@@ -23,13 +23,16 @@ export default function Home() {
 
   return (
     <main className="mx-8">
-      <UndoRedo 
-        dispatch={dispatch}
-      />
-      <Main 
-        test={test}
-        dispatch={dispatch}
-      />
+      {/* <UndoRedo 
+          dispatch={dispatch}
+        /> */}
+      <div className="flex justify-center">        
+        <Main 
+          test={test}
+          dispatch={dispatch}
+        />
+      </div>
+      
     </main>
   )
 }
