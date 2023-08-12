@@ -1,5 +1,4 @@
-import type { question } from "../types"
-import type { action } from '../reducer';
+import type { question, action } from "../types"
 import { Dispatch } from "react";
 
 import Question from "./Question"
@@ -35,15 +34,16 @@ export default function Questions({questions, instructions, index, id, dispatch}
                 {questions.map((q: question, index: number) => {
                     const { id , question, choices} = q
                     return (
-                        <Question 
-                            key={id}
-                            question={question}
-                            choices={choices}
-                            index={index}
-                            id={id}
-                            unitId={unitId}
-                            dispatch={dispatch}
-                        />
+                        <section key={id}>
+                            <Question                             
+                                question={question}
+                                choices={choices}
+                                index={index}
+                                id={id}
+                                unitId={unitId}
+                                dispatch={dispatch}
+                                />
+                        </section>
                     )
                 })}
             </section>

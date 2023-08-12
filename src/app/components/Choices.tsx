@@ -1,5 +1,4 @@
-import type { choice } from "../types"
-import type { action } from '../reducer';
+import type { choice, action } from "../types"
 import { Dispatch } from "react";
 
 
@@ -17,11 +16,32 @@ export default function Choices({choices, unitId, questionId, dispatch}: Choices
                 {choices.map((c, index: number) => {
                     const {id, choice} = c
                     return (
-                        <input 
-                            key={id}
-                            type="text" 
-                            value={`${index+1} ${choice}`}
-                        />
+                        <div key={id}>
+                            <input 
+                                type="text" 
+                                value={choice}
+                                onChange={(e) => dispatch({
+                                    type: 'edit_choice',
+                                    payload: {
+                                        unitId,
+                                        questionId,
+                                        choiceId: id,
+                                        text: e.currentTarget.value
+                                    }
+                                })}
+                            />
+                            <button onClick={() => dispatch({
+                                type: 'delete_choice',
+                                payload: {
+                                    unitId,
+                                    questionId,
+                                    choiceId: id
+                                }
+                            })}>
+                                delete
+                            </button>
+                        </div>
+
                     )
                 })}
             </section>

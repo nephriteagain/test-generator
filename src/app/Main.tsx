@@ -27,19 +27,30 @@ export default function Main() {
         > 
             <Headers test={test} dispatch={dispatch}/>
         <div>
-            <button onClick={() => dispatch({type: 'add_unit'})}>add unit
+            <button onClick={() => dispatch({type: 'add_unit'})}>
+                add unit
             </button>
             {test.units.map((unit: unit,index: number) => {
             const {id, questions, instructions} = unit
             return (
-                <Questions 
-                key={id}
-                questions={questions}
-                instructions={instructions}
-                index={index}
-                id={id}
-                dispatch={dispatch}
-                />
+                <section key={id}>
+                    <button onClick={() => dispatch({
+                        type: 'delete_unit',
+                        payload: {
+                            unitId: id
+                        }
+                    })}>
+                        delete unit
+                    </button>
+                    <Questions                 
+                    questions={questions}
+                    instructions={instructions}
+                    index={index}
+                    id={id}
+                    dispatch={dispatch}
+                    />
+                </section>
+
             )
             })}
         </div>

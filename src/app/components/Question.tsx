@@ -1,5 +1,4 @@
-import type { choice } from "../types"
-import type { action } from '../reducer';
+import type { choice, action } from "../types"
 import { Dispatch } from "react";
 
 import Choices from "./Choices"

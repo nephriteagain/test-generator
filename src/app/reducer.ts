@@ -1,187 +1,62 @@
 import { generateId } from "./helpers";
 
-import type { choice, question, unit, test } from "./types";
+import type { choice, question, unit, test, action } from "./types";
 
-export interface payload {
-    name?: string;
-    subject?: string;
-    id?: string;
-    instructions?: string;
-    question?: string;
-    unitId?: string;
-    questionId?: string;
-}
-
-export interface action {
-    type: string;
-    payload?: payload
-}
+import changeName from "./actions/changeName";
+import changeSubject from "./actions/changeSubject";
+import addUnit from "./actions/addUnit";
+import deleteUnit from "./actions/deleteUnit";
+import changeInstructions from "./actions/changeInstructions";
+import addQuestion from "./actions/addQuestion";
+import editQuestion from "./actions/editQuestion";
+import deleteQuestion from "./actions/deleteQuestion";
+import addChoice from "./actions/addChoice";
+import deleteChoice from "./actions/deleteChoice";
+import editChoice from "./actions/editChoice";
 
 export default function (state: test, action: action) : test {
-    if (action.type === 'change_name' && action.payload) {
-        const value = action.payload.name 
-        
-        return {
-            ...state,
-            author : value
-        }
+    if (action.type === 'change_name') {
+        return changeName(state, action)
     }
 
-    if (action.type === 'change_subject' && action.payload) {
-        const value = action.payload.subject;
-
-        return {
-            ...state,
-            subject: value
-        }
+    if (action.type === 'change_subject') {
+        return changeSubject(state, action)
     }
 
     if (action.type === 'add_unit') {
-        const unit : unit = {
-            id: generateId(),
-            instructions: '',
-            questions: []
-        }
-        return {
-            ...state,
-            units: [...state.units, unit]
-        }
+        return addUnit(state)
+    }
+
+    if (action.type === 'delete_unit') {
+        return deleteUnit(state, action)
     }
 
     if (action.type === 'change_instructions') {
-        const value = action.payload?.instructions as string
-        const id = action.payload?.id as string
-        const newUnits : unit[] = state.units.map(unit => {
-            if (unit.id === id) {
-                return {
-                    ...unit,
-                    instructions: value
-                }
-            }
-            return unit
-        })
-
-        return {
-            ...state,
-            units: newUnits
-        }
+        return changeInstructions(state, action)
     }
 
     if (action.type === 'add_question') {
-        const question : question = {
-            id: generateId(),
-            question: '',
-            choices: [
-                {id: generateId(), choice: ''},
-                {id: generateId(), choice: ''},
-                {id: generateId(), choice: ''},
-            ]
-        }        
-        const unitId = action.payload?.id as string
-        const newUnits : unit[] = state.units.map(unit => {
-            if (unit.id === unitId) {
-                return {
-                    ...unit,
-                    questions: [...unit.questions, question]
-                }
-            }
-            return unit
-        })
-
-        return {
-            ...state,
-            units: newUnits
-        }
+       return addQuestion(state, action)
     }
 
     if (action.type === 'edit_question') {
-        const newQuestion = action.payload?.question as string;
-        const unitId = action.payload?.unitId as string;
-        const questionId = action.payload?.questionId as string
-
-        const newUnits: unit[] = state.units.map(unit => {
-            if (unit.id === unitId) {
-                const newQ = unit.questions.map((q) => {
-                    if (q.id === questionId) {
-                        return {
-                            ...q,
-                            question: newQuestion
-                        }
-                    }
-                    return q
-                })
-
-                return {
-                    ...unit,
-                    questions: newQ                    
-                }
-            }
-
-            return unit
-        })
-        return {
-            ...state,
-            units: newUnits
-        }
+        return editQuestion(state, action)
     }
 
     if (action.type === 'delete_question') {
-        const questionId = action?.payload?.questionId as string;
-        const unitId = action?.payload?.unitId as string;
-
-        const newUnit: unit[] = state.units.map(unit => {
-            if (unit.id === unitId) {
-                const newQ = unit.questions.filter(q => {
-                    return q.id !== questionId
-                })
-                return {
-                    ...unit,
-                    questions: newQ
-                }
-            }
-
-            return unit
-        })
-        return {
-            ...state,
-            units: newUnit
-        }
+        return deleteQuestion(state,action)
     }
 
     if (action.type === 'add_choice') {
-        const newChoice : choice = {
-            id: generateId(),
-            choice: ''
-        }
-        
-        const unitId = action?.payload?.unitId as string;
-        const questionId = action?.payload?.questionId as string;
+        return addChoice(state, action)
+    }
 
-        const newUnit: unit[] = state.units.map(unit => {
-            if (unit.id === unitId) {
-                const newQ = unit.questions.map(q => {
-                    if (q.id === questionId) {
-                        return {
-                            ...q,
-                            choices: [...q.choices, newChoice]
-                        }
-                    }
+    if (action.type === 'delete_choice') {
+        return deleteChoice(state, action)
+    }
 
-                    return q
-                })
-                return {
-                    ...unit,
-                    questions: newQ
-                }
-            }
-
-            return unit
-        })
-
-        return {
-            ...state,
-            units: newUnit
-        }
+    if (action.type === 'edit_choice') {
+        return editChoice(state, action)
     }
 
     // default
