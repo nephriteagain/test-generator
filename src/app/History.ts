@@ -1,56 +1,28 @@
-import { test } from "./types";
 
-export class TestHistory {
-    private current: test;
-    public undoStack: test[] = []; // Maintain an undo stack
-    private redoStack: test[] = []; // Maintain a redo stack
-    private hardLimit : number;
+export class TestHistory<T> {    
+    hardLimit: number;
+    stack: T[];
 
-    constructor(test: test, limit: number = 100) {
-        this.current = test;
-        this.hardLimit = limit
+    constructor(limit: number = 100) {
+        this.hardLimit = Math.max(100, limit)
+        this.stack = []
     }
 
-    add(test: test) {
-        if (this.undoStack.length === this.hardLimit) {
-            this.undoStack.shift()
+    add(test: T) {
+        if (this.hardLimit === this.stack.length) {
+            this.stack.shift()
         }
-        this.undoStack.push(this.current); // Push current state onto the undo stack
-        this.redoStack = []; // Clear the redo stack
-        this.current = test;
+        this.stack.push(test)
     }
 
-    undo(): test | undefined {
-        if (this.undoStack.length === 0) {
+    undo() : undefined|T {
+        if (this.stack.length === 0) {
             return undefined;
         }
-
-        this.redoStack.push(this.current); // Push current state onto the redo stack
-        this.current = this.undoStack.pop()!; // Pop from undo stack and use as current
-
-        return this.current;
+        return this.stack.pop()
     }
 
-    redo(): test | undefined {
-        if (this.redoStack.length === 0) {
-            return undefined;
-        }
-
-        this.undoStack.push(this.current); // Push current state onto the undo stack
-        this.current = this.redoStack.pop()!; // Pop from redo stack and use as current
-
-        return this.current;
+    hasUndo() : boolean {
+        return this.stack.length > 0
     }
-
-    hasUndo(): boolean {
-        return this.undoStack.length > 0
-    }
-
-    hasRedo() : boolean {
-        return this.redoStack.length > 0
-    }
-
-    // Rest of your methods...
-
-    // (Note: you might want to add methods to clear the undo and redo stacks if needed)
 }

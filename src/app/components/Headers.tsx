@@ -1,12 +1,16 @@
 import type { test, action } from "../types";
-import { Dispatch } from "react";
+import { Dispatch, useState} from "react";
+
+import { History } from "../page";
 
 type HeaderProps = {
     test : test;
     dispatch : Dispatch<action>
 }
 
-export default function Headers({test, dispatch} : HeaderProps) {
+
+export default function Headers({test, dispatch} : HeaderProps) {        
+
     return (
         <div className="my-4">
             <input 
@@ -14,9 +18,11 @@ export default function Headers({test, dispatch} : HeaderProps) {
             type='text' 
             value={test.subject} 
             name='subject' 
-            onChange={(e) => dispatch({
-                type: 'change_subject', payload: { subject: e.currentTarget.value }
-            })}
+            onChange={(e) => {
+                dispatch({
+                    type: 'change_subject', payload: { subject: e.currentTarget.value }
+                })
+            }}
             className="block mb-2 px-2 w-[50%]"
             />
             

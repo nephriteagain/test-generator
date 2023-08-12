@@ -20,7 +20,7 @@ export default function Main({test, dispatch}: MainProps) {
 
     return (
         <div
-            className="bg-gray-100 max-w-[600px] min-h-[500px] px-4 py-2 m-4 focus-within:border-none"      
+            className="bg-gray-100 max-w-[800px] w-[95%] min-h-[500px] px-4 py-2 m-4 focus-within:border-none"      
         > 
             <Headers test={test} dispatch={dispatch}/>
         <div>

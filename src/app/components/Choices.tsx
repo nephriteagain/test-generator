@@ -37,6 +37,7 @@ export default function Choices({choices, unitId, questionId, dispatch, test}: C
                                         }
                                     })
                                     checkScrollHeight(e)
+                                    
                             }}
                             />
                             <button 
