@@ -6,6 +6,7 @@ import { History } from "../page";
 import Button from "./Button";
 import Choice from "./Choice";
 
+
 type ChoicesProps = {
     choices: choice[];
     unitId: string;
@@ -42,6 +43,7 @@ export default function Choices({choices, unitId, questionId, dispatch, test}: C
                             unitId={unitId}
                             questionId={questionId}
                             test={test}
+                            index={index}
                         />
 
                     )

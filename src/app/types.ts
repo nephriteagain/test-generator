@@ -31,7 +31,9 @@ export interface payload {
   questionId?: string;
   choiceId?: string;
   text?: string;
-  testData?: test|undefined
+  testData?: test|undefined;
+  index?: number;
+  choiceIndex?: number;
 }
 
 export interface action {
@@ -39,7 +41,7 @@ export interface action {
       'change_name'|'change_subject'|'add_unit'|'change_instructions'|
       'add_question'|'edit_question'|'delete_question'|'add_choice'|
       'delete_choice'|'edit_choice'|'delete_unit'|'undo_action'|
-      'redo_action'
+      'redo_action'|'insert_choice'
   )
   payload?: payload
 }

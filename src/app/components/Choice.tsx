@@ -1,11 +1,12 @@
-import type {  test, action } from "../types"
-import { Dispatch, ChangeEvent, DragEvent, RefObject} from 'react'
+import type {  test, action, choice } from "../types"
+import { Dispatch, ChangeEvent, DragEvent, useRef, MouseEvent } from 'react'
+
 
 import Button from "./Button"
 
 import { History } from "../page"
 
-import { checkScrollHeight, isHTMLElement } from "../helpers"
+import { checkScrollHeight, resetOpacityElement } from "../helpers"
 
 interface ChoiceProps {
     id: string;
@@ -14,10 +15,15 @@ interface ChoiceProps {
     unitId: string;
     questionId: string;
     test: test;
+    index: number;
+
 }
 
-export default function Choice({id, choice, dispatch, unitId, questionId, test,}: ChoiceProps) {
+let timeout: any;
 
+export default function Choice({id, choice, dispatch, unitId, questionId, test, index, }: ChoiceProps) {
+    const textareaRef = useRef<HTMLTextAreaElement>(null)
+    const dragRef = useRef<HTMLDivElement>(null)
 
     function handleDeleteChoice(id: string, unitId: string, questionId: string) {
         dispatch({
@@ -45,63 +51,90 @@ export default function Choice({id, choice, dispatch, unitId, questionId, test,}
         checkScrollHeight(e)
     }
 
-    function handleDragStart(e: DragEvent, id: string) {
+    function handleDragStart(e: DragEvent, id: string, questionId:string, unitId:string, index: number) {
         e.stopPropagation()
-        const data = id
-        console.log(data)
-        e.dataTransfer.setData('text/plain', data)
+        console.log(e.target === dragRef.current, 'log')
+
+        const textareaEl = textareaRef.current as HTMLTextAreaElement;                
+        const text = textareaEl.value;
+        const data = {id, questionId, unitId, index, text}
+        e.dataTransfer.setData('text/plain', JSON.stringify(data))        
+
+        const el = e.currentTarget as HTMLDivElement;
+        el.style.opacity = '1';
+        // dragRef.current = true;
+    }
+
+
+    function handleDrop(e: DragEvent, id:string, questionId: string, unitId: string, index: number) {
+        e.stopPropagation();
+        e.preventDefault();
+
+        // styling
+        // dragRef.current = false;
+        // styling
+        type json = {id:string; questionId:string; unitId:string; text: string;}
+        const data : json = JSON.parse(e.dataTransfer.getData('text/plain'))        
+
+        if (data.id === id || data.questionId !== questionId || data.unitId !== unitId) {
+            return;
+        } else {
+            const {id, questionId, unitId, text} = data
+            dispatch({type: 'insert_choice', payload: {
+                choiceId: id, questionId, unitId, text, index
+            }})
+            History.add(test)
+        }
     }
 
     function handleDragEnd(e: DragEvent) {
-        const element = e.currentTarget as HTMLDivElement;
-        element.style.opacity = '1'
-    }
-
-    function handleDrop(e: DragEvent, id:string) {
-        e.stopPropagation()
-        const el = e.currentTarget as HTMLDivElement;
-        el.style.opacity = '1'
-        console.log(id, 'id')
-        const data = e.dataTransfer.getData('text/plain')
-        console.log(data)
-    }
-
-    function hoverEnter(e: DragEvent) {
         e.stopPropagation();
-        e.preventDefault();    
+        
+        const el = e.currentTarget as HTMLDivElement;
+        resetOpacityElement(e, el)
+        el.style.opacity = '1'
+    }
+
+
+    function hoverEnter(e: DragEvent) {  
+        e.stopPropagation();
 
         const element = e.currentTarget as HTMLDivElement;
-        const parent = element.parentElement as HTMLTableSectionElement;
-        // typescript wtf?? .... i am forced to write this?
-        parent.childNodes.forEach((child) => {
-            if (isHTMLElement(child)) {
-                child.style.opacity = '1'
-            }
-        })
+        resetOpacityElement(e, element)
 
-        element.style.opacity = '0.4'
+        element.style.opacity = '0.5'
+        const texEl = textareaRef.current as HTMLTextAreaElement;
+        texEl.style.borderTop = '4px solid black';
     }
 
     function handleDragLeave(e: DragEvent) {
+        e.stopPropagation();
         const element = e.currentTarget as HTMLDivElement;
-        element.style.opacity = '1'
+        element.style.opacity = '1';
+        const texEl = textareaRef.current as HTMLTextAreaElement;
+        texEl.style.borderTop = '4px solid transparent';
     }
+
 
     return (
         <div
-            className="flex flex-row items-center justify-center my-1"
-            draggable                        
-            // onDragStart={(e) => handleDragEnd(e,id)}
-            // onDragOver={(e) => handleDragOver(e,id)}
-            onDragStart={(e) => handleDragStart(e, id)}
-            // onDragEnd={(e) => handleDragEnd(e)}
-            onDrop={(e) => handleDrop(e, id)}
+            ref={dragRef}
+            draggable
+            className="flex flex-row items-center justify-center my-2 transition-all duration-100 cursor-pointer"
+            onDragStart={(e) => handleDragStart(e, id, questionId, unitId, index)}
+            onDrop={(e) => handleDrop(e, id, questionId, unitId, index)}
+            // for styling
+            onDragEnd={(e) => handleDragEnd(e)}
             onDragEnter={(e) => hoverEnter(e)}
-            onDragLeave={(e) => handleDragLeave}
+            onDragLeave={(e) => handleDragLeave(e)}            
             data-id={id}
+            data-questionid={questionId}
+            data-unitid={unitId}
+            data-index={index}
         >
             <textarea 
-                className="text-sm px-2 py-[1px] w-[80%] outline-none resize-none me-2 shadow-md cursor-grab"
+                ref={textareaRef}            
+                className={`text-sm px-2 py-[2px] w-[80%] outline-none resize-none me-2 shadow-md border-t-transparent border-t-4 transition-all duration-75 ${false ? 'cursor-grab' : 'cursor-auto'}`}
                 rows={1}
                 value={choice}
                 onChange={(e) => handleChange(e, id)}
