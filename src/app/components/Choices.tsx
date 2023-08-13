@@ -1,5 +1,5 @@
 import type { choice, action, test } from "../types"
-import { Dispatch } from "react";
+import { Dispatch, ChangeEvent } from "react";
 
 import { checkScrollHeight } from "../helpers";
 import { History } from "../page";
@@ -15,7 +15,7 @@ type ChoicesProps = {
 }
 
 export default function Choices({choices, unitId, questionId, dispatch, test}: ChoicesProps) {
-    function handleClick(id: string) {
+    function handleDeleteChoice(id: string) {
         dispatch({
             type: 'delete_choice',
             payload: {
@@ -27,7 +27,7 @@ export default function Choices({choices, unitId, questionId, dispatch, test}: C
         History.add(test)
     }
 
-    function handleClick2(unitId: string, questionId: string) {
+    function handleAddChoice(unitId: string, questionId: string) {
         dispatch({
             type: 'add_choice',
             payload: {
@@ -36,6 +36,19 @@ export default function Choices({choices, unitId, questionId, dispatch, test}: C
             }
         })
         History.add(test)
+    }
+
+    function handleChange(e: ChangeEvent<HTMLTextAreaElement>, id: string) {
+        dispatch({
+            type: 'edit_choice',
+            payload: {
+                unitId,
+                questionId,
+                choiceId: id,
+                text: e.currentTarget.value
+            }
+        })
+        checkScrollHeight(e)
     }
 
     return (
@@ -51,23 +64,11 @@ export default function Choices({choices, unitId, questionId, dispatch, test}: C
                                 className="text-sm px-2 py-[1px] w-[80%] outline-none resize-none my-1 me-2 shadow-md"
                                 rows={1}
                                 value={choice}
-                                onChange={(e) => {
-                                    dispatch({
-                                        type: 'edit_choice',
-                                        payload: {
-                                            unitId,
-                                            questionId,
-                                            choiceId: id,
-                                            text: e.currentTarget.value
-                                        }
-                                    })
-                                    checkScrollHeight(e)
-                                    
-                            }}
+                                onChange={(e) => handleChange(e, id)}
                             />
                             <Button
                                 classes="bg-red-300 px-2 py-[1px] text-sm rounded-full hover:bg-red-700 hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
-                                handleClick={handleClick}
+                                handleClick={handleDeleteChoice}
                                 args={[id]}
                             >
                                 X
@@ -79,7 +80,7 @@ export default function Choices({choices, unitId, questionId, dispatch, test}: C
             </section>
             <Button 
                 classes="text-sm bg-blue-300 px-2 py-[2px] ms-12 mt-3 rounded-md hover:scale-105 hover:bg-blue-400 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
-                handleClick={handleClick2}
+                handleClick={handleAddChoice}
                 args={[unitId, questionId]}
             >
                 add choices

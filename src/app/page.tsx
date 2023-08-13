@@ -3,8 +3,9 @@ import { useReducer, Dispatch, useEffect, useState } from "react"
 import Reducer from './reducers/testReducer'
 import { test } from "./types"
 import { TestHistory } from "./History"
+
 import Main from "./Main"
-import UndoRedo from "./components/UndoRedo"
+import Side from "./Side"
 
 const initial : test = {
   subject : '',
@@ -23,14 +24,12 @@ export default function Home() {
 
   return (
     <main className="mx-8">
-      {/* <UndoRedo 
-          dispatch={dispatch}
-        /> */}
-      <div className="flex justify-center">        
+      <div className="flex justify-center gap-4">        
         <Main 
           test={test}
           dispatch={dispatch}
         />
+        <Side />
       </div>
       
     </main>

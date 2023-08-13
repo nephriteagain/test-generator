@@ -1,5 +1,5 @@
 import type { choice, action } from "../types"
-import { Dispatch } from "react";
+import { Dispatch, ChangeEvent } from "react";
 
 import Choices from "./Choices"
 import Button from "./Button";
@@ -21,11 +21,23 @@ type QuestionProps = {
 
 
 export default function Question({question, choices, index, id, unitId, dispatch, test}: QuestionProps) {
-    function handleClick(id: string, unitId: string) {
+    function handleDeleteQuestion(id: string, unitId: string) {
         dispatch({
             type: 'delete_question', payload: {questionId: id, unitId}
         })
         History.add(test)
+    }
+
+    function handleChange(e: ChangeEvent<HTMLTextAreaElement>, unitId: string, id: string) {
+        dispatch({
+            type: 'edit_question',
+            payload: {
+                unitId,
+                questionId: id,
+                question: e.currentTarget.value
+            }
+        })
+        checkScrollHeight(e)
     }
 
     return (
@@ -36,17 +48,7 @@ export default function Question({question, choices, index, id, unitId, dispatch
                 placeholder="question"
                 value={question} 
                 name={`q-${id}`}                
-                onChange={(e) => {
-                    dispatch({
-                        type: 'edit_question',
-                        payload: {
-                            unitId,
-                            questionId: id,
-                            question: e.currentTarget.value
-                        }
-                    })
-                    checkScrollHeight(e)
-                }}
+                onChange={(e) => handleChange(e, unitId, id)}
             />
             <Choices 
                 choices={choices} 
@@ -58,7 +60,7 @@ export default function Question({question, choices, index, id, unitId, dispatch
             <div className="flex">
                 <Button 
                     classes="bg-orange-200 px-2 py-[1px] text-sm ms-auto hover:scale-105 hover:bg-orange-300 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
-                    handleClick={handleClick}
+                    handleClick={handleDeleteQuestion}
                     args={[id, unitId]}
                     >
                     delete question

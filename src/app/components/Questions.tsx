@@ -28,19 +28,7 @@ export default function Questions({questions, instructions, index, id, dispatch,
     const unitId = id;
     return (
         <div className="my-4 bg-slate-200 p-2 shadow-lg">
-            <textarea 
-                className="px-2 py-1 outline-none w-[90%] resize-none shadow-md"                 
-                placeholder="instructions"
-                rows={1}
-                value={instructions}
-                name={`unit-${id}`}
-                onChange={(e) => {
-                    dispatch({
-                        type: 'change_instructions',
-                        payload: {id,instructions: e.currentTarget.value}
-                    }) 
-                    checkScrollHeight(e)                                     
-                }}/>
+            
             
             <section>
                 {questions.map((q: question, index: number) => {
