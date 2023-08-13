@@ -12,3 +12,7 @@ export function checkScrollHeight(e: ChangeEvent) {
         el.rows = row+1
     }
 }
+
+export function isHTMLElement(node: any): node is HTMLElement {
+    return (node as HTMLElement).style !== undefined;
+}
