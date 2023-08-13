@@ -1,4 +1,4 @@
-export type choice = {
+export interface choice {
   id: string
   choice: string;
 };
@@ -9,7 +9,7 @@ export interface question {
   choices: choice[];
 }
 
-export type unit = {
+export interface unit {
   id: string;
   instructions: string;
   questions: question[];

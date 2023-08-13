@@ -38,6 +38,7 @@ export default function Main({test, dispatch}: MainProps) {
             const {id, questions, instructions} = unit
             return (
                 <Unit 
+                    key={id}
                     id={id}
                     questions={questions}
                     instructions={instructions}
