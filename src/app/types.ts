@@ -16,10 +16,13 @@ export interface unit {
 }
 
 export interface test {  
-  subject?: string;
-  author?: string;  
+  subject: string;
+  author: string;  
   units: unit[];
+  currentUnit: currentUnit
 }
+
+export type currentUnit = 'Multiple Choice'
 
 export interface payload {
   name?: string;
@@ -34,7 +37,8 @@ export interface payload {
   testData?: test|undefined;
   index?: number;
   choiceIndex?: number;
-  json?: question
+  json?: question;
+  unitType?: string;
 }
 
 export interface action {
@@ -42,7 +46,7 @@ export interface action {
       'change_name'|'change_subject'|'add_unit'|'change_instructions'|
       'add_question'|'edit_question'|'delete_question'|'add_choice'|
       'delete_choice'|'edit_choice'|'delete_unit'|'undo_action'|
-      'redo_action'|'insert_choice'|'insert_question'
+      'redo_action'|'insert_choice'|'insert_question'|'set_unit'
   )
   payload?: payload
 }

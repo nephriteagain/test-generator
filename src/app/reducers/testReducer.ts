@@ -17,6 +17,7 @@ import undoAction from "../actions/undoAction";
 import redoAction from "../actions/redoAction";
 import insertChoice from "../actions/insertChoice";
 import insertQuestion from "../actions/insertQuestion";
+import setUnitType from "../actions/setUnitType";
 
 export default function (state: test, action: action) : test {
     if (action.type === 'change_name') {
@@ -75,6 +76,10 @@ export default function (state: test, action: action) : test {
     }
     if (action.type === 'insert_question') {
         return insertQuestion(state, action)
+    }
+
+    if (action.type === 'set_unit') {
+        return setUnitType(state, action)
     }
 
     // default

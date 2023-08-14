@@ -75,7 +75,7 @@ export default function Question({question, choices, index, id, unitId, dispatch
 
     return (
         <div className="mx-4 my-2 bg-zinc-200 p-2 shadow-lg"
-            draggable
+            // draggable
             // onDragStart={(e) => handleDragStart(e, questionObj, id, unitId)}
             // onDrop={(e) => {handleDrop(e, id, unitId, index)}}
         >                    

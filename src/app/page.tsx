@@ -7,10 +7,12 @@ import { TestHistory } from "./History"
 import Main from "./Main"
 import Side from "./Side"
 
+
 const initial : test = {
   subject : '',
   author : '',
-  units: []
+  units: [],
+  currentUnit: 'Multiple Choice'
 }
 // TODO add history at onchange events
 export const History = new TestHistory<test>(100)
@@ -21,7 +23,6 @@ export default function Home() {
   const [test, dispatch] = useReducer(Reducer, initial)
 
 
-
   return (
     <main className="mx-8">
       <div className="flex justify-center gap-4">        
@@ -29,7 +30,10 @@ export default function Home() {
           test={test}
           dispatch={dispatch}
         />
-        <Side />
+        <Side 
+          test={test}
+          dispatch={dispatch}
+        />
       </div>
       
     </main>

@@ -1,19 +1,27 @@
-import { useState } from "react"
+import { useState, Dispatch } from "react"
+import type { test, action } from '../types'
+
+
 import Template from "./Template"
 
 const template = [
-    {id: 123},
-    {id: 456},
-    {id: 789},
-    {id: 322},
-    {id: 644},
+    {id: 123, type: 'Multiple Choice',},
+    {id: 456, type: 'Fill in the Blank'},
+    {id: 789, type: 'True or False'},
+    {id: 322, type: 'Matching'},
+    {id: 644, type: 'Essay'},
 ]
 
-export default function Templates() {
+interface TemplatesProps {
+    test: test;
+    dispatch: Dispatch<action>
+}
+
+export default function Templates({test, dispatch} : TemplatesProps) {
     const [ selected, setSelected ] = useState(0)
 
     return (
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center max-h-[90vh] overflow-scroll">
             {template.map(t => {
                 return (
                     <Template 
@@ -21,6 +29,8 @@ export default function Templates() {
                         id={t.id}
                         setSelected={setSelected}
                         selected={selected}
+                        currentUnit={t.type}
+                        dispatch={dispatch}
                     />
                 )
             })}

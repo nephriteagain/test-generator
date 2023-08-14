@@ -17,14 +17,14 @@ interface MainProps {
 
 
 export default function Main({test, dispatch}: MainProps) {
-
+    
     function handleClick() {
         dispatch({type: 'add_unit'})
         History.add(test)
     }
 
-    return (
-        <div className="relative bg-gray-100 max-w-[700px] w-[95%] min-h-[500px] px-4 py-2  mb-4 mt-16 shadow-lg" > 
+    return (        
+        <div className="relative bg-gray-100 max-w-[700px] w-[95%] min-h-[500px] max-h-[90vh] px-4 py-2  mb-4 mt-16 shadow-lg overflow-scroll" > 
             <UndoRedo dispatch={dispatch}/>
             <Headers test={test} dispatch={dispatch}/>
         <div>
@@ -44,8 +44,7 @@ export default function Main({test, dispatch}: MainProps) {
                     instructions={instructions}
                     dispatch={dispatch}
                     test={test}
-                    index={index}
-                    
+                    index={index}                    
                 />                            
             )
             })}

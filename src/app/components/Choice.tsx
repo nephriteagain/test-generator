@@ -115,7 +115,7 @@ export default function Choice({id, choice, dispatch, unitId, questionId, test, 
 
     return (
         <div
-            className="flex flex-row items-center justify-center my-2 transition-all duration-100 cursor-pointer"
+            className="flex flex-row items-center justify-center my-2 transition-all duration-100 cursor-pointer relative"
             ref={dragRef}
             draggable
             onDragStart={(e) => handleDragStart(e, id, questionId, unitId, index)}
