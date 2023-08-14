@@ -34,6 +34,7 @@ export interface payload {
   testData?: test|undefined;
   index?: number;
   choiceIndex?: number;
+  json?: question
 }
 
 export interface action {
@@ -41,7 +42,7 @@ export interface action {
       'change_name'|'change_subject'|'add_unit'|'change_instructions'|
       'add_question'|'edit_question'|'delete_question'|'add_choice'|
       'delete_choice'|'edit_choice'|'delete_unit'|'undo_action'|
-      'redo_action'|'insert_choice'
+      'redo_action'|'insert_choice'|'insert_question'
   )
   payload?: payload
 }

@@ -43,6 +43,7 @@ export default function Questions({questions, instructions, index, id, dispatch,
                                 unitId={unitId}
                                 dispatch={dispatch}
                                 test={test}
+                                questionObj={q}
                                 />
                         </section>
                     )

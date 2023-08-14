@@ -53,7 +53,6 @@ export default function Choice({id, choice, dispatch, unitId, questionId, test, 
 
     function handleDragStart(e: DragEvent, id: string, questionId:string, unitId:string, index: number) {
         e.stopPropagation()
-        console.log(e.target === dragRef.current, 'log')
 
         const textareaEl = textareaRef.current as HTMLTextAreaElement;                
         const text = textareaEl.value;
@@ -62,7 +61,6 @@ export default function Choice({id, choice, dispatch, unitId, questionId, test, 
 
         const el = e.currentTarget as HTMLDivElement;
         el.style.opacity = '1';
-        // dragRef.current = true;
     }
 
 
@@ -70,9 +68,6 @@ export default function Choice({id, choice, dispatch, unitId, questionId, test, 
         e.stopPropagation();
         e.preventDefault();
 
-        // styling
-        // dragRef.current = false;
-        // styling
         type json = {id:string; questionId:string; unitId:string; text: string;}
         const data : json = JSON.parse(e.dataTransfer.getData('text/plain'))        
 
@@ -93,6 +88,8 @@ export default function Choice({id, choice, dispatch, unitId, questionId, test, 
         const el = e.currentTarget as HTMLDivElement;
         resetOpacityElement(e, el)
         el.style.opacity = '1'
+        const texEl = textareaRef.current as HTMLTextAreaElement;
+        texEl.style.borderTop = '4px solid transparent';
     }
 
 
@@ -118,9 +115,9 @@ export default function Choice({id, choice, dispatch, unitId, questionId, test, 
 
     return (
         <div
+            className="flex flex-row items-center justify-center my-2 transition-all duration-100 cursor-pointer"
             ref={dragRef}
             draggable
-            className="flex flex-row items-center justify-center my-2 transition-all duration-100 cursor-pointer"
             onDragStart={(e) => handleDragStart(e, id, questionId, unitId, index)}
             onDrop={(e) => handleDrop(e, id, questionId, unitId, index)}
             // for styling

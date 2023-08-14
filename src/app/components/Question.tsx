@@ -1,5 +1,5 @@
-import type { choice, action } from "../types"
-import { Dispatch, ChangeEvent } from "react";
+import type { choice, action, question } from "../types"
+import { Dispatch, ChangeEvent, DragEvent } from "react";
 
 import Choices from "./Choices"
 import Button from "./Button";
@@ -16,11 +16,12 @@ type QuestionProps = {
     unitId: string;
     dispatch: Dispatch<action>
     test: test
+    questionObj: question
 }
 
 
 
-export default function Question({question, choices, index, id, unitId, dispatch, test}: QuestionProps) {
+export default function Question({question, choices, index, id, unitId, dispatch, test, questionObj}: QuestionProps) {
     function handleDeleteQuestion(id: string, unitId: string) {
         dispatch({
             type: 'delete_question', payload: {questionId: id, unitId}
@@ -39,9 +40,45 @@ export default function Question({question, choices, index, id, unitId, dispatch
         })
         checkScrollHeight(e)
     }
+    interface obj {
+        questionId: string;
+        unitId: string;
+        items: question
+    }
+
+    // TODO : fix this
+    // function handleDragStart(e: DragEvent, items: question, questionId:string, unitId:string) {
+    //     e.stopPropagation();        
+    //     const obj : obj = {questionId, unitId, items}
+    //     e.dataTransfer.setData('text/plain', JSON.stringify(obj))
+    // }
+
+    // function handleDrop(e: DragEvent, questionId:string, unitId:string, index:number) {
+    //     e.stopPropagation();
+    //     e.preventDefault();
+    //     console.log('drop at', e.currentTarget)
+    //     const data : obj = JSON.parse(e.dataTransfer.getData('text/plain'));
+    //     if (questionId === data.questionId || unitId !== data.unitId) {
+    //         return;
+    //     }        
+    //     const items = data.items;
+    //     dispatch({type: 'insert_question', payload: {
+    //         index,
+    //         unitId,
+    //         questionId,
+    //         json: items
+    //     }})
+    // }
+
+
+
 
     return (
-        <div className="mx-4 my-2 bg-zinc-200 p-2 shadow-lg">                    
+        <div className="mx-4 my-2 bg-zinc-200 p-2 shadow-lg"
+            draggable
+            // onDragStart={(e) => handleDragStart(e, questionObj, id, unitId)}
+            // onDrop={(e) => {handleDrop(e, id, unitId, index)}}
+        >                    
             <textarea 
                 className="px-2 py-[2px] w-[95%] outline-none resize-none my-2 shadow-md"
                 rows={1}

@@ -16,6 +16,7 @@ import editChoice from "../actions/editChoice";
 import undoAction from "../actions/undoAction";
 import redoAction from "../actions/redoAction";
 import insertChoice from "../actions/insertChoice";
+import insertQuestion from "../actions/insertQuestion";
 
 export default function (state: test, action: action) : test {
     if (action.type === 'change_name') {
@@ -71,6 +72,9 @@ export default function (state: test, action: action) : test {
     }
     if (action.type === 'insert_choice') {
         return insertChoice(state, action)
+    }
+    if (action.type === 'insert_question') {
+        return insertQuestion(state, action)
     }
 
     // default

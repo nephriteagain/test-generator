@@ -1,6 +1,6 @@
 import type { test, action, unit, choice } from "../types";
-import deleteChoice from "./deleteChoice";
 import { generateId } from "../helpers";
+import deleteChoice from "./deleteChoice";
 
 export default function insertChoice(state: test, action: action): test {
     const index = action.payload?.index as number;
