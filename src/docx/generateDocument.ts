@@ -2,30 +2,33 @@ import type { test } from '@/app/types';
 import {
     Document,
     Paragraph,
-    Tab,
     TextRun,
     Packer,
     HeadingLevel,
     LevelFormat,
     AlignmentType,
-    BorderStyle
 } from 'docx';
 import { saveAs } from 'file-saver';
 
+import { convertToRoman } from '@/app/helpers';
+
+
 export class TestAsDocX {
     public document: Document;
-
+    private subject: String;
     constructor(test: test) {
         const { units, subject, author } = test;
-
+        this.subject = test.subject;
+        let num = 0;
+        
         this.document = new Document({            
             numbering: {
                 config: [
                     {
-                        reference: 'my-numbering',
+                        reference: 'choice',
                         levels: [
                             {
-                                level: 2,
+                                level: 1,
                                 format: LevelFormat.LOWER_LETTER,                                
                                 alignment: AlignmentType.START,
                                 style: {
@@ -35,26 +38,9 @@ export class TestAsDocX {
                                         }
                                     }
                                 }
-                            },                            
+                            },               
                         ]
-                    },
-                    {
-                        reference: 'my-numbering2',
-                        levels: [
-                            {
-                                level: 1,
-                                format: LevelFormat.DECIMAL,
-                                alignment: AlignmentType.START,
-                                style: {
-                                    paragraph: {
-                                        indent: {
-                                            left: 500,
-                                        }
-                                    }
-                                }                                
-                            }
-                        ]
-                    },                    
+                    },                 
                 ]
             },
             sections: [
@@ -62,13 +48,17 @@ export class TestAsDocX {
                     children: [
                         new Paragraph({
                             text: subject.trim(),
-                            heading: HeadingLevel.HEADING_1,                            
+                            heading: HeadingLevel.HEADING_1,
+                            spacing: {
+                                before: 100,
+                                after: 100
+                            }
                         }),
                         new Paragraph({
                             text: author.trim(),
                             heading: HeadingLevel.HEADING_2,                                                        
                             spacing: {
-                                after: 1000
+                                after: 800
                             }   
                         }),
                         new Paragraph({
@@ -82,33 +72,28 @@ export class TestAsDocX {
                                                 spacing: {
                                                     after: 200
                                                 },
-                                                text: instructions
+                                                text: `${convertToRoman(++num)}: ${instructions.trim()}`
                                             }),                                    
-                                            ...questions.map(q => {
-                                                const { question, choices } = q;
-        
+                                            ...questions.map((q,index) => {
+                                                console.log(index)
+                                                const { question, choices } = q;                                        
                                                 return new Paragraph({
                                                     children: [
                                                         new Paragraph({
                                                             spacing: {
                                                                 after:100
                                                             },
-                                                            text: question.trim(),
-                                                            numbering: {
-                                                                reference: 'my-numbering2',
-                                                                level: 1
-                                                            }
+                                                            text: `${index+1}. ${question.trim()}`,
                                                         }),
                                                         ...choices.map(c => {
                                                             const { choice } = c;
-        
                                                             return new TextRun({
                                                                 children: [
                                                                     new Paragraph({
                                                                         text: choice.trim(),
                                                                         numbering: {
-                                                                            reference: 'my-numbering',
-                                                                            level: 2
+                                                                            reference: 'choice',
+                                                                            level: 1,                                                                            
                                                                         }
                                                                     }),
                                                                 ],
@@ -132,7 +117,7 @@ export class TestAsDocX {
     download() {
         Packer.toBlob(this.document)
             .then(blob => {
-                saveAs(blob, 'test.docx');
+                saveAs(blob, `${this.subject||'test'}.docx`);
                 console.log('Document created successfully');
             })
             .catch(err => {

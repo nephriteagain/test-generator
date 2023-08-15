@@ -4,7 +4,7 @@ export interface choice {
 };
 
 export interface question {
-  id: string
+  id: string;
   question: string;
   choices: choice[];
 }

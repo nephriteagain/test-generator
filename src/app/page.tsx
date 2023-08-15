@@ -102,10 +102,15 @@ export const History = new TestHistory<test>(100)
 
 export default function Home() {
   const [test, dispatch] = useReducer(Reducer, testInit)
+  const [ disabledBtn, setDisableBtn ] = useState(false)
 
   function downloadTextAsDocX(test: test) {
-    const document = new TestAsDocX(test)
-    document.download()
+    setDisableBtn(true);
+    const document = new TestAsDocX(test);
+    document.download();
+    setTimeout(() => {
+      setDisableBtn(false)
+    }, 3000)
   }
 
 
@@ -124,7 +129,8 @@ export default function Home() {
       <Button 
         handleClick={downloadTextAsDocX}
         args={[test]}
-        classes="absolute top-2 left-2 bg-blue-300 px-2 py-[1px] rounded-md shadow-md hover:scale-105 hover:bg-blue-400 active:scale-95 transition-all duration-100"
+        classes="absolute top-2 left-2 bg-blue-300 px-2 py-[1px] rounded-md shadow-md hover:scale-105 hover:bg-blue-400 active:scale-95 transition-all duration-100 disabled:opacity-50"
+        disabled={disabledBtn}
       >
         Download as Word File
       </Button>
