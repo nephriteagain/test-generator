@@ -5,7 +5,7 @@ import { generateId } from '../helpers';
 export default function addUnit(state: test) : test {
     const newQuestions: question[] = []
     let i = 0;
-    while (i < 3) {
+    while (i < 2) {
         const newQuestion : question = {
             id: generateId(),
             question: '',

@@ -1,6 +1,6 @@
 
-import type { question, action, test } from "../types"
-import { Dispatch } from "react";
+import type { question, action, test, focus } from "../types"
+import { Dispatch, SetStateAction } from "react";
 
 import Question from "./Question"
 import Button from "./Button";
@@ -15,9 +15,11 @@ type QuestionsProps = {
     id: string;
     dispatch: Dispatch<action>
     test: test;
+    focus: focus;
+    setFocus: Dispatch<SetStateAction<focus>>
 }
 
-export default function Questions({questions, instructions, index, id, dispatch, test}: QuestionsProps) {
+export default function Questions({questions, instructions, index, id, dispatch, test, focus, setFocus}: QuestionsProps) {
     
     function handleClick(id: string) {
         dispatch({type: 'add_question', payload: {id}})
@@ -44,6 +46,8 @@ export default function Questions({questions, instructions, index, id, dispatch,
                                 dispatch={dispatch}
                                 test={test}
                                 questionObj={q}
+                                focus={focus}
+                                setFocus={setFocus}
                                 />
                         </section>
                     )

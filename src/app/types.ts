@@ -50,3 +50,8 @@ export interface action {
   )
   payload?: payload
 }
+
+export interface focus {
+  unit: string
+  question: string;
+}

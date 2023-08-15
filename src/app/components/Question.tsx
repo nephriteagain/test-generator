@@ -1,5 +1,5 @@
-import type { choice, action, question } from "../types"
-import { Dispatch, ChangeEvent, DragEvent } from "react";
+import type { choice, action, question, focus } from "../types"
+import { Dispatch, ChangeEvent, DragEvent, SetStateAction } from "react";
 
 import Choices from "./Choices"
 import Button from "./Button";
@@ -17,11 +17,13 @@ type QuestionProps = {
     dispatch: Dispatch<action>
     test: test
     questionObj: question
+    focus: focus;
+    setFocus: Dispatch<SetStateAction<focus>>
 }
 
 
 
-export default function Question({question, choices, index, id, unitId, dispatch, test, questionObj}: QuestionProps) {
+export default function Question({question, choices, index, id, unitId, dispatch, test, questionObj, focus, setFocus}: QuestionProps) {
     function handleDeleteQuestion(id: string, unitId: string) {
         dispatch({
             type: 'delete_question', payload: {questionId: id, unitId}
@@ -40,11 +42,11 @@ export default function Question({question, choices, index, id, unitId, dispatch
         })
         checkScrollHeight(e)
     }
-    interface obj {
-        questionId: string;
-        unitId: string;
-        items: question
-    }
+    // interface obj {
+    //     questionId: string;
+    //     unitId: string;
+    //     items: question
+    // }
 
     // TODO : fix this
     // function handleDragStart(e: DragEvent, items: question, questionId:string, unitId:string) {
@@ -74,10 +76,16 @@ export default function Question({question, choices, index, id, unitId, dispatch
 
 
     return (
-        <div className="mx-4 my-2 bg-zinc-200 p-2 shadow-lg"
+        <div className="mx-4 my-2 bg-zinc-200 p-2 shadow-lg  border-transparent border-4 focus-within:border-cyan-400 transition-all duration-100"
             // draggable
             // onDragStart={(e) => handleDragStart(e, questionObj, id, unitId)}
             // onDrop={(e) => {handleDrop(e, id, unitId, index)}}
+            onFocus={() => {
+                console.log('question', id)
+                setTimeout(() => {
+                    setFocus({unit: unitId, question: id})
+                })
+            }}
         >                    
             <textarea 
                 className="px-2 py-[2px] w-[95%] outline-none resize-none my-2 shadow-md"

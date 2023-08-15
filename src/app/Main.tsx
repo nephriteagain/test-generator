@@ -1,7 +1,7 @@
-import { Dispatch } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 
 
-import type { unit, test, action } from "./types";
+import type { unit, test, action, focus } from "./types";
 
 import { History } from './page';
 
@@ -11,12 +11,14 @@ import Unit from './components/Unit';
 import Button from './components/Button';
 
 interface MainProps {
-    test: test,
-    dispatch: Dispatch<action>
+    test: test;
+    dispatch: Dispatch<action>;
+    focus: focus;
+    setFocus: Dispatch<SetStateAction<focus>>
 }
 
 
-export default function Main({test, dispatch}: MainProps) {
+export default function Main({test, dispatch, focus, setFocus}: MainProps) {
     
     function handleClick() {
         dispatch({type: 'add_unit'})
@@ -44,7 +46,9 @@ export default function Main({test, dispatch}: MainProps) {
                     instructions={instructions}
                     dispatch={dispatch}
                     test={test}
-                    index={index}                    
+                    index={index}     
+                    focus={focus}               
+                    setFocus={setFocus}
                 />                            
             )
             })}
