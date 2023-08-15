@@ -21,7 +21,27 @@ export class TestAsDocX {
         this.subject = test.subject;
         let num = 0;
         
-        this.document = new Document({            
+        this.document = new Document({   
+            styles: {
+                default: {
+                    heading1: {
+                        run: {
+                            size: 32,
+                            bold: true,
+                            // italics: true,
+                            color: "000000",
+                        }
+                    },
+                    heading2: {
+                        run: {
+                            size: 28,
+                            bold: true,
+                            color: '000000'
+                        }
+                    },
+                    
+                },
+            },         
             numbering: {
                 config: [
                     {
@@ -72,7 +92,7 @@ export class TestAsDocX {
                                                 spacing: {
                                                     after: 200
                                                 },
-                                                text: `${convertToRoman(++num)}: ${instructions.trim()}`
+                                                text: `${convertToRoman(++num)}: ${instructions.trim()}`                                            
                                             }),                                    
                                             ...questions.map((q,index) => {
                                                 console.log(index)
@@ -82,6 +102,9 @@ export class TestAsDocX {
                                                         new Paragraph({
                                                             spacing: {
                                                                 after:100
+                                                            },
+                                                            indent: {
+                                                                left: 500
                                                             },
                                                             text: `${index+1}. ${question.trim()}`,
                                                         }),
@@ -115,6 +138,7 @@ export class TestAsDocX {
     }
 
     download() {
+        console.log(this.document)
         Packer.toBlob(this.document)
             .then(blob => {
                 saveAs(blob, `${this.subject||'test'}.docx`);
