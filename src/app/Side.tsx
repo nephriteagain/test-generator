@@ -1,5 +1,5 @@
 import { Dispatch } from 'react'
-import type { test, action } from './types'
+import type { test, action } from '../types/types'
 
 import Templates from "./components/Templates"
 

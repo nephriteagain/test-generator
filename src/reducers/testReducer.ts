@@ -1,6 +1,6 @@
-import { generateId } from "../helpers";
+import { generateId } from "../app/helpers";
 
-import type { choice, question, unit, test, action } from "../types";
+import type { choice, question, unit, test, action } from "../types/types";
 
 import changeName from "../actions/changeName";
 import changeSubject from "../actions/changeSubject";
@@ -28,7 +28,7 @@ export default function (state: test, action: action) : test {
         return changeSubject(state, action)
     }
 
-    if (action.type === 'add_unit') {
+    if (action.type === 'add_unit')  {
         return addUnit(state)
     }
 

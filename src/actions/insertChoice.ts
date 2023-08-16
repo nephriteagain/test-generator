@@ -1,5 +1,5 @@
-import type { test, action, unit, choice } from "../types";
-import { generateId } from "../helpers";
+import type { test, action, unit, choice } from "../types/types";
+import { generateId } from "../app/helpers";
 import deleteChoice from "./deleteChoice";
 
 export default function insertChoice(state: test, action: action): test {

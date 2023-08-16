@@ -1,7 +1,6 @@
 import { Dispatch, ChangeEvent, SetStateAction } from 'react'
-import { History } from "../page"
-
-import type { test, action, question, focus } from "../types";
+import { useGlobalContext } from '@/context/Context';
+import type { test, action, question, focus } from "../../types/types";
 
 import { checkScrollHeight } from '../helpers';
 
@@ -21,6 +20,8 @@ type UnitProps = {
 
 
 export default function Unit ({id, questions, instructions, test, dispatch, index, focus, setFocus}: UnitProps) {
+    const { History } = useGlobalContext()
+
 
     function handleDeleteUnit(id:string) {
         dispatch({

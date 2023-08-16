@@ -1,4 +1,4 @@
-import { test, action } from "../types";
+import { test, action } from "../types/types";
 
 export default function deleteUnit(state:test, action: action) : test {
     const unitId = action.payload?.unitId

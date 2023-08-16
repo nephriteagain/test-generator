@@ -1,12 +1,12 @@
 
-import type { question, action, test, focus } from "../types"
+import type { question, action, test, focus } from "../../types/types"
 import { Dispatch, SetStateAction } from "react";
 
 import Question from "./Question"
 import Button from "./Button";
 
 import { checkScrollHeight } from "../helpers";
-import { History } from "../page";
+import { useGlobalContext } from "@/context/Context";
 
 type QuestionsProps = {
     questions: question[];
@@ -20,6 +20,7 @@ type QuestionsProps = {
 }
 
 export default function Questions({questions, instructions, index, id, dispatch, test, focus, setFocus}: QuestionsProps) {
+    const { History } = useGlobalContext()
     
     function handleClick(id: string) {
         dispatch({type: 'add_question', payload: {id}})

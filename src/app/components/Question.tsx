@@ -1,13 +1,12 @@
-import type { choice, action, question, focus } from "../types"
+import type { choice, action, question, focus } from "../../types/types"
 import { Dispatch, ChangeEvent, DragEvent, SetStateAction } from "react";
 
 import Choices from "./Choices"
 import Button from "./Button";
-import { test } from "../types";
+import { test } from "../../types/types";
 
 import { checkScrollHeight } from "../helpers";
-import { History } from "../page";
-
+import { useGlobalContext } from "@/context/Context";
 type QuestionProps = {
     question: string;
     choices: choice[];
@@ -24,6 +23,8 @@ type QuestionProps = {
 
 
 export default function Question({question, choices, index, id, unitId, dispatch, test, questionObj, focus, setFocus}: QuestionProps) {
+    const { History } = useGlobalContext()
+
     function handleDeleteQuestion(id: string, unitId: string) {
         dispatch({
             type: 'delete_question', payload: {questionId: id, unitId}
@@ -86,9 +87,9 @@ export default function Question({question, choices, index, id, unitId, dispatch
                     setFocus({unit: unitId, question: id})
                 })
             }}
-        >                    
+        >       
             <textarea 
-                className="px-2 py-[2px] w-[95%] outline-none resize-none my-2 shadow-md"
+                className="px-2 py-[2px] w-[90%] outline-none resize-none my-2 shadow-md"
                 rows={1}
                 placeholder="question"
                 value={question} 

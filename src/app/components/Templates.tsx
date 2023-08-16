@@ -1,12 +1,12 @@
 import { useState, Dispatch } from "react"
-import type { test, action } from '../types'
+import type { test, action } from '../../types/types'
 
 
 import Template from "./Template"
 
 const template = [
     {id: 123, type: 'Multiple Choice',},
-    {id: 456, type: 'Fill in the Blank'},
+    {id: 456, type: 'Short Answer'},
     {id: 789, type: 'True or False'},
     {id: 322, type: 'Matching'},
     {id: 644, type: 'Essay'},

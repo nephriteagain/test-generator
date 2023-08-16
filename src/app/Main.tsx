@@ -1,9 +1,10 @@
 import { Dispatch, SetStateAction } from 'react';
 
 
-import type { unit, test, action, focus } from "./types";
+import type { unit, test, action, focus } from "../types/types";
 
-import { History } from './page';
+import { useGlobalContext } from '@/context/Context';
+
 
 import Headers from './components/Headers';
 import UndoRedo from './components/UndoRedo';
@@ -20,6 +21,8 @@ interface MainProps {
 
 export default function Main({test, dispatch, focus, setFocus}: MainProps) {
     
+    const { History } = useGlobalContext()
+
     function handleClick() {
         dispatch({type: 'add_unit'})
         History.add(test)
@@ -37,7 +40,7 @@ export default function Main({test, dispatch, focus, setFocus}: MainProps) {
                 add unit
             </Button>
             {test.units.map((unit: unit,index: number) => {
-            const {id, questions, instructions} = unit
+            const {id, questions, instructions, type} = unit
             return (
                 <Unit 
                     key={id}
@@ -49,6 +52,8 @@ export default function Main({test, dispatch, focus, setFocus}: MainProps) {
                     index={index}     
                     focus={focus}               
                     setFocus={setFocus}
+                    // type={}
+                    
                 />                            
             )
             })}

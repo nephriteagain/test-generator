@@ -1,10 +1,10 @@
-import type {  test, action, choice } from "../types"
+import type {  test, action, choice } from "../../types/types"
 import { Dispatch, ChangeEvent, DragEvent, useRef, MouseEvent } from 'react'
 
 
 import Button from "./Button"
 
-import { History } from "../page"
+import { useGlobalContext } from "@/context/Context"
 
 import { checkScrollHeight, resetOpacityElement } from "../helpers"
 
@@ -22,6 +22,8 @@ interface ChoiceProps {
 let timeout: any;
 
 export default function Choice({id, choice, dispatch, unitId, questionId, test, index, }: ChoiceProps) {
+    const { History } = useGlobalContext()
+
     const textareaRef = useRef<HTMLTextAreaElement>(null)
     const dragRef = useRef<HTMLDivElement>(null)
 

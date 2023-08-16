@@ -1,8 +1,7 @@
 import { Dispatch } from 'react'
 import type { TestHistory } from "../History"
-import type { action, test } from '../types'
-
-import { History } from '../page'
+import type { action, test } from '../../types/types'
+import { useGlobalContext } from '@/context/Context'
 
 import Button from './Button'
 
@@ -11,6 +10,7 @@ type UndoRedoProps = {
 }
 
 export default function UndoRedo({dispatch}: UndoRedoProps) {
+    const { History} = useGlobalContext()
 
     function handleUndo(history: TestHistory<test>, dispatch: Dispatch<action>) {
         const undo = history.undo()

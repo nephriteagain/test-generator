@@ -1,4 +1,4 @@
-import type { test } from '@/app/types';
+import type { test } from '@/types/types';
 import {
     Document,
     Paragraph,

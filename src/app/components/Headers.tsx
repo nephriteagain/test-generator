@@ -1,7 +1,7 @@
-import type { test, action } from "../types";
+import type { test, action } from "../../types/types";
 import { Dispatch, useState} from "react";
 
-import { History } from "../page";
+import { useGlobalContext } from "@/context/Context";
 
 type HeaderProps = {
     test : test;
@@ -10,6 +10,7 @@ type HeaderProps = {
 
 
 export default function Headers({test, dispatch} : HeaderProps) {        
+    const { History } = useGlobalContext()
 
     return (
         <div className="my-4">

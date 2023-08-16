@@ -1,4 +1,4 @@
-import type { test, action, unit } from "../types";
+import type { test, action, unit } from "../types/types";
 
 export default function editQuestion(state: test, action: action) : test {
     const newQuestion = action.payload?.question as string;
