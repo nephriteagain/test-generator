@@ -1,6 +1,6 @@
 import { ChangeEvent } from 'react'
 import { useGlobalContext } from '@/context/Context';
-import type { question, unitType } from "../../types/types";
+import type { question, unitType, matchingUnit } from "../../types/types";
 
 import { checkScrollHeight } from '../helpers';
 
@@ -9,14 +9,15 @@ import Button from './Button';
 
 type UnitProps = {
     id: string;
-    questions: question[];
+    questions: question[]|undefined;
     instructions: string;
     index: number;
     type: unitType;
+    matchingUnit: matchingUnit|undefined;
 }
 
 
-export default function Unit ({id, questions, instructions,index, type}: UnitProps) {
+export default function Unit ({id, questions, instructions,index, type, matchingUnit}: UnitProps) {
     const { History, dispatch, focus, setFocus, test } = useGlobalContext()
 
 

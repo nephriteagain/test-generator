@@ -8,8 +8,10 @@ export default function editChoice(state: test, action: action) : test {
 
         const newUnit: unit[] = state.units.map(unit => {
             if (unit.id === unitId) {
+                // @ts-ignore
                 const newQ = unit.questions.map(q => {
                     if (q.id === questionId) {
+                        // @ts-ignore
                         const newChoices : choice[] = q.choices.map((c) => {
                             if (c.id === choiceId) {
                                 return {

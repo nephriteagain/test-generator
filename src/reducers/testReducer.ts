@@ -18,6 +18,9 @@ import redoAction from "../actions/redoAction";
 import insertChoice from "../actions/insertChoice";
 import insertQuestion from "../actions/insertQuestion";
 import setUnitType from "../actions/setUnitType";
+import editMatchingQuestion from '../actions/editMatchingQuestion'
+import editMatchingChoice from "@/actions/editMatchingChoice";
+
 
 export default function (state: test, action: action) : test {
     if (action.type === 'change_name') {
@@ -81,6 +84,16 @@ export default function (state: test, action: action) : test {
     if (action.type === 'set_unit') {
         return setUnitType(state, action)
     }
+
+    if (action.type === 'edit_matching_question') {
+        return editMatchingQuestion(state, action)
+    }
+
+    if (action.type === 'edit_matching_choice') {
+        return editMatchingChoice(state, action)
+    }
+
+
 
     // default
     return state

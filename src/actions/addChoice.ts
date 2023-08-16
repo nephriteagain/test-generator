@@ -12,10 +12,12 @@ export default function addChoice(state: test, action: action) : test {
 
     const newUnit: unit[] = state.units.map(unit => {
         if (unit.id === unitId) {
+            // @ts-ignore
             const newQ = unit.questions.map(q => {
                 if (q.id === questionId) {
                     return {
                         ...q,
+                        // @ts-ignore
                         choices: [...q.choices, newChoice]
                     }
                 }

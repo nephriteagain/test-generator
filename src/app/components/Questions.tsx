@@ -7,7 +7,7 @@ import Button from "./Button";
 import { useGlobalContext } from "@/context/Context";
 
 type QuestionsProps = {
-    questions: question[];
+    questions: question[]|undefined;
     index: number;
     id: string;    
     type: unitType;
@@ -28,7 +28,7 @@ export default function Questions({questions, index, id, type}: QuestionsProps) 
             
             
             <section>
-                {questions.map((q: question, index: number) => {
+                {questions && questions.map((q: question, index: number) => {
                     // @ts-ignore
                     const { id , question, choices} = q
                     return (

@@ -10,16 +10,27 @@ export interface question {
   choices?: choice[];
 }
 
+export interface matchingUnit {
+  id: string;
+  questions: matching[];
+  choices: matching[];
+}
+
+export interface matching {
+  item: string;
+  id: string;
+}
 
 
 export interface unit {
   type: unitType
   id: string;
   instructions: string;
-  questions: question[]
+  questions?: question[];
+  matchingUnit?: matchingUnit
 }
 
-export type unitType = 'Multiple Choice'|'Short Answer'
+export type unitType = 'Multiple Choice'|'Short Answer'|'Matching'
 
 export interface test {  
   subject: string;
@@ -52,7 +63,8 @@ export interface action {
       'change_name'|'change_subject'|'add_unit'|'change_instructions'|
       'add_question'|'edit_question'|'delete_question'|'add_choice'|
       'delete_choice'|'edit_choice'|'delete_unit'|'undo_action'|
-      'redo_action'|'insert_choice'|'insert_question'|'set_unit'
+      'redo_action'|'insert_choice'|'insert_question'|'set_unit'|
+      'edit_matching_question'|'edit_matching_choice'
   )
   payload?: payload
 }

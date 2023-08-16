@@ -1,4 +1,4 @@
-import { test, unit, question, shortAnswerQuestion } from '../types/types';
+import { test, unit, question, matchingUnit, matching } from '../types/types';
 import { generateId } from '../app/helpers';
 
 
@@ -8,6 +8,9 @@ export default function addUnit(state: test) : test {
     }
     if (state.currentUnit === 'Short Answer') {
         return  addShortAnswerUnit(state)
+    }
+    if (state.currentUnit === 'Matching') {
+        return addMatchingUnit(state)
     }
 
     return state
@@ -43,10 +46,10 @@ function addMultipleChoiceUnit(state: test) : test {
 }
 
 function addShortAnswerUnit(state: test) : test {
-    const newQuestions : shortAnswerQuestion[] = []
+    const newQuestions : question[] = []
     let i = 0;
     while (i < 2) {
-        const newQuestion : shortAnswerQuestion = {
+        const newQuestion : question = {
             id: generateId(),
             question: ''
         }
@@ -59,6 +62,34 @@ function addShortAnswerUnit(state: test) : test {
         instructions: '',
         questions: newQuestions,
         type: 'Short Answer'
+    }
+
+    return {
+        ...state,
+        units: [...state.units, unit]
+    }
+}
+
+function addMatchingUnit(state: test) : test {
+    const newMatchingUnit: matchingUnit = {
+        id: generateId(),
+        questions: [
+            {id: generateId(), item: ''},
+            {id: generateId(), item: ''},
+            {id: generateId(), item: ''},
+        ],
+        choices: [
+            {id: generateId(), item: ''},
+            {id: generateId(), item: ''},
+            {id: generateId(), item: ''},            
+        ]
+    }
+
+    const unit: unit = {
+        id: generateId(),
+        instructions: '',
+        type: 'Matching',
+        matchingUnit: newMatchingUnit
     }
 
     return {

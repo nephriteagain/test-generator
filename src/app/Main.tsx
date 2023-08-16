@@ -7,7 +7,7 @@ import Headers from './components/Headers';
 import UndoRedo from './components/UndoRedo';
 import Unit from './components/Unit';
 import Button from './components/Button';
-
+import MatchingQuestions from "./components/MatchingQuestions";
 
 export default function Main() {
     
@@ -30,7 +30,17 @@ export default function Main() {
                 add unit
             </Button>
             {test.units.map((unit: unit,index: number) => {
-            const {id, questions, instructions, type} = unit
+            const {id, questions, instructions, type, matchingUnit} = unit
+            if (type === 'Matching') {
+                return <MatchingQuestions 
+                    key={id}
+                    unitId={id}
+                    instructions={instructions}
+                    matchingUnit={matchingUnit}
+
+                />
+            }
+
             return (
                 <Unit 
                     key={id}
@@ -38,7 +48,8 @@ export default function Main() {
                     questions={questions}
                     instructions={instructions}
                     index={index}        
-                    type={type}                 
+                    type={type}
+                    matchingUnit={matchingUnit}                                     
                 />                            
             )
             })}

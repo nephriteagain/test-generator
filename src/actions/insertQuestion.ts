@@ -12,6 +12,7 @@ export default function insertQuestion(state: test, action: action) : test {
     const testWithDelete = deleteQuestion(state, action)
     const unitWithInsert = testWithDelete.units.map(unit => {
         if (unit.id === unitId) {
+            // @ts-ignore
             const newQ = [...unit.questions]
             newQ.splice(index, 0 ,items)
         }

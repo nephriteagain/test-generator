@@ -11,8 +11,10 @@ export default function insertChoice(state: test, action: action): test {
     const testWithDelete = deleteChoice(state, action);
     const unitWithInsert = testWithDelete.units.map((unit) => {
         if (unit.id === unitId) {
+            // @ts-ignore
             const newQ = unit.questions.map((q) => {
                 if (q.id === questionId) {
+                    // @ts-ignore
                     const newChoices: choice[] = [...q.choices];
                     const newChoiceId = generateId(); // Generate a new ID for the inserted choice
                     newChoices.splice(index, 0, { id: newChoiceId, choice: text });

@@ -12,6 +12,7 @@ import { saveAs } from 'file-saver';
 
 import { convertToRoman } from '@/app/helpers';
 
+// TODO: fix weird spacing on document
 
 export class TestAsDocX {
     public document: Document;
@@ -139,7 +140,7 @@ export class TestAsDocX {
                     indent: {
                         left: 500
                     },
-                    text: `${index+1}. ${question.trim()}`,
+                    text: `${type === 'Short Answer' ? '_______': ''}${index+1}. ${question.trim()}`,
                 }),
             ]
        })

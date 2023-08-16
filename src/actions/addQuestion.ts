@@ -16,6 +16,7 @@ export default function addQuestion(state: test, action: action) : test {
         if (unit.id === unitId) {
             return {
                 ...unit,
+                // @ts-ignore
                 questions: [...unit.questions, question]
             }
         }

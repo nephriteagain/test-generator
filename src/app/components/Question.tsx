@@ -78,7 +78,6 @@ export default function Question({question, choices, index, id, unitId, question
             // onDragStart={(e) => handleDragStart(e, questionObj, id, unitId)}
             // onDrop={(e) => {handleDrop(e, id, unitId, index)}}
             onFocus={() => {
-                console.log('question', id)
                 setTimeout(() => {
                     setFocus({unit: unitId, question: id})
                 })
