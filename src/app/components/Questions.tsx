@@ -1,26 +1,19 @@
 
-import type { question, action, test, focus } from "../../types/types"
-import { Dispatch, SetStateAction } from "react";
+import type { question, } from "../../types/types"
 
 import Question from "./Question"
 import Button from "./Button";
 
-import { checkScrollHeight } from "../helpers";
 import { useGlobalContext } from "@/context/Context";
 
 type QuestionsProps = {
     questions: question[];
-    instructions: string|undefined;
     index: number;
-    id: string;
-    dispatch: Dispatch<action>
-    test: test;
-    focus: focus;
-    setFocus: Dispatch<SetStateAction<focus>>
+    id: string;    
 }
 
-export default function Questions({questions, instructions, index, id, dispatch, test, focus, setFocus}: QuestionsProps) {
-    const { History } = useGlobalContext()
+export default function Questions({questions, index, id,}: QuestionsProps) {
+    const { History, dispatch, test, focus, setFocus } = useGlobalContext()
     
     function handleClick(id: string) {
         dispatch({type: 'add_question', payload: {id}})
@@ -35,6 +28,7 @@ export default function Questions({questions, instructions, index, id, dispatch,
             
             <section>
                 {questions.map((q: question, index: number) => {
+                    // @ts-ignore
                     const { id , question, choices} = q
                     return (
                         <section key={id}>
@@ -44,11 +38,7 @@ export default function Questions({questions, instructions, index, id, dispatch,
                                 index={index}
                                 id={id}
                                 unitId={unitId}
-                                dispatch={dispatch}
-                                test={test}
                                 questionObj={q}
-                                focus={focus}
-                                setFocus={setFocus}
                                 />
                         </section>
                     )

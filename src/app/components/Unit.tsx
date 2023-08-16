@@ -1,6 +1,6 @@
-import { Dispatch, ChangeEvent, SetStateAction } from 'react'
+import { ChangeEvent } from 'react'
 import { useGlobalContext } from '@/context/Context';
-import type { test, action, question, focus } from "../../types/types";
+import type { question } from "../../types/types";
 
 import { checkScrollHeight } from '../helpers';
 
@@ -11,16 +11,12 @@ type UnitProps = {
     id: string;
     questions: question[];
     instructions: string;
-    dispatch: Dispatch<action>;
-    test: test;
     index: number;
-    focus: focus;
-    setFocus: Dispatch<SetStateAction<focus>>
 }
 
 
-export default function Unit ({id, questions, instructions, test, dispatch, index, focus, setFocus}: UnitProps) {
-    const { History } = useGlobalContext()
+export default function Unit ({id, questions, instructions,index,}: UnitProps) {
+    const { History, dispatch, focus, setFocus, test } = useGlobalContext()
 
 
     function handleDeleteUnit(id:string) {
@@ -60,15 +56,9 @@ export default function Unit ({id, questions, instructions, test, dispatch, inde
                     />
 
             <Questions                 
-            questions={questions}
-            instructions={instructions}
-            index={index}
-            id={id}
-            dispatch={dispatch}
-            test={test}
-            focus={focus}
-            setFocus={setFocus}
-            
+                questions={questions}
+                index={index}
+                id={id}            
             />
             <div className='flex'>
                 <Button 

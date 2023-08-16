@@ -1,7 +1,4 @@
-import { Dispatch, SetStateAction } from 'react';
-
-
-import type { unit, test, action, focus } from "../types/types";
+import type { unit,} from "../types/types";
 
 import { useGlobalContext } from '@/context/Context';
 
@@ -11,17 +8,10 @@ import UndoRedo from './components/UndoRedo';
 import Unit from './components/Unit';
 import Button from './components/Button';
 
-interface MainProps {
-    test: test;
-    dispatch: Dispatch<action>;
-    focus: focus;
-    setFocus: Dispatch<SetStateAction<focus>>
-}
 
-
-export default function Main({test, dispatch, focus, setFocus}: MainProps) {
+export default function Main() {
     
-    const { History } = useGlobalContext()
+    const { History, test, dispatch } = useGlobalContext()
 
     function handleClick() {
         dispatch({type: 'add_unit'})
@@ -30,8 +20,8 @@ export default function Main({test, dispatch, focus, setFocus}: MainProps) {
 
     return (        
         <div className="relative bg-gray-100 max-w-[700px] w-[95%] min-h-[500px] max-h-[90vh] px-4 py-2  mb-4 mt-16 shadow-lg overflow-scroll" > 
-            <UndoRedo dispatch={dispatch}/>
-            <Headers test={test} dispatch={dispatch}/>
+            <UndoRedo/>
+            <Headers/>
         <div>
             <Button
                 handleClick={handleClick}
@@ -47,13 +37,7 @@ export default function Main({test, dispatch, focus, setFocus}: MainProps) {
                     id={id}
                     questions={questions}
                     instructions={instructions}
-                    dispatch={dispatch}
-                    test={test}
-                    index={index}     
-                    focus={focus}               
-                    setFocus={setFocus}
-                    // type={}
-                    
+                    index={index}                         
                 />                            
             )
             })}

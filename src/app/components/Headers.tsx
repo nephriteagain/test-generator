@@ -3,14 +3,10 @@ import { Dispatch, useState} from "react";
 
 import { useGlobalContext } from "@/context/Context";
 
-type HeaderProps = {
-    test : test;
-    dispatch : Dispatch<action>
-}
 
 
-export default function Headers({test, dispatch} : HeaderProps) {        
-    const { History } = useGlobalContext()
+export default function Headers() {        
+    const { History, test , dispatch } = useGlobalContext()
 
     return (
         <div className="my-4">

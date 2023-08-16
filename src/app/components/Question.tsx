@@ -1,9 +1,8 @@
 import type { choice, action, question, focus } from "../../types/types"
-import { Dispatch, ChangeEvent, DragEvent, SetStateAction } from "react";
+import { ChangeEvent, DragEvent, } from "react";
 
 import Choices from "./Choices"
 import Button from "./Button";
-import { test } from "../../types/types";
 
 import { checkScrollHeight } from "../helpers";
 import { useGlobalContext } from "@/context/Context";
@@ -13,17 +12,13 @@ type QuestionProps = {
     index: number;
     id: string;
     unitId: string;
-    dispatch: Dispatch<action>
-    test: test
     questionObj: question
-    focus: focus;
-    setFocus: Dispatch<SetStateAction<focus>>
 }
 
 
 
-export default function Question({question, choices, index, id, unitId, dispatch, test, questionObj, focus, setFocus}: QuestionProps) {
-    const { History } = useGlobalContext()
+export default function Question({question, choices, index, id, unitId, questionObj,}: QuestionProps) {
+    const { History, dispatch, test, focus, setFocus } = useGlobalContext()
 
     function handleDeleteQuestion(id: string, unitId: string) {
         dispatch({
@@ -100,8 +95,6 @@ export default function Question({question, choices, index, id, unitId, dispatch
                 choices={choices} 
                 unitId={unitId}
                 questionId={id}
-                dispatch={dispatch}
-                test={test}
             />
             <div className="flex">
                 <Button 

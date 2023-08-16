@@ -5,12 +5,9 @@ import { useGlobalContext } from '@/context/Context'
 
 import Button from './Button'
 
-type UndoRedoProps = {
-    dispatch: Dispatch<action>
-}
 
-export default function UndoRedo({dispatch}: UndoRedoProps) {
-    const { History} = useGlobalContext()
+export default function UndoRedo() {
+    const { History, dispatch } = useGlobalContext()
 
     function handleUndo(history: TestHistory<test>, dispatch: Dispatch<action>) {
         const undo = history.undo()

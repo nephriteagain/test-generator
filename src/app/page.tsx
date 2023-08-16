@@ -1,8 +1,8 @@
 "use client"
-import { useReducer, Dispatch, useEffect, useState, KeyboardEvent, useRef} from "react"
-import Reducer from '../reducers/testReducer'
+import {useEffect, useState, KeyboardEvent, useRef} from "react"
+
 import { test, focus } from "../types/types"
-import { TestHistory } from "./History"
+
 
 import Main from "./Main"
 import Side from "./Side"
@@ -64,18 +64,14 @@ export default function Home() {
       onKeyDown={(e) => handleKeyDown(e, focusRef.current)}
     >
       <div className="flex justify-center gap-4">        
-        <Main 
-          test={test}
-          dispatch={dispatch}
-          focus={focus}
-          setFocus={setFocus}
-        />
-        <Side 
-          test={test}
-          dispatch={dispatch}
-        />
+        <Main />
+        <Side />
       </div>
-      {showModal && <HotkeyModal setShowModal={setShowModal}/>}
+
+      {showModal && 
+        <HotkeyModal setShowModal={setShowModal}
+      />}
+      
       <Button 
         handleClick={downloadTextAsDocX}
         args={[test]}

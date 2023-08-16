@@ -1,5 +1,4 @@
-import type { choice, action, test } from "../../types/types"
-import { Dispatch } from "react";
+import type { choice, } from "../../types/types"
 
 import { useGlobalContext } from "@/context/Context";
 
@@ -11,12 +10,10 @@ type ChoicesProps = {
     choices: choice[];
     unitId: string;
     questionId: string;
-    dispatch: Dispatch<action>;
-    test: test;
 }
 
-export default function Choices({choices, unitId, questionId, dispatch, test}: ChoicesProps) {
-    const { History } = useGlobalContext()
+export default function Choices({choices, unitId, questionId, }: ChoicesProps) {
+    const { History, dispatch, test } = useGlobalContext()
 
     function handleAddChoice(unitId: string, questionId: string) {
         dispatch({
@@ -40,10 +37,8 @@ export default function Choices({choices, unitId, questionId, dispatch, test}: C
                             key={id}
                             id={id}
                             choice={choice}
-                            dispatch={dispatch}
                             unitId={unitId}
                             questionId={questionId}
-                            test={test}
                             index={index}
                         />
 
