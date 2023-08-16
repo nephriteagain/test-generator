@@ -1,4 +1,4 @@
-import type { choice, action, question, focus } from "../../types/types"
+import type { choice, question, unitType } from "../../types/types"
 import { ChangeEvent, DragEvent, } from "react";
 
 import Choices from "./Choices"
@@ -8,16 +8,17 @@ import { checkScrollHeight } from "../helpers";
 import { useGlobalContext } from "@/context/Context";
 type QuestionProps = {
     question: string;
-    choices: choice[];
+    choices: choice[]|undefined;
     index: number;
     id: string;
     unitId: string;
-    questionObj: question
+    questionObj: question;
+    type: unitType;
 }
 
 
 
-export default function Question({question, choices, index, id, unitId, questionObj,}: QuestionProps) {
+export default function Question({question, choices, index, id, unitId, questionObj, type}: QuestionProps) {
     const { History, dispatch, test, focus, setFocus } = useGlobalContext()
 
     function handleDeleteQuestion(id: string, unitId: string) {
@@ -27,7 +28,7 @@ export default function Question({question, choices, index, id, unitId, question
         History.add(test)
     }
 
-    function handleChange(e: ChangeEvent<HTMLTextAreaElement>, unitId: string, id: string) {
+    function handleChange(e: ChangeEvent<HTMLTextAreaElement>, unitId: string, id: string,) {
         dispatch({
             type: 'edit_question',
             payload: {
@@ -95,6 +96,7 @@ export default function Question({question, choices, index, id, unitId, question
                 choices={choices} 
                 unitId={unitId}
                 questionId={id}
+                type={type}
             />
             <div className="flex">
                 <Button 

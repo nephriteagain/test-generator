@@ -37,7 +37,8 @@ export default function Main() {
                     id={id}
                     questions={questions}
                     instructions={instructions}
-                    index={index}                         
+                    index={index}        
+                    type={type}                 
                 />                            
             )
             })}

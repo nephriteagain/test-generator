@@ -1,4 +1,4 @@
-import type { choice, } from "../../types/types"
+import type { choice, unitType} from "../../types/types"
 
 import { useGlobalContext } from "@/context/Context";
 
@@ -7,12 +7,13 @@ import Choice from "./Choice";
 
 
 type ChoicesProps = {
-    choices: choice[];
+    choices: choice[]|undefined;
     unitId: string;
     questionId: string;
+    type: unitType
 }
 
-export default function Choices({choices, unitId, questionId, }: ChoicesProps) {
+export default function Choices({choices, unitId, questionId, type}: ChoicesProps) {
     const { History, dispatch, test } = useGlobalContext()
 
     function handleAddChoice(unitId: string, questionId: string) {
@@ -27,10 +28,11 @@ export default function Choices({choices, unitId, questionId, }: ChoicesProps) {
     }
 
 
-    return (
+     if (type === 'Multiple Choice') return (
         <div>
             <section>
-                { choices.map((c, index: number) => {
+                {/* for typescript */}
+                { choices && choices.map((c, index: number) => {
                     const {id, choice} = c
                     return (
                         <Choice 
@@ -54,4 +56,5 @@ export default function Choices({choices, unitId, questionId, }: ChoicesProps) {
             </Button>
         </div>
     )
+    return null
 }

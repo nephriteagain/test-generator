@@ -1,6 +1,6 @@
 import { ChangeEvent } from 'react'
 import { useGlobalContext } from '@/context/Context';
-import type { question } from "../../types/types";
+import type { question, unitType } from "../../types/types";
 
 import { checkScrollHeight } from '../helpers';
 
@@ -12,10 +12,11 @@ type UnitProps = {
     questions: question[];
     instructions: string;
     index: number;
+    type: unitType;
 }
 
 
-export default function Unit ({id, questions, instructions,index,}: UnitProps) {
+export default function Unit ({id, questions, instructions,index, type}: UnitProps) {
     const { History, dispatch, focus, setFocus, test } = useGlobalContext()
 
 
@@ -58,7 +59,8 @@ export default function Unit ({id, questions, instructions,index,}: UnitProps) {
             <Questions                 
                 questions={questions}
                 index={index}
-                id={id}            
+                id={id}       
+                type={type}     
             />
             <div className='flex'>
                 <Button 

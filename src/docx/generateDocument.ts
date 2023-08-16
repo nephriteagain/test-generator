@@ -1,4 +1,4 @@
-import type { test } from '@/types/types';
+import type { choice, question, test, unit, unitType } from '@/types/types';
 import {
     Document,
     Paragraph,
@@ -16,10 +16,11 @@ import { convertToRoman } from '@/app/helpers';
 export class TestAsDocX {
     public document: Document;
     private subject: String;
+    private num: number;
     constructor(test: test) {
         const { units, subject, author } = test;
         this.subject = test.subject;
-        let num = 0;
+        this.num = 0;
         
         this.document = new Document({   
             styles: {
@@ -83,51 +84,7 @@ export class TestAsDocX {
                         }),
                         new Paragraph({
                             children : [
-                                ...units.map((unit) => {
-                                    const { instructions, questions } = unit;
-        
-                                    return new Paragraph({
-                                        children: [
-                                            new Paragraph({
-                                                spacing: {
-                                                    after: 200
-                                                },
-                                                text: `${convertToRoman(++num)}: ${instructions.trim()}`                                            
-                                            }),                                    
-                                            ...questions.map((q,index) => {
-                                                console.log(index)
-                                                const { question, choices } = q;                                        
-                                                return new Paragraph({
-                                                    children: [
-                                                        new Paragraph({
-                                                            spacing: {
-                                                                after:100
-                                                            },
-                                                            indent: {
-                                                                left: 500
-                                                            },
-                                                            text: `${index+1}. ${question.trim()}`,
-                                                        }),
-                                                        ...choices.map(c => {
-                                                            const { choice } = c;
-                                                            return new TextRun({
-                                                                children: [
-                                                                    new Paragraph({
-                                                                        text: choice.trim(),
-                                                                        numbering: {
-                                                                            reference: 'choice',
-                                                                            level: 1,                                                                            
-                                                                        }
-                                                                    }),
-                                                                ],
-                                                            });
-                                                        }),
-                                                    ],
-                                                });
-                                            }),
-                                        ],
-                                    });
-                                }),
+                                ...this.generateUnits(units)
                             ]
                         })
                         
@@ -148,4 +105,80 @@ export class TestAsDocX {
                 console.log(err);
             });
     }
+
+    generateChoice(c: choice) : TextRun {
+        const { choice } = c
+        return new TextRun({
+            children: [
+                new Paragraph({
+                    text: choice.trim(),
+                    numbering: {
+                        reference: 'choice',
+                        level: 1,                                                                            
+                    }
+                }),
+            ],
+        });
+    }
+
+    generateChoices(choiceArr: choice[]) : TextRun[] {
+        return choiceArr.map(c => {
+            return this.generateChoice(c)
+        })
+    }
+
+    generateQuestion(q: question, index: number, type: unitType) : Paragraph {
+        // @ts-ignore
+        const {question, choices } = q
+        const paragraph =  new Paragraph({
+            children: [
+                new Paragraph({
+                    spacing: {
+                        after:100
+                    },
+                    indent: {
+                        left: 500
+                    },
+                    text: `${index+1}. ${question.trim()}`,
+                }),
+            ]
+       })
+       if (type === 'Multiple Choice') {
+            const choiceArr = this.generateChoices(choices as choice[])
+            choiceArr.forEach(c => {
+                paragraph.addChildElement(c)
+            })
+       }
+       return paragraph
+    }
+
+    generateQuestions(questions: question[], type: unitType) : Paragraph[] {
+        return questions.map((q,index) => {
+            return this.generateQuestion(q,index,type)
+        }) 
+        
+    }
+
+    generateUnit(unit: unit) : Paragraph {
+        const { instructions, questions, type } = unit;
+
+        return new Paragraph({
+            children: [
+                new Paragraph({
+                    spacing: {
+                        after: 200
+                    },
+                    text: `${convertToRoman(++this.num)}: ${instructions.trim()}`                                            
+                }),                                    
+                ...this.generateQuestions(questions, type)
+            ],
+        })
+    }
+
+    generateUnits(units: unit[]) : Paragraph[] {
+        return units.map(unit => {
+            return this.generateUnit(unit)
+        })
+    }
+
 }

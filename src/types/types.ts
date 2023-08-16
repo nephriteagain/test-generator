@@ -3,25 +3,23 @@ export interface choice {
   choice: string;
 };
 
-export type question = multipleChoicesQuestion|shortAnswerQuestion
 
-export interface multipleChoicesQuestion {
+export interface question {
   id: string;
   question: string;
-  choices: choice[];
+  choices?: choice[];
 }
 
-export interface shortAnswerQuestion {
-  id: string;
-  question: string;
-}
+
 
 export interface unit {
-  type: 'Multiple Choice'|'Short Answer'
+  type: unitType
   id: string;
   instructions: string;
-  questions: question[]|shortAnswerQuestion[];
+  questions: question[]
 }
+
+export type unitType = 'Multiple Choice'|'Short Answer'
 
 export interface test {  
   subject: string;

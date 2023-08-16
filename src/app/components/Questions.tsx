@@ -1,5 +1,5 @@
 
-import type { question, } from "../../types/types"
+import type { question, unitType} from "../../types/types"
 
 import Question from "./Question"
 import Button from "./Button";
@@ -10,9 +10,10 @@ type QuestionsProps = {
     questions: question[];
     index: number;
     id: string;    
+    type: unitType;
 }
 
-export default function Questions({questions, index, id,}: QuestionsProps) {
+export default function Questions({questions, index, id, type}: QuestionsProps) {
     const { History, dispatch, test, focus, setFocus } = useGlobalContext()
     
     function handleClick(id: string) {
@@ -39,6 +40,7 @@ export default function Questions({questions, index, id,}: QuestionsProps) {
                                 id={id}
                                 unitId={unitId}
                                 questionObj={q}
+                                type={type}
                                 />
                         </section>
                     )
