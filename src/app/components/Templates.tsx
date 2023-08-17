@@ -8,8 +8,8 @@ const template = [
     {id: 123, type: 'Multiple Choice',},
     {id: 456, type: 'Short Answer'},
     {id: 322, type: 'Matching'},
-    {id: 789, type: 'True or False'},
     {id: 644, type: 'Essay'},
+    {id: 789, type: 'True or False'},
 ]
 
 interface TemplatesProps {
@@ -30,7 +30,6 @@ export default function Templates({test, dispatch} : TemplatesProps) {
                         setSelected={setSelected}
                         selected={selected}
                         currentUnit={t.type}
-                        dispatch={dispatch}
                     />
                 )
             })}

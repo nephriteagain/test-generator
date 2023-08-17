@@ -10,7 +10,8 @@ import {
     Table,
     TableRow,
     TableCell,
-    WidthType
+    WidthType,
+    BorderStyle
 } from 'docx';
 import { saveAs } from 'file-saver';
 
@@ -66,7 +67,24 @@ export class TestAsDocX {
                                 }
                             },               
                         ]
-                    },                 
+                    },   
+                    {
+                        reference: 'choice2',
+                        levels: [
+                            {
+                                level: 1,
+                                format: LevelFormat.LOWER_LETTER,                                
+                                alignment: AlignmentType.START,
+                                style: {
+                                    paragraph: {
+                                        indent: {
+                                            left: 200
+                                        }
+                                    }
+                                }
+                            },               
+                        ]
+                    },               
                 ]
             },
             sections: [
@@ -166,44 +184,69 @@ export class TestAsDocX {
 
 
     generateMatchingQuestions(questions: matching[], choices: matching[]) : Table {
-        const combined = questions.length >= choices.length ? 
-        questions.map((q,idx) => {
-            return [q.item, choices[idx]?.item ?? '']
-        }) : 
-        choices.map((c,idx) => {
-            return [questions[idx]?.item ?? '', c.item]
-        })
-
-        return new Table({  
-            width: {
-                size: '100%',
-                type: WidthType.PERCENTAGE,
+        return new Table({
+            columnWidths: [5400, 3600],
+            borders: {
+                top: {
+                    style: BorderStyle.NONE,
+                    size: 0,
+                },
+                bottom: {
+                    style: BorderStyle.NONE,
+                    size: 0,
+                },
+                left: {
+                    style: BorderStyle.NONE,
+                    size: 0,
+                },
+                right: {
+                    style: BorderStyle.NONE,
+                    size: 0,
+                },
             },
             rows: [
-                ...combined.map(([q,c], idx) => {
-                    return new TableRow({
-                        
-                        children: [
-                            new TableCell({
-                                width: {
-                                    size: '60%',
-                                    type: WidthType.PERCENTAGE,
-                                },
-                                children: [
-                                    new Paragraph(q.trim())
-                                ]
-                            }),
-                            new TableCell({
-                                width: {
-                                    size: '40%',
-                                    type: WidthType.PERCENTAGE,
-                                },
-                                children: [
-                                    new Paragraph(c.trim())
-                                ]
-                            })
-                        ]
-                    })
+                new TableRow({                    
+                    children: [                        
+                        new TableCell({                            
+                            width: {
+                                size: 5400,
+                                type: WidthType.DXA,
+                            },                        
+                            children: [
+                                ...questions.map((q,idx) => {
+                                    return new Paragraph({
+                                        text: `_____${idx+1}. ${q.item.trim()}`,
+                                        spacing: {
+                                            after: 100
+                                        },
+                                        indent: {
+                                            left: 200
+                                        }
+                                    })
+                                })
+                            ],                            
+                        }),
+                        new TableCell({                            
+                            width: {
+                                size: 3600,
+                                type: WidthType.DXA,
+                            },
+                            children: [
+                                ...choices.map(c => {
+                                    return new Paragraph({
+                                        numbering: {
+                                            reference: 'choice2',
+                                            level: 1,                                                                            
+                                        },
+                                        text: c.item.trim(),
+                                        spacing: {
+                                            after: 100
+                                        }
+                                    })
+                                })
+                            ]
+                        })
+                    ]
                 })
             ]
         })
