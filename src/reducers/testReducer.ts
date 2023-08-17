@@ -1,6 +1,5 @@
-import { generateId } from "../app/helpers";
 
-import type { choice, question, unit, test, action } from "../types/types";
+import { test, action, actions } from "../types/types";
 
 import changeName from "../actions/changeName";
 import changeSubject from "../actions/changeSubject";
@@ -26,87 +25,70 @@ import deleteMatchingQuestion from "@/actions/deleteMatchingQuestion";
 import deleteMatchingChoice from "@/actions/deleteMatchingChoice";
 
 export default function (state: test, action: action) : test {
-    if (action.type === 'change_name') {
+    if (action.type === actions.changeName) {
         return changeName(state, action)
     }
-
-    if (action.type === 'change_subject') {
+    if (action.type === actions.changeSubject) {
         return changeSubject(state, action)
     }
-
-    if (action.type === 'add_unit')  {
+    if (action.type === actions.addUnit)  {
         return addUnit(state)
     }
-
-    if (action.type === 'delete_unit') {
+    if (action.type === actions.deleteUnit) {
         return deleteUnit(state, action)
     }
-
-    if (action.type === 'change_instructions') {
+    if (action.type === actions.changeInstructions) {
         return changeInstructions(state, action)
     }
-
-    if (action.type === 'add_question') {
+    if (action.type === actions.addQuestion) {
        return addQuestion(state, action)
     }
-
-    if (action.type === 'edit_question') {
+    if (action.type === actions.editQuestion) {
         return editQuestion(state, action)
     }
-
-    if (action.type === 'delete_question') {
+    if (action.type === actions.deleteQuestion) {
         return deleteQuestion(state,action)
     }
-
-    if (action.type === 'add_choice') {
+    if (action.type === actions.addChoice) {
         return addChoice(state, action)
     }
-
-    if (action.type === 'delete_choice') {
+    if (action.type === actions.deleteChoice) {
         return deleteChoice(state, action)
     }
-
-    if (action.type === 'edit_choice') {
+    if (action.type === actions.editChoice) {
         return editChoice(state, action)
     }
-
-    if (action.type === 'undo_action') {
+    if (action.type === actions.undoAction) {
         return undoAction(state, action)
     }
-
-    if (action.type === 'redo_action') {
+    if (action.type === actions.redoAction) {
         return redoAction(state, action)
     }
-    if (action.type === 'insert_choice') {
+    if (action.type === actions.insertChoice) {
         return insertChoice(state, action)
     }
-    if (action.type === 'insert_question') {
+    if (action.type === actions.insertQuestion) {
         return insertQuestion(state, action)
     }
-
-    if (action.type === 'set_unit') {
+    if (action.type === actions.setUnit) {
         return setUnitType(state, action)
     }
-
-    if (action.type === 'edit_matching_question') {
+    if (action.type === actions.editMatchingQuestion) {
         return editMatchingQuestion(state, action)
     }
-
-    if (action.type === 'edit_matching_choice') {
+    if (action.type === actions.editMatchingChoice) {
         return editMatchingChoice(state, action)
     }
-
-    if (action.type === 'add_matching_question') {
+    if (action.type === actions.addMatchingQuestion) {
         return addMatchingQuestion(state, action)
     }
-
-    if (action.type === 'add_matching_choice') {
+    if (action.type === actions.addMatchingChoice) {
         return addMatchingChoice(state,action)
     }
-    if (action.type === 'delete_matching_question') {
+    if (action.type === actions.deleteMatchingQuestion) {
         return deleteMatchingQuestion(state, action)
     }
-    if (action.type === 'delete_matching_choice') {
+    if (action.type === actions.deleteMatchingChoice) {
         return deleteMatchingChoice(state, action)
     }
 
