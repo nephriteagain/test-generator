@@ -11,7 +11,9 @@ import {
     TableRow,
     TableCell,
     WidthType,
-    BorderStyle
+    BorderStyle,
+    TableRowHeight,
+    HeightRule
 } from 'docx';
 import { saveAs } from 'file-saver';
 
@@ -129,8 +131,67 @@ export class TestAsDocX {
             });
     }
 
-    generateChoice(c: choice) : TextRun {
+    generateChoice(c: choice, type: unitType) : TextRun|Table {
         const { choice } = c
+        if (type === unitType.essay) {
+            return new Table({      
+                alignment: AlignmentType.CENTER,
+                borders: {
+                    top: {
+                        style: BorderStyle.DASH_SMALL_GAP,
+                        size: 3,
+                        color: "000000",
+                    },
+                    bottom: {
+                        style: BorderStyle.DASH_SMALL_GAP,
+                        size: 3,
+                        color: "000000",
+                    },
+                    left: {
+                        style: BorderStyle.DASH_SMALL_GAP,
+                        size: 3,
+                        color: "000000",
+                    },
+                    right: {
+                        style: BorderStyle.DASH_SMALL_GAP,
+                        size: 3,
+                        color: "000000",
+                    },
+                },    
+                columnWidths: [7000],                
+                rows: [
+                    new TableRow({
+                        height: {
+                            value: 2000,
+                            rule: HeightRule.ATLEAST
+                        },
+                        children: [
+                            new TableCell({                                
+                                width: {
+                                    size: 7000,
+                                    type: WidthType.DXA,
+                                }, 
+                                
+                                children: [
+                                    new Paragraph({
+                                        text: '',
+                                        indent: {
+                                            left: 200,
+                                            right: 200,                                            
+                                        },
+                                        spacing: {
+                                            before: 200,
+                                            after: 200
+                                        }
+                                    })
+                                ]
+                            })
+                        ],                        
+                    })
+                ]
+            })
+        }
+
         return new TextRun({
             children: [
                 new Paragraph({
@@ -144,9 +205,9 @@ export class TestAsDocX {
         });
     }
 
-    generateChoices(choiceArr: choice[]) : TextRun[] {
+    generateChoices(choiceArr: choice[], type: unitType) : (TextRun|Table)[] {
         return choiceArr.map(c => {
-            return this.generateChoice(c)
+            return this.generateChoice(c, type)
         })
     }
 
@@ -166,8 +227,8 @@ export class TestAsDocX {
                 }),
             ]
        })
-       if (type === 'Multiple Choice') {
-            const choiceArr = this.generateChoices(choices as choice[])
+       if (type === unitType.multipleChoice || type === unitType.essay) {
+            const choiceArr = this.generateChoices(choices as choice[], type)
             choiceArr.forEach(c => {
                 paragraph.addChildElement(c)
             })
@@ -188,19 +249,19 @@ export class TestAsDocX {
             columnWidths: [5400, 3600],
             borders: {
                 top: {
-                    style: BorderStyle.NONE,
+                    style: BorderStyle.NIL,
                     size: 0,
                 },
                 bottom: {
-                    style: BorderStyle.NONE,
+                    style: BorderStyle.NIL,
                     size: 0,
                 },
                 left: {
-                    style: BorderStyle.NONE,
+                    style: BorderStyle.NIL,
                     size: 0,
                 },
                 right: {
-                    style: BorderStyle.NONE,
+                    style: BorderStyle.NIL,
                     size: 0,
                 },
             },
@@ -217,7 +278,8 @@ export class TestAsDocX {
                                     return new Paragraph({
                                         text: `_____${idx+1}. ${q.item.trim()}`,
                                         spacing: {
-                                            after: 100
+                                            before: 50,
+                                            after: 50
                                         },
                                         indent: {
                                             left: 200

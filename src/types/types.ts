@@ -35,16 +35,16 @@ export enum unitType {
   multipleChoice =  'Multiple Choice',
   shortAnswer = 'Short Answer', 
   matching = 'Matching',
+  essay = 'Essay',
 }
 
 export interface test {  
   subject: string;
   author: string;  
   units: unit[];
-  currentUnit: currentUnit
+  currentUnit: unitType
 }
 
-export type currentUnit = 'Multiple Choice'|'Short Answer'|'Matching'
 
 export interface payload {
   name?: string;

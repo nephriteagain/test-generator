@@ -1,9 +1,10 @@
-import { choice, unitType, actions } from "../../types/types"
+import { choice, unitType, actions, } from "../../types/types"
 
 import { useGlobalContext } from "@/context/Context";
 
 import Button from "./Button";
 import Choice from "./Choice";
+import Essay from "./Essay";
 
 
 type ChoicesProps = {
@@ -26,9 +27,12 @@ export default function Choices({choices, unitId, questionId, type}: ChoicesProp
         })
         History.add(test)
     }
-
-
-     if (type === 'Multiple Choice') return (
+    if (type === unitType.essay && choices) return (        
+        <Essay/>
+    )
+    
+    
+     if (type === unitType.multipleChoice) return (
         <div>
             <section>
                 {/* for typescript */}

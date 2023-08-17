@@ -1,16 +1,19 @@
-import { test, unit, question, matchingUnit, matching } from '../types/types';
+import { test, unit, question, matchingUnit, matching, unitType } from '../types/types';
 import { generateId } from '../app/helpers';
 
 
 export default function addUnit(state: test) : test {
-    if (state.currentUnit === 'Multiple Choice') {
+    if (state.currentUnit === unitType.multipleChoice) {
         return addMultipleChoiceUnit(state)
     }
-    if (state.currentUnit === 'Short Answer') {
+    if (state.currentUnit === unitType.shortAnswer) {
         return  addShortAnswerUnit(state)
     }
-    if (state.currentUnit === 'Matching') {
+    if (state.currentUnit === unitType.matching) {
         return addMatchingUnit(state)
+    }
+    if (state.currentUnit === unitType.essay) {
+        return addEssayUnit(state)
     }
 
     return state
@@ -37,7 +40,7 @@ function addMultipleChoiceUnit(state: test) : test {
         id: generateId(),
         instructions: '',
         questions: newQuestions,
-        type: 'Multiple Choice'
+        type: unitType.multipleChoice
     }
     return {
         ...state,
@@ -61,7 +64,7 @@ function addShortAnswerUnit(state: test) : test {
         id: generateId(),
         instructions: '',
         questions: newQuestions,
-        type: 'Short Answer'
+        type: unitType.shortAnswer
     }
 
     return {
@@ -88,8 +91,37 @@ function addMatchingUnit(state: test) : test {
     const unit: unit = {
         id: generateId(),
         instructions: '',
-        type: 'Matching',
+        type: unitType.matching,
         matchingUnit: newMatchingUnit
+    }
+
+    return {
+        ...state,
+        units: [...state.units, unit]
+    }
+}
+
+function addEssayUnit(state: test) : test {
+    const newEssayQuestions : question[] = [];
+
+    let i = 0;
+    while (i < 2) {
+        const newQuestion : question = {
+            id: generateId(),
+            question: '',
+            choices: [
+                {id: generateId(), choice: ''}
+            ]
+        }
+        newEssayQuestions.push(newQuestion);
+        i++;
+    }
+
+    const unit: unit = {
+        id: generateId(),
+        instructions: '',
+        questions: newEssayQuestions,
+        type: unitType.essay
     }
 
     return {
