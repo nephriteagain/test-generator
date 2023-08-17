@@ -19,7 +19,7 @@ export default function Main() {
     }
 
     return (        
-        <div className="relative bg-gray-100 max-w-[700px] w-[95%] min-h-[500px] max-h-[90vh] px-4 py-2  mb-4 sm:mt-16 shadow-lg overflow-scroll" > 
+        <div className="relative bg-gray-100 max-w-[700px] w-[95%] min-h-[600px] max-h-[90vh] px-4 py-2  mb-4 sm:mt-16 shadow-lg overflow-scroll" > 
             <UndoRedo/>
             <Headers/>
         <div>
