@@ -96,4 +96,5 @@ export interface action {
 export interface focus {
   unit: string
   question: string;
+  type?: unitType
 }

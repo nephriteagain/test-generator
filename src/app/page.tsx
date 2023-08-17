@@ -15,7 +15,7 @@ import { useGlobalContext } from "@/context/Context"
 
 
 export default function Home() {
-  const {test, dispatch, focus, setFocus, History} = useGlobalContext()
+  const {test, dispatch, focus,  History} = useGlobalContext()
 
   const [ disabledBtn, setDisableBtn ] = useState(false)
   const [ showModal, setShowModal ] = useState(false)
@@ -31,9 +31,9 @@ export default function Home() {
   }
 
   // TODO: make this work on different unit types
-  function handleKeyDown(e: KeyboardEvent, focus: focus) {
+  function handleKeyDown(e: KeyboardEvent) {
       e.stopPropagation()
-      const { unit, question } = focusRef.current
+      const { unit, question, type } = focusRef.current
 
       if (e.ctrlKey && e.shiftKey && (e.key === 'f'|| e.key === 'F')) {
         dispatch({type: actions.addUnit})
@@ -62,7 +62,7 @@ export default function Home() {
 
   return (
     <main className="mx-8 mt-4"
-      onKeyDown={(e) => handleKeyDown(e, focusRef.current)}
+      onKeyDown={(e) => handleKeyDown(e)}
     >
       <div className="flex flex-col-reverse sm:flex-row items-start justify-center gap-4">        
         <Main />

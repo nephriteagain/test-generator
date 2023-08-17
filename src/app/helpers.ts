@@ -1,4 +1,5 @@
 import { ChangeEvent, DragEvent } from "react";
+// import { test } from "@/types/types";
 
 export function generateId() {
     return Math.random().toString(36).slice(2)
@@ -54,3 +55,85 @@ export function convertToRoman(num:number) {
     return str;
   }
   
+  export const testInit = {
+    subject: 'Math',
+    author: 'Jade Lazo',
+    units: [
+        {
+        type: 'Multiple Choice',
+        id: 'asdasd',
+        instructions: 'Fill in the blanks',
+        questions: [
+            {
+            id: 'asdadasdzsadasd',
+            question: 'Who was in Paris?',
+            choices: [
+                {
+                id: 'ascdasdasd',
+                choice: 'Kanye West'
+                },
+                {
+                id: 'asdasadasd',
+                choice: 'Kanye West'
+                },
+                {
+                id: 'asdajsdasd',
+                choice: 'Kanye West'
+                },
+            ]
+            }
+        ]
+        },
+        {
+        type: 'Multiple Choice',
+        id: 'asidasd',
+        instructions: 'Fill in the blanks',
+        questions: [
+            {
+            id: 'asdadasjddsadasd',
+            question: 'Who was in Paris?',
+            choices: [
+                {
+                id: 'asda3sdasd',
+                choice: 'Kanye West'
+                },
+                {
+                id: 'asda7sdasd',
+                choice: 'Kanye West'
+                },
+                {
+                id: 'asdas1dasd',
+                choice: 'Kanye West'
+                },
+            ]
+            }
+        ]
+        },
+        {
+        type: 'Multiple Choice',
+        id: 'asd0asd',
+        instructions: 'Fill in the blanks',
+        questions: [
+            {
+            id: 'asdad99asddsadasd',
+            question: 'Who was in Paris?',
+            choices: [
+                {
+                id: 'asda88sdasd',
+                choice: 'Kanye West'
+                },
+                {
+                id: 'as77dasdasd',
+                choice: 'Kanye West'
+                },
+                {
+                id: 'as12dasdasd',
+                choice: 'Kanye West'
+                },
+            ]
+            }
+        ]
+        }
+    ],
+    currentUnit: 'Multiple Choice'
+    }

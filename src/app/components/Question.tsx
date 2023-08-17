@@ -79,7 +79,7 @@ export default function Question({question, choices, index, id, unitId, question
             // onDrop={(e) => {handleDrop(e, id, unitId, index)}}
             onFocus={() => {
                 setTimeout(() => {
-                    setFocus({unit: unitId, question: id})
+                    setFocus({unit: unitId, question: id, type})
                 })
             }}
         >       
