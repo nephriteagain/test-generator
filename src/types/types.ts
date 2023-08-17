@@ -44,7 +44,7 @@ export interface test {
   currentUnit: currentUnit
 }
 
-export type currentUnit = 'Multiple Choice'|'Short Answer'
+export type currentUnit = 'Multiple Choice'|'Short Answer'|'Matching'
 
 export interface payload {
   name?: string;

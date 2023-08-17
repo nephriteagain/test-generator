@@ -1,4 +1,4 @@
-import type { choice, question, test, unit, unitType } from '@/types/types';
+import { choice, matching, question, test, unit, unitType } from '@/types/types';
 import {
     Document,
     Paragraph,
@@ -7,6 +7,10 @@ import {
     HeadingLevel,
     LevelFormat,
     AlignmentType,
+    Table,
+    TableRow,
+    TableCell,
+    WidthType
 } from 'docx';
 import { saveAs } from 'file-saver';
 
@@ -160,8 +164,68 @@ export class TestAsDocX {
         
     }
 
+
+    generateMatchingQuestions(questions: matching[], choices: matching[]) : Table {
+        const combined = questions.length >= choices.length ? 
+        questions.map((q,idx) => {
+            return [q.item, choices[idx]?.item ?? '']
+        }) : 
+        choices.map((c,idx) => {
+            return [questions[idx]?.item ?? '', c.item]
+        })
+
+        return new Table({  
+            width: {
+                size: '100%',
+                type: WidthType.PERCENTAGE,
+            },
+            rows: [
+                ...combined.map(([q,c], idx) => {
+                    return new TableRow({
+                        
+                        children: [
+                            new TableCell({
+                                width: {
+                                    size: '60%',
+                                    type: WidthType.PERCENTAGE,
+                                },
+                                children: [
+                                    new Paragraph(q.trim())
+                                ]
+                            }),
+                            new TableCell({
+                                width: {
+                                    size: '40%',
+                                    type: WidthType.PERCENTAGE,
+                                },
+                                children: [
+                                    new Paragraph(c.trim())
+                                ]
+                            })
+                        ]
+                    })
+                })
+            ]
+        })
+    }
+
     generateUnit(unit: unit) : Paragraph {
         const { instructions, questions, type } = unit;
+        
+        if (type === unitType.matching && unit.matchingUnit) {
+            const { questions, choices } = unit.matchingUnit
+            return new Paragraph({
+                children: [
+                    new Paragraph({
+                        spacing: {
+                            after: 200
+                        },
+                        text: `${convertToRoman(++this.num)} ${instructions.trim()}`
+                    }),   
+                    this.generateMatchingQuestions(questions, choices)                 
+                ]
+            })
+        }
 
         return new Paragraph({
             children: [
@@ -170,7 +234,8 @@ export class TestAsDocX {
                         after: 200
                     },
                     text: `${convertToRoman(++this.num)}: ${instructions.trim()}`                                            
-                }),                                    
+                }),        
+                // @ts-ignore                            
                 ...this.generateQuestions(questions, type)
             ],
         })
