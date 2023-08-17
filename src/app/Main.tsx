@@ -1,4 +1,4 @@
-import type { unit,} from "../types/types";
+import  { unit, actions } from "../types/types";
 
 import { useGlobalContext } from '@/context/Context';
 
@@ -14,7 +14,7 @@ export default function Main() {
     const { History, test, dispatch } = useGlobalContext()
 
     function handleClick() {
-        dispatch({type: 'add_unit'})
+        dispatch({type: actions.addUnit})
         History.add(test)
     }
 

@@ -1,9 +1,11 @@
 import { ChangeEvent } from 'react'
 
-import { matchingUnit } from "@/types/types";
+import { matchingUnit, actions } from "@/types/types";
 
 import { checkScrollHeight } from "../helpers";
 import { useGlobalContext } from '@/context/Context';
+
+import Button from './Button';
 
 interface MatchingQuestionsProps {
     unitId: string;
@@ -12,12 +14,12 @@ interface MatchingQuestionsProps {
 }
 
 export default function MatchingQuestions({unitId, instructions, matchingUnit}: MatchingQuestionsProps) {    
-    const { dispatch } = useGlobalContext()
+    const { dispatch, History, test } = useGlobalContext()
 
 
     function handleChange(e: ChangeEvent<HTMLTextAreaElement>, id:string) {
         dispatch({
-            type: 'change_instructions',
+            type: actions.changeInstructions,
             payload: {id,instructions: e.currentTarget.value}
         })  
         checkScrollHeight(e)    
@@ -25,7 +27,7 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit}: 
 
     function handleChangeQuestion(e: ChangeEvent<HTMLTextAreaElement>, unitId:string, questionId: string) {
         dispatch({
-            type: 'edit_matching_question',
+            type: actions.editMatchingQuestion,
             payload: {
                 text: e.currentTarget.value,
                 unitId,
@@ -37,7 +39,7 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit}: 
     
     function handleChangeChoice(e: ChangeEvent<HTMLTextAreaElement>, unitId:string, choiceId: string) {
         dispatch({
-            type: 'edit_matching_choice',
+            type: actions.editMatchingChoice,
             payload: {
                 text: e.currentTarget.value,
                 unitId,
@@ -46,13 +48,63 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit}: 
         })
         checkScrollHeight(e)    
     }
+    
+    function handleAddQuestion(unitId: string) {
+        dispatch({
+            type: actions.addMatchingQuestion,
+            payload: {
+                unitId
+            }
+        })
+        History.add(test)
+    }
 
+    function handleAddChoice(unitId: string) {
+        dispatch({
+            type: actions.addMatchingChoice,
+            payload: {
+                unitId
+            }
+        })
+        History.add(test)
+    }
+
+    function handleDeleteQuestion(unitId: string, questionId: string) {
+        dispatch({
+            type: actions.deleteMatchingQuestion,
+            payload: {
+                unitId,
+                questionId
+            }
+        })
+        History.add(test)
+    }
+
+    function handleDeleteChoice(unitId: string, choiceId: string) {
+        dispatch({
+            type: actions.deleteMatchingChoice,
+            payload: {
+                unitId,
+                choiceId
+            }
+        })
+        History.add(test)
+    }
+
+    function handleDeleteUnit(id:string) {
+        dispatch({
+            type: actions.deleteUnit,
+            payload: {
+                unitId: id
+            }
+        })
+        History.add(test)
+    }
 
     if (matchingUnit) return (
         <section
             className='mt-4 bg-zinc-200 p-2 shadow-lg border-4 border-transparent focus-within:border-cyan-600 transition-all duration-100'
         >
-            <div>
             <textarea 
                 className="font-semibold  px-2 py-1 outline-none w-[90%] resize-none shadow-md"                 
                 placeholder="instructions"
@@ -61,34 +113,79 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit}: 
                 name={`unit-${unitId}`}
                 onChange={(e) => handleChange(e,unitId)}
             />
-                <div>
+            <div className='flex flex-row gap-6 my-4 bg-slate-200 p-2 shadow-lg'>
+                <div className='basis-3/5'>
                     {matchingUnit.questions.map(q => {
                         const { id, item:question } = q
                         return (
-                            <textarea key={id}
-                                className="font-semibold  px-2 py-1 outline-none w-[90%] resize-none shadow-md"                 
-                                value={question}
-                                rows={1}
-                                onChange={(e) => handleChangeQuestion(e, unitId, id)}
-                            />
+                            <div className='flex flex-row items-center justify-center my-2 transition-all duration-100 cursor-pointer relative'
+                                key={id}
+                            >
+                                <textarea 
+                                    className="me-2 font-semibold  px-2 py-1 outline-none w-[90%] resize-none shadow-md"                 
+                                    value={question}
+                                    rows={1}
+                                    onChange={(e) => handleChangeQuestion(e, unitId, id)}
+                                />
+                                <Button
+                                        classes="bg-red-300 px-2 py-[1px] text-sm rounded-full hover:bg-red-700 hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"                                        
+                                        handleClick={handleDeleteQuestion}
+                                        args={[unitId, id]}
+                                    >
+                                        X
+                                </Button>
+                            </div>
                         )
                     })}
+                    <Button 
+                        classes="font-semibold bg-green-300 my-2 ms-4 px-2 py-[2px] rounded-md shadow-lg drop-shadow-lg hover:scale-105 hover:bg-green-400 transition-all duration-150"
+                        handleClick={handleAddQuestion}
+                        args={[unitId]}
+                    >
+                        new question
+                    </Button>
                 </div>
-                <div>
+                <div className='basis-2/5'>
                     {matchingUnit.choices.map(c => {
                         const { id, item:choice } = c
                         return (
-                            <textarea key={id}
-                                className="font-semibold  px-2 py-1 outline-none w-[90%] resize-none shadow-md"                 
-                                value={choice}
-                                rows={1}
-                                onChange={(e) => handleChangeChoice(e, unitId, id)}
-                            />
+                            <div className='flex flex-row items-center justify-center my-2 transition-all duration-100 cursor-pointer relative'
+                                key={id}                            
+                            >
+                                <textarea 
+                                    className="me-2 font-semibold  px-2 py-1 outline-none w-[90%] resize-none shadow-md"                 
+                                    value={choice}
+                                    rows={1}
+                                    onChange={(e) => handleChangeChoice(e, unitId, id)}
+                                />
+                                <Button
+                                    classes="bg-red-300 px-2 py-[1px] text-sm rounded-full hover:bg-red-700 hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
+                                    handleClick={handleDeleteChoice}
+                                    args={[unitId, id]}
+                                >
+                                    X
+                                </Button>
+                            </div>
                         )
                     })}
+                    <Button 
+                        classes="font-semibold text-sm bg-blue-300 px-2 py-[2px] ms-6 mt-3 rounded-md hover:scale-105 hover:bg-blue-400 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
+                        handleClick={handleAddChoice}
+                        args={[unitId]}
+                    >
+                        add choice
+                    </Button>
                 </div>
             </div>
-
+            <div className='flex'>
+                <Button 
+                    classes='bg-red-300 ms-auto px-2 py-[1px] text-sm rounded-md shadow-md drop-shadow-md hover:scale-105 hover:bg-red-400 active:scale-95 transition-all duration-150'
+                    handleClick={handleDeleteUnit}                    
+                    args={[unitId]}
+                    >
+                    delete unit
+                </Button>
+            </div>
         </section>
     )
     return null

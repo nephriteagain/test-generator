@@ -30,7 +30,12 @@ export interface unit {
   matchingUnit?: matchingUnit
 }
 
-export type unitType = 'Multiple Choice'|'Short Answer'|'Matching'
+
+export enum unitType {
+  multipleChoice =  'Multiple Choice',
+  shortAnswer = 'Short Answer', 
+  matching = 'Matching',
+}
 
 export interface test {  
   subject: string;
@@ -58,14 +63,33 @@ export interface payload {
   unitType?: string;
 }
 
+export enum actions {
+  changeName = 'change_name',
+  changeSubject = 'change_subject',
+  addUnit = 'add_unit',
+  changeInstructions = 'change_instructions',
+  addQuestion = 'add_question',
+  editQuestion = 'edit_question',
+  deleteQuestion = 'delete_question',
+  addChoice = 'add_choice',
+  deleteChoice = 'delete_choice',
+  editChoice = 'edit_choice',
+  deleteUnit = 'delete_unit',
+  undoAction = 'undo_action',
+  redoAction = 'redo_action',
+  insertChoice = 'insert_choice',
+  insertQuestion = 'insert_question',
+  setUnit = 'set_unit',
+  editMatchingQuestion = 'edit_matching_question',
+  editMatchingChoice = 'edit_matching_choice',
+  addMatchingQuestion = 'add_matching_question',
+  addMatchingChoice = 'add_matching_choice',
+  deleteMatchingQuestion = 'delete_matching_question',
+  deleteMatchingChoice = 'delete_matching_choice',
+}
+
 export interface action {
-  type: (
-      'change_name'|'change_subject'|'add_unit'|'change_instructions'|
-      'add_question'|'edit_question'|'delete_question'|'add_choice'|
-      'delete_choice'|'edit_choice'|'delete_unit'|'undo_action'|
-      'redo_action'|'insert_choice'|'insert_question'|'set_unit'|
-      'edit_matching_question'|'edit_matching_choice'
-  )
+  type: actions
   payload?: payload
 }
 

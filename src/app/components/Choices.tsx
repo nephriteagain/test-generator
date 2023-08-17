@@ -1,4 +1,4 @@
-import type { choice, unitType} from "../../types/types"
+import { choice, unitType, actions } from "../../types/types"
 
 import { useGlobalContext } from "@/context/Context";
 
@@ -18,7 +18,7 @@ export default function Choices({choices, unitId, questionId, type}: ChoicesProp
 
     function handleAddChoice(unitId: string, questionId: string) {
         dispatch({
-            type: 'add_choice',
+            type: actions.addChoice,
             payload: {
                 unitId,
                 questionId

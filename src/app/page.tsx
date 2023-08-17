@@ -1,7 +1,7 @@
 "use client"
 import {useEffect, useState, KeyboardEvent, useRef} from "react"
 
-import { test, focus } from "../types/types"
+import { test, focus, actions } from "../types/types"
 
 
 import Main from "./Main"
@@ -35,20 +35,20 @@ export default function Home() {
       const { unit, question } = focusRef.current
 
       if (e.ctrlKey && e.shiftKey && (e.key === 'f'|| e.key === 'F')) {
-        dispatch({type: 'add_unit'})
+        dispatch({type: actions.addUnit})
         return
       }
       if (e.ctrlKey && e.shiftKey && (e.key === 'l' || e.key === 'L')) {
-        dispatch({type: 'add_question', payload: {id: unit}})
+        dispatch({type: actions.addQuestion, payload: {id: unit}})
         return
       }
       if (e.ctrlKey && e.shiftKey && (e.key === 'S'|| e.key === 's')) {
-        dispatch({type: 'add_choice', payload: {unitId: unit, questionId: question}})
+        dispatch({type: actions.addChoice, payload: {unitId: unit, questionId: question}})
         return
       }
       if (e.ctrlKey && e.shiftKey && (e.key === 'U'|| e.key === 'u')) {
         const undo = History.undo()
-        dispatch({type: 'undo_action', payload: {testData: undo}})
+        dispatch({type: actions.undoAction, payload: {testData: undo}})
         return
       }
   }

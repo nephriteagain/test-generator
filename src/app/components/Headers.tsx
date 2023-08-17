@@ -1,5 +1,4 @@
-import type { test, action } from "../../types/types";
-import { Dispatch, useState} from "react";
+import  {  actions } from "../../types/types";
 
 import { useGlobalContext } from "@/context/Context";
 
@@ -17,7 +16,7 @@ export default function Headers() {
             name='subject' 
             onChange={(e) => {
                 dispatch({
-                    type: 'change_subject', payload: { subject: e.currentTarget.value }
+                    type: actions.changeSubject, payload: { subject: e.currentTarget.value }
                 })
             }}
             className="font-bold text-lg block mb-2 px-2 w-[50%] shadow-sm"
@@ -29,7 +28,7 @@ export default function Headers() {
             value={test.author} 
             name='author' 
             onChange={(e) => dispatch({
-                type: 'change_name', payload: { name: e.currentTarget.value }
+                type: actions.changeName, payload: { name: e.currentTarget.value }
             })}
             className="font-semibold block mb-2 px-2 w-[50%] shadow-sm"
             />           

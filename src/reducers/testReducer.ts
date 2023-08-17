@@ -20,7 +20,10 @@ import insertQuestion from "../actions/insertQuestion";
 import setUnitType from "../actions/setUnitType";
 import editMatchingQuestion from '../actions/editMatchingQuestion'
 import editMatchingChoice from "@/actions/editMatchingChoice";
-
+import addMatchingQuestion from "@/actions/addMatchingQuestion";
+import addMatchingChoice from "@/actions/addMatchingChoice";
+import deleteMatchingQuestion from "@/actions/deleteMatchingQuestion";
+import deleteMatchingChoice from "@/actions/deleteMatchingChoice";
 
 export default function (state: test, action: action) : test {
     if (action.type === 'change_name') {
@@ -91,6 +94,20 @@ export default function (state: test, action: action) : test {
 
     if (action.type === 'edit_matching_choice') {
         return editMatchingChoice(state, action)
+    }
+
+    if (action.type === 'add_matching_question') {
+        return addMatchingQuestion(state, action)
+    }
+
+    if (action.type === 'add_matching_choice') {
+        return addMatchingChoice(state,action)
+    }
+    if (action.type === 'delete_matching_question') {
+        return deleteMatchingQuestion(state, action)
+    }
+    if (action.type === 'delete_matching_choice') {
+        return deleteMatchingChoice(state, action)
     }
 
 

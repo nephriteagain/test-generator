@@ -1,5 +1,5 @@
 
-import type { question, unitType} from "../../types/types"
+import  { question, unitType, actions } from "../../types/types"
 
 import Question from "./Question"
 import Button from "./Button";
@@ -17,7 +17,7 @@ export default function Questions({questions, index, id, type}: QuestionsProps) 
     const { History, dispatch, test, focus, setFocus } = useGlobalContext()
     
     function handleClick(id: string) {
-        dispatch({type: 'add_question', payload: {id}})
+        dispatch({type: actions.addQuestion, payload: {id}})
          History.add(test)
     }
     

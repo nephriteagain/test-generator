@@ -6,6 +6,7 @@ import Button from "./Button"
 import { useGlobalContext } from "@/context/Context"
 
 import { checkScrollHeight, resetOpacityElement } from "../helpers"
+import { actions } from '@/types/types'
 
 interface ChoiceProps {
     id: string;
@@ -25,7 +26,7 @@ export default function Choice({id, choice, unitId, questionId, index, }: Choice
 
     function handleDeleteChoice(id: string, unitId: string, questionId: string) {
         dispatch({
-            type: 'delete_choice',
+            type: actions.deleteChoice,
             payload: {
                 unitId,
                 questionId,
@@ -38,7 +39,7 @@ export default function Choice({id, choice, unitId, questionId, index, }: Choice
 
     function handleChange(e: ChangeEvent<HTMLTextAreaElement>, id: string) {
         dispatch({
-            type: 'edit_choice',
+            type: actions.editChoice,
             payload: {
                 unitId,
                 questionId,
@@ -73,7 +74,7 @@ export default function Choice({id, choice, unitId, questionId, index, }: Choice
             return;
         } else {
             const {id, questionId, unitId, text} = data
-            dispatch({type: 'insert_choice', payload: {
+            dispatch({type: actions.insertChoice, payload: {
                 choiceId: id, questionId, unitId, text, index
             }})
             History.add(test)

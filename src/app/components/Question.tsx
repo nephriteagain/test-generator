@@ -1,4 +1,4 @@
-import type { choice, question, unitType } from "../../types/types"
+import  { choice, question, unitType, actions } from "../../types/types"
 import { ChangeEvent, DragEvent, } from "react";
 
 import Choices from "./Choices"
@@ -23,14 +23,14 @@ export default function Question({question, choices, index, id, unitId, question
 
     function handleDeleteQuestion(id: string, unitId: string) {
         dispatch({
-            type: 'delete_question', payload: {questionId: id, unitId}
+            type: actions.deleteQuestion, payload: {questionId: id, unitId}
         })
         History.add(test)
     }
 
     function handleChange(e: ChangeEvent<HTMLTextAreaElement>, unitId: string, id: string,) {
         dispatch({
-            type: 'edit_question',
+            type: actions.editQuestion,
             payload: {
                 unitId,
                 questionId: id,

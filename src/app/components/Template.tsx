@@ -1,4 +1,4 @@
-import type { action } from "../../types/types";
+import  { action, actions } from "../../types/types";
 import { Dispatch, SetStateAction } from "react";
 
 interface TemplateProps {
@@ -16,7 +16,7 @@ export default function Template({id, setSelected, selected, currentUnit, dispat
             onDragStart={() => console.log('dragging')}
             onClick={() => {
                 setSelected(id)                
-                dispatch({type: 'set_unit', payload: {unitType: currentUnit}})
+                dispatch({type: actions.setUnit, payload: {unitType: currentUnit}})
             }}
             onDoubleClick={() => console.log('double clicked')}
         >

@@ -1,6 +1,6 @@
 import { ChangeEvent } from 'react'
 import { useGlobalContext } from '@/context/Context';
-import type { question, unitType, matchingUnit } from "../../types/types";
+import  { question, unitType, matchingUnit, actions } from "../../types/types";
 
 import { checkScrollHeight } from '../helpers';
 
@@ -23,7 +23,7 @@ export default function Unit ({id, questions, instructions,index, type, matching
 
     function handleDeleteUnit(id:string) {
         dispatch({
-            type: 'delete_unit',
+            type: actions.deleteUnit,
             payload: {
                 unitId: id
             }
@@ -33,7 +33,7 @@ export default function Unit ({id, questions, instructions,index, type, matching
 
     function handleChange(e: ChangeEvent<HTMLTextAreaElement>, id:string) {
         dispatch({
-            type: 'change_instructions',
+            type: actions.changeInstructions,
             payload: {id,instructions: e.currentTarget.value}
         })  
         checkScrollHeight(e)    
