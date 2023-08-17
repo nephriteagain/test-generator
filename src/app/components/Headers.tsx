@@ -5,7 +5,7 @@ import { useGlobalContext } from "@/context/Context";
 
 
 export default function Headers() {        
-    const { History, test , dispatch } = useGlobalContext()
+    const {  test , dispatch } = useGlobalContext()
 
     return (
         <div className="my-4">

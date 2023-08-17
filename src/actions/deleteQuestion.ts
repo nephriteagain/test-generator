@@ -6,6 +6,7 @@ export default function deleteQuestion(state: test, action: action) : test {
 
         const newUnit: unit[] = state.units.map(unit => {
             if (unit.id === unitId) {
+                // @ts-ignore
                 const newQ = unit.questions.filter(q => {
                     return q.id !== questionId
                 })

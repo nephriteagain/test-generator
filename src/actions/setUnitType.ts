@@ -1,7 +1,7 @@
-import { action, test, currentUnit } from '../types/types';
+import { action, test, unitType } from '../types/types';
 
 export default function setUnitType(state: test, action: action) : test {
-    const newType = action.payload?.unitType as currentUnit;
+    const newType = action.payload?.unitType as unitType;
 
     return {
         ...state,
