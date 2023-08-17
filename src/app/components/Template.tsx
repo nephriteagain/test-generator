@@ -19,9 +19,9 @@ export default function Template({id, setSelected, selected, unitType}: Template
     }
 
     return (
-        <div className={`w-[55%] aspect-square bg-gray-100 my-2 border-4 ${selected === id ? 'border-blue-800' : 'border-transparent'}  transition-all duration-100`}
-            draggable
-            onDragStart={() => console.log('dragging')}
+        <div className={`flex w-[18%] sm:w-[55%] aspect-square text-center justify-center items-center bg-gray-100 my-2 border-4 ${selected === id ? 'border-blue-800' : 'border-transparent'}  transition-all duration-100`}
+            // draggable
+            // onDragStart={() => console.log('dragging')}
             onClick={() => {
                 setSelected(id)                
                 dispatch({type: actions.setUnit, payload: {unitType}})

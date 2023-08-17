@@ -30,6 +30,7 @@ export default function Home() {
     }, 3000)
   }
 
+  // TODO: make this work on different unit types
   function handleKeyDown(e: KeyboardEvent, focus: focus) {
       e.stopPropagation()
       const { unit, question } = focusRef.current
@@ -63,7 +64,7 @@ export default function Home() {
     <main className="mx-8 mt-4"
       onKeyDown={(e) => handleKeyDown(e, focusRef.current)}
     >
-      <div className="flex justify-center gap-4">        
+      <div className="flex flex-col-reverse sm:flex-row items-center justify-center gap-4">        
         <Main />
         <Side />
       </div>

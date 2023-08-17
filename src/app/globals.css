@@ -30,9 +30,15 @@
 
   
 
-    @media (max-width: 576px) {
+    @media (max-width: 639px) {
         html {
             font-size:  12px;
+        }
+    }
+
+    @media (max-width: 360px) {
+        html {
+            font-size: 10px;
         }
     }
 }
