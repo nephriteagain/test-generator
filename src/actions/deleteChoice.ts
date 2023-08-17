@@ -6,11 +6,9 @@ export default function deleteChoice(state: test, action: action) : test {
         const choiceId = action?.payload?.choiceId as string;
 
         const newUnit: unit[] = state.units.map(unit => {
-            if (unit.id === unitId) {
-                // @ts-ignore
+            if (unit.id === unitId && unit.questions) {
                 const newQ = unit.questions.map(q => {
-                    if (q.id === questionId) {
-                        // @ts-ignore
+                    if (q.id === questionId && q.choices) {
                         const newChoices : choice[] = q.choices.filter(c => {
                             return c.id !== choiceId
                         })

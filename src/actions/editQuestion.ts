@@ -6,8 +6,7 @@ export default function editQuestion(state: test, action: action) : test {
         const questionId = action.payload?.questionId as string
 
         const newUnits: unit[] = state.units.map(unit => {
-            if (unit.id === unitId) {
-                // @ts-ignore
+            if (unit.id === unitId && unit.questions) {
                 const newQ = unit.questions.map((q) => {
                     if (q.id === questionId) {
                         return {

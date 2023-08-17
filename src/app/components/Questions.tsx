@@ -29,7 +29,6 @@ export default function Questions({questions, index, id, type}: QuestionsProps) 
             
             <section>
                 {questions && questions.map((q: question, index: number) => {
-                    // @ts-ignore
                     const { id , question, choices} = q
                     return (
                         <section key={id}>

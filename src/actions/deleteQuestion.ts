@@ -5,8 +5,7 @@ export default function deleteQuestion(state: test, action: action) : test {
         const unitId = action?.payload?.unitId as string;
 
         const newUnit: unit[] = state.units.map(unit => {
-            if (unit.id === unitId) {
-                // @ts-ignore
+            if (unit.id === unitId && unit.questions) {
                 const newQ = unit.questions.filter(q => {
                     return q.id !== questionId
                 })

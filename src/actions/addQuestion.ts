@@ -13,10 +13,9 @@ export default function addQuestion(state: test, action: action) : test {
     }        
     const unitId = action.payload?.id as string
     const newUnits : unit[] = state.units.map(unit => {
-        if (unit.id === unitId) {
+        if (unit.id === unitId && unit.questions) {
             return {
                 ...unit,
-                // @ts-ignore
                 questions: [...unit.questions, question]
             }
         }

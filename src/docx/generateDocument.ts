@@ -212,7 +212,6 @@ export class TestAsDocX {
     }
 
     generateQuestion(q: question, index: number, type: unitType) : Paragraph {
-        // @ts-ignore
         const {question, choices } = q
         const paragraph =  new Paragraph({
             children: [
