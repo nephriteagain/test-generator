@@ -86,6 +86,7 @@ export enum actions {
   addMatchingChoice = 'add_matching_choice',
   deleteMatchingQuestion = 'delete_matching_question',
   deleteMatchingChoice = 'delete_matching_choice',
+  checkLocalStorage = 'check_local_storage'
 }
 
 export interface action {

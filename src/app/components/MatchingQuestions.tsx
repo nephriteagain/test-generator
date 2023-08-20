@@ -1,6 +1,6 @@
 import { ChangeEvent } from 'react'
 
-import { matchingUnit, actions } from "@/types/types";
+import { matchingUnit, actions, unitType } from "@/types/types";
 
 import { checkScrollHeight } from "../helpers";
 import { useGlobalContext } from '@/context/Context';
@@ -14,7 +14,7 @@ interface MatchingQuestionsProps {
 }
 
 export default function MatchingQuestions({unitId, instructions, matchingUnit}: MatchingQuestionsProps) {    
-    const { dispatch, History, test } = useGlobalContext()
+    const { dispatch, History, test, setFocus } = useGlobalContext()
 
 
     function handleChange(e: ChangeEvent<HTMLTextAreaElement>, id:string) {
@@ -104,6 +104,7 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit}: 
     if (matchingUnit) return (
         <section
             className='mt-4 bg-zinc-200 p-2 shadow-lg border-4 border-transparent focus-within:border-cyan-600 transition-all duration-100'
+            onFocus={() => setFocus({unit:unitId, question: '', type: unitType.matching})}
         >
             <textarea 
                 className="font-semibold  px-2 py-1 outline-none w-[90%] resize-none shadow-md"                 

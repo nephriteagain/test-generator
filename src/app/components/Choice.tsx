@@ -16,7 +16,6 @@ interface ChoiceProps {
     index: number;
 }
 
-let timeout: any;
 
 export default function Choice({id, choice, unitId, questionId, index, }: ChoiceProps) {
     const { History, dispatch, test } = useGlobalContext()
@@ -47,7 +46,7 @@ export default function Choice({id, choice, unitId, questionId, index, }: Choice
                 text: e.currentTarget.value
             }
         })
-        checkScrollHeight(e)
+        checkScrollHeight(e)   
     }
 
     function handleDragStart(e: DragEvent, id: string, questionId:string, unitId:string, index: number) {

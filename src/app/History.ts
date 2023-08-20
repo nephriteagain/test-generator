@@ -13,6 +13,8 @@ export class TestHistory<T> {
             this.stack.shift()
         }
         this.stack.push(test)
+
+        
     }
 
     undo() : undefined|T {

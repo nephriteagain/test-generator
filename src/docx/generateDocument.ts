@@ -120,7 +120,6 @@ export class TestAsDocX {
     }
 
     download() {
-        console.log(this.document)
         Packer.toBlob(this.document)
             .then(blob => {
                 saveAs(blob, `${this.subject||'test'}.docx`);

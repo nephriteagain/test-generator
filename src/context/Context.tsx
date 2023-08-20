@@ -1,8 +1,8 @@
 "use client"
 
-import { test, focus, action, unitType } from '@/types/types'
+import { test, focus, action, unitType, actions } from '@/types/types'
 import { TestHistory } from '@/app/History'
-import { useContext, createContext, useReducer, useState, ReactNode, Dispatch, SetStateAction } from 'react'
+import { useContext, createContext, useReducer, useState, ReactNode, Dispatch, SetStateAction , useEffect} from 'react'
 import Reducer from '../reducers/testReducer'
 
 
@@ -32,13 +32,28 @@ export const History = new TestHistory<test>(100)
 
 const GlobalContext = createContext({} as GlobalContextValue)
 
-export function GlobalProvider({children}: GlobalProviderProps) {
 
+let timeout : any
+export function GlobalProvider({children}: GlobalProviderProps) {
     const [ test, dispatch ] = useReducer(Reducer, initial)
     const [ focus, setFocus ] = useState<focus>({
         unit: '',
-        question: ''        
+        question: '',
+        type: unitType.multipleChoice
       })
+
+    // auto saves to localstorage incase of accidentally closing window
+    useEffect(() => {
+        clearInterval(timeout)
+        timeout = setTimeout(() => {
+            localStorage.setItem('current_test', JSON.stringify(test))
+            console.log('saved')
+        }, 1000)
+    }, [test])
+
+    useEffect(() => {
+        dispatch({type: actions.checkLocalStorage})
+    }, [])
 
     return (
         <GlobalContext.Provider value={{

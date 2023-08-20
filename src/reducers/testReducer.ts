@@ -23,6 +23,7 @@ import addMatchingQuestion from "@/actions/addMatchingQuestion";
 import addMatchingChoice from "@/actions/addMatchingChoice";
 import deleteMatchingQuestion from "@/actions/deleteMatchingQuestion";
 import deleteMatchingChoice from "@/actions/deleteMatchingChoice";
+import checkLocalStorage from "@/actions/checkLocalStorage";
 
 export default function (state: test, action: action) : test {
     if (action.type === actions.changeName) {
@@ -90,6 +91,9 @@ export default function (state: test, action: action) : test {
     }
     if (action.type === actions.deleteMatchingChoice) {
         return deleteMatchingChoice(state, action)
+    }
+    if (action.type === actions.checkLocalStorage) {
+        return checkLocalStorage(state)
     }
 
 

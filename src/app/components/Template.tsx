@@ -19,7 +19,7 @@ export default function Template({id, setSelected, selected, unitType}: Template
     }
 
     return (
-        <div className={`flex w-[18%] sm:w-[55%] aspect-square text-center justify-center items-center bg-gray-100 my-2 border-4 ${selected === id ? 'border-blue-800' : 'border-transparent'}  transition-all duration-100`}
+        <div className={`cursor-pointer mx-auto flex w-[18%] sm:w-[70%] aspect-square text-center justify-center shadow-md items-center hover:bg-blue-100 bg-gray-100 my-2 rounded-md border-4 ${selected === id ? 'border-blue-800' : 'border-transparent'}  transition-all duration-100`}
             // draggable
             // onDragStart={() => console.log('dragging')}
             onClick={() => {

@@ -44,8 +44,7 @@ export default function Unit ({id, questions, instructions,index, type, matching
                 key={id}
                 className='mt-4 bg-zinc-200 p-2 shadow-lg border-4 border-transparent focus-within:border-cyan-600 transition-all duration-100'
                 onFocus={() => {
-                    console.log(id, 'unit')
-                    setFocus({...focus, unit: id, type})}
+                    setFocus({question: '', unit: id, type})}
                 }
         >   
             <textarea 
