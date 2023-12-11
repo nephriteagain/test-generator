@@ -19,7 +19,7 @@ export default function Headers() {
                     type: actions.changeSubject, payload: { subject: e.currentTarget.value }
                 })
             }}
-            className="font-bold text-lg block mb-2 px-2 w-[50%] shadow-sm"
+            className="font-bold dark:bg-black text-lg block mb-2 px-2 w-[50%] shadow-sm"
             />
             
             <input 
@@ -30,7 +30,7 @@ export default function Headers() {
             onChange={(e) => dispatch({
                 type: actions.changeName, payload: { name: e.currentTarget.value }
             })}
-            className="font-semibold block mb-2 px-2 w-[50%] shadow-sm"
+            className="font-semibold dark:bg-black block mb-2 px-2 w-[50%] shadow-sm"
             />           
         </div>
     )

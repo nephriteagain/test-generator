@@ -8,6 +8,8 @@ import Main from "./Main"
 import Side from "./Side"
 import Button from "./components/Button"
 import HotkeyModal from "./components/HokeyModal"
+import Switch from "./components/Switch"
+import Controls from "./components/Controls"
 
 import { TestAsDocX } from '@/docx/generateDocument'
 import { useGlobalContext } from "@/context/Context"
@@ -100,22 +102,13 @@ export default function Home() {
       {showModal && 
         <HotkeyModal setShowModal={setShowModal}
       />}
-      
-      <Button 
-        handleClick={downloadTextAsDocX}
-        args={[test]}
-        classes="absolute top-2 left-2 bg-blue-300 px-2 py-[1px] rounded-md shadow-md hover:scale-105 hover:bg-blue-400 active:scale-95 transition-all duration-100 disabled:opacity-50"
-        disabled={disabledBtn}
-      >
-        Download as Word File
-      </Button>
-      <Button
-        handleClick={setShowModal}
-        args={[showModal? false: true]}      
-        classes="absolute top-2 right-2 bg-blue-300 px-2 py-[2px] rounded-md shadow-md hover:scale-105 hover:bg-blue-400 active:scale-95 transition-all duration-100"
-      >
-        Hotkeys
-      </Button>
+      <Controls 
+        downloadTextAsDocX={downloadTextAsDocX}
+        test={test}
+        disabledBtn={disabledBtn}
+        showModal={showModal}
+        setShowModal={setShowModal}
+      />
     </main>
   )
 }

@@ -42,13 +42,13 @@ export default function Unit ({id, questions, instructions,index, type, matching
     return (
         <section 
                 key={id}
-                className='mt-4 bg-zinc-200 p-2 shadow-lg border-4 border-transparent focus-within:border-cyan-600 transition-all duration-100'
+                className='mt-4 bg-zinc-200 dark:bg-zinc-700 p-2 shadow-lg border-4 border-transparent focus-within:border-cyan-600 transition-all duration-100'
                 onFocus={() => {
                     setFocus({question: '', unit: id, type})}
                 }
         >   
             <textarea 
-                className="font-semibold  px-2 py-1 outline-none w-[90%] resize-none shadow-md"                 
+                className="font-semibold dark:bg-black  px-2 py-1 outline-none w-[90%] resize-none shadow-md"                 
                 placeholder="instructions"
                 rows={1}
                 value={instructions}
@@ -64,7 +64,7 @@ export default function Unit ({id, questions, instructions,index, type, matching
             />
             <div className='flex'>
                 <Button 
-                    classes='bg-red-300 ms-auto px-2 py-[1px] text-sm rounded-md shadow-md drop-shadow-md hover:scale-105 hover:bg-red-400 active:scale-95 transition-all duration-150'
+                    classes='bg-red-300 dark:bg-red-800 ms-auto px-2 py-[1px] text-sm rounded-md shadow-md drop-shadow-md hover:scale-105 hover:bg-red-400 active:scale-95 transition-all duration-150'
                     handleClick={handleDeleteUnit}                    
                     args={[id]}
                     >

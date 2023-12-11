@@ -73,7 +73,7 @@ export default function Question({question, choices, index, id, unitId, question
 
 
     return (
-        <div className="mx-4 my-2 bg-zinc-200 p-2 shadow-lg  border-transparent border-4 focus-within:border-cyan-400 transition-all duration-100"
+        <div className="mx-4 my-2 bg-zinc-200 dark:bg-zinc-800 p-2 shadow-lg  border-transparent border-4 focus-within:border-cyan-400 transition-all duration-100"
             // draggable
             // onDragStart={(e) => handleDragStart(e, questionObj, id, unitId)}
             // onDrop={(e) => {handleDrop(e, id, unitId, index)}}
@@ -84,7 +84,7 @@ export default function Question({question, choices, index, id, unitId, question
             }}
         >       
             <textarea 
-                className="px-2 py-[2px] w-[90%] outline-none resize-none my-2 shadow-md"
+                className="dark:bg-black px-2 py-[2px] w-[90%] outline-none resize-none my-2 shadow-md"
                 rows={1}
                 placeholder="question"
                 value={question} 
@@ -99,7 +99,7 @@ export default function Question({question, choices, index, id, unitId, question
             />
             <div className="flex">
                 <Button 
-                    classes="bg-orange-200 px-2 py-[1px] text-sm ms-auto hover:scale-105 hover:bg-orange-300 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
+                    classes="bg-orange-200 dark:bg-orange-700  px-2 py-[1px] text-sm ms-auto hover:scale-105 hover:bg-orange-300 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
                     handleClick={handleDeleteQuestion}
                     args={[id, unitId]}
                     >

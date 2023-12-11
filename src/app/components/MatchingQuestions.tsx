@@ -103,18 +103,18 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit}: 
 
     if (matchingUnit) return (
         <section
-            className='mt-4 bg-zinc-200 p-2 shadow-lg border-4 border-transparent focus-within:border-cyan-600 transition-all duration-100'
+            className='mt-4 bg-zinc-200 dark:bg-zinc-700 p-2 shadow-lg border-4 border-transparent focus-within:border-cyan-600 transition-all duration-100'
             onFocus={() => setFocus({unit:unitId, question: '', type: unitType.matching})}
         >
             <textarea 
-                className="font-semibold  px-2 py-1 outline-none w-[90%] resize-none shadow-md"                 
+                className="dark:bg-black font-semibold  px-2 py-1 outline-none w-[90%] resize-none shadow-md"                 
                 placeholder="instructions"
                 rows={1}
                 value={instructions}
                 name={`unit-${unitId}`}
                 onChange={(e) => handleChange(e,unitId)}
             />
-            <div className='flex flex-row gap-6 my-4 bg-slate-200 p-2 shadow-lg'>
+            <div className='flex flex-row gap-6 my-4 bg-slate-200 dark:bg-slate-700 p-2 shadow-lg'>
                 <div className='basis-3/5'>
                     {matchingUnit.questions.map(q => {
                         const { id, item:question } = q
@@ -123,13 +123,13 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit}: 
                                 key={id}
                             >
                                 <textarea 
-                                    className="me-2 font-semibold  px-2 py-1 outline-none w-[90%] resize-none shadow-md"                 
+                                    className="dark:bg-black me-2 font-semibold  px-2 py-1 outline-none w-[90%] resize-none shadow-md"                 
                                     value={question}
                                     rows={1}
                                     onChange={(e) => handleChangeQuestion(e, unitId, id)}
                                 />
                                 <Button
-                                        classes="bg-red-300 px-2 py-[1px] text-sm rounded-full hover:bg-red-700 hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"                                        
+                                        classes="bg-red-300 dark:bg-red-600 px-2 py-[1px] text-sm rounded-full hover:bg-red-700 hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"                                        
                                         handleClick={handleDeleteQuestion}
                                         args={[unitId, id]}
                                     >
@@ -139,7 +139,7 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit}: 
                         )
                     })}
                     <Button 
-                        classes="font-semibold bg-green-300 my-2 ms-4 px-2 py-[2px] rounded-md shadow-lg drop-shadow-lg hover:scale-105 hover:bg-green-400 transition-all duration-150"
+                        classes="font-semibold bg-green-300 dark:bg-green-600 my-2 ms-4 px-2 py-[2px] rounded-md shadow-lg drop-shadow-lg hover:scale-105 hover:bg-green-400 transition-all duration-150"
                         handleClick={handleAddQuestion}
                         args={[unitId]}
                     >
@@ -154,13 +154,13 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit}: 
                                 key={id}                            
                             >
                                 <textarea 
-                                    className="me-2 font-semibold  px-2 py-1 outline-none w-[90%] resize-none shadow-md"                 
+                                    className="dark:bg-black me-2 font-semibold  px-2 py-1 outline-none w-[90%] resize-none shadow-md"                 
                                     value={choice}
                                     rows={1}
                                     onChange={(e) => handleChangeChoice(e, unitId, id)}
                                 />
                                 <Button
-                                    classes="bg-red-300 px-2 py-[1px] text-sm rounded-full hover:bg-red-700 hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
+                                    classes="bg-red-300 dark:bg-red-600 px-2 py-[1px] text-sm rounded-full hover:bg-red-700 hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
                                     handleClick={handleDeleteChoice}
                                     args={[unitId, id]}
                                 >
@@ -170,7 +170,7 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit}: 
                         )
                     })}
                     <Button 
-                        classes="font-semibold text-sm bg-blue-300 px-2 py-[2px] ms-6 mt-3 rounded-md hover:scale-105 hover:bg-blue-400 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
+                        classes="font-semibold text-sm bg-blue-300 dark:bg-blue-600 px-2 py-[2px] ms-6 mt-3 rounded-md hover:scale-105 hover:bg-blue-400 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
                         handleClick={handleAddChoice}
                         args={[unitId]}
                     >
@@ -180,7 +180,7 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit}: 
             </div>
             <div className='flex'>
                 <Button 
-                    classes='bg-red-300 ms-auto px-2 py-[1px] text-sm rounded-md shadow-md drop-shadow-md hover:scale-105 hover:bg-red-400 active:scale-95 transition-all duration-150'
+                    classes='bg-red-300 dark:bg-red-600 ms-auto px-2 py-[1px] text-sm rounded-md shadow-md drop-shadow-md hover:scale-105 hover:bg-red-400 active:scale-95 transition-all duration-150'
                     handleClick={handleDeleteUnit}                    
                     args={[unitId]}
                     >

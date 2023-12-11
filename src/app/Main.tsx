@@ -19,13 +19,13 @@ export default function Main() {
     }
 
     return (        
-        <div className="relative bg-gray-100 max-w-[700px] w-[95%] min-h-[600px] max-h-[90vh] px-4 py-2  mb-4 sm:mt-16 shadow-lg overflow-scroll" > 
+        <div className="relative bg-gray-100 dark:bg-gray-800 max-w-[700px] w-[95%] min-h-[600px] max-h-[90vh] px-4 py-2  mb-4 sm:mt-16 shadow-lg overflow-scroll" > 
             <UndoRedo/>
             <Headers/>
-        <div>
+            <div>
             <Button
                 handleClick={handleClick}
-                classes='bg-green-400 px-3 py-[2px] rounded-md shadow-md drop-shadow-md hover:scale-105 active:scale-95 transition-all duration-150'
+                classes='bg-green-400 dark:bg-green-800 px-3 py-[2px] rounded-md shadow-md drop-shadow-md hover:scale-105 active:scale-95 transition-all duration-150'
             >
                 add unit
             </Button>
@@ -53,7 +53,13 @@ export default function Main() {
                 />                            
             )
             })}
-        </div>
+            <Button
+                handleClick={handleClick}
+                classes='bg-green-400 dark:bg-green-800 mt-4 px-3 py-[2px] rounded-md shadow-md drop-shadow-md hover:scale-105 active:scale-95 transition-all duration-150'
+            >
+                add unit
+            </Button>
+            </div>
         </div>
   );
 }
