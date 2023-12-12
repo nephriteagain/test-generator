@@ -1,4 +1,5 @@
 "use client"
+import { AnimatePresence } from "framer-motion"
 import {useEffect, useState, KeyboardEvent, useRef, useLayoutEffect} from "react"
 
 import { test, focus, actions, unitType } from "../types/types"
@@ -98,10 +99,11 @@ export default function Home() {
         <Main />
         <Side />
       </div>
-
+      <AnimatePresence>
       {showModal && 
         <HotkeyModal setShowModal={setShowModal}
-      />}
+        />}
+      </AnimatePresence>
       <Controls 
         downloadTextAsDocX={downloadTextAsDocX}
         test={test}

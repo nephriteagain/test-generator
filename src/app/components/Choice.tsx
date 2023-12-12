@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import {ChangeEvent, DragEvent, useRef,} from 'react'
 
 
@@ -112,8 +113,9 @@ export default function Choice({id, choice, unitId, questionId, index, }: Choice
 
 
     return (
-        <div
-            className="flex flex-row items-center justify-center my-2 transition-all duration-100 cursor-pointer relative"
+        <motion.div
+            exit={{opacity:0}}
+            className="flex flex-row items-center justify-center my-2 transition-all duration-200 cursor-pointer relative animate-in slide-in-from-top"
             ref={dragRef}
             draggable
             onDragStart={(e) => handleDragStart(e, id, questionId, unitId, index)}
@@ -141,7 +143,7 @@ export default function Choice({id, choice, unitId, questionId, index, }: Choice
             >
                 X
             </Button>
-        </div>
+        </motion.div>
 
     )
 }

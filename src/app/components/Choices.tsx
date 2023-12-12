@@ -1,3 +1,4 @@
+import { motion, AnimatePresence } from "framer-motion";
 import { choice, unitType, actions, } from "../../types/types"
 
 import { useGlobalContext } from "@/context/Context";
@@ -33,8 +34,16 @@ export default function Choices({choices, unitId, questionId, type}: ChoicesProp
     
     
      if (type === unitType.multipleChoice) return (
-        <div>
-            <section>
+        <motion.div
+            layout
+            transition={{layout: {duration:0.2, ease: 'linear'}}}
+        >
+            <motion.section
+                layout
+                transition={{layout: {duration:0.2, ease: 'linear'}}}
+            >
+                <AnimatePresence>
+
                 {/* for typescript */}
                 { choices && choices.map((c, index: number) => {
                     const {id, choice} = c
@@ -50,7 +59,8 @@ export default function Choices({choices, unitId, questionId, type}: ChoicesProp
 
                     )
                 })}
-            </section>
+                </AnimatePresence>
+            </motion.section>
             <Button 
                 classes="text-sm bg-blue-300 dark:bg-blue-600 px-2 py-[2px] ms-12 mt-3 rounded-md hover:scale-105 hover:bg-blue-400 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
                 handleClick={handleAddChoice}
@@ -58,7 +68,7 @@ export default function Choices({choices, unitId, questionId, type}: ChoicesProp
             >
                 add choices
             </Button>
-        </div>
+        </motion.div>
     )
     return null
 }

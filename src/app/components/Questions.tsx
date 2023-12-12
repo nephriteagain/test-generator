@@ -1,4 +1,4 @@
-
+import { motion, AnimatePresence } from "framer-motion";
 import  { question, unitType, actions } from "../../types/types"
 
 import Question from "./Question"
@@ -24,14 +24,24 @@ export default function Questions({questions, index, id, type}: QuestionsProps) 
     
     const unitId = id;
     return (
-        <div className="my-4 bg-slate-200 dark:bg-slate-700 p-2 shadow-lg">
+        <motion.div 
+            layout
+            transition={{layout: {duration:0.2, ease: 'linear'}}}
+            className="my-4 bg-slate-200 dark:bg-slate-700 p-2 shadow-lg"
+        >
             
             
-            <section>
+            <motion.section
+                layout
+                transition={{layout: {duration:0.2, ease: 'linear'}}}
+            >
+                <AnimatePresence>
                 {questions && questions.map((q: question, index: number) => {
                     const { id , question, choices} = q
                     return (
-                        <section key={id}>
+                        <motion.section key={id}
+                            exit={{x:'-100%', transition: {duration:0.2}}}
+                        >
                             <Question                             
                                 question={question}
                                 choices={choices}
@@ -41,10 +51,11 @@ export default function Questions({questions, index, id, type}: QuestionsProps) 
                                 questionObj={q}
                                 type={type}
                                 />
-                        </section>
+                        </motion.section>
                     )
                 })}
-            </section>
+                </AnimatePresence>
+            </motion.section>
             <Button 
                 classes="font-semibold bg-green-300 dark:bg-green-700 my-2 ms-4 px-2 py-[2px] rounded-md shadow-lg drop-shadow-lg hover:scale-105 hover:bg-green-400 transition-all duration-150"
                 handleClick={handleClick}
@@ -52,6 +63,6 @@ export default function Questions({questions, index, id, type}: QuestionsProps) 
             >
                 new question
             </Button>
-        </div>
+        </motion.div>
     )
 }

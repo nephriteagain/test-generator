@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Dispatch, SetStateAction, MouseEvent } from "react"
 
 
@@ -19,10 +20,16 @@ export default function HotkeyModal({setShowModal}: HotkeyModalProps) {
     
 
     return (
-        <div className="fixed top-0 left-0 w-[100vw] h-[100vh] z-10" >
-            <div className="z-20 bg-black w-full h-full opacity-50" onClick={hideModal}/>
-            <div className="flex flex-col px-8 py-8 fixed top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 z-30 bg-slate-300 dark:bg-slate-700  w-[95%]  max-w-[500px] max-h-[400px] rounded-lg shadow-xl drop-shadow-xl">
-                <div className="mb-auto">
+        <motion.div className="fixed top-0 left-0 w-[100vw] h-[100vh] z-10 " 
+            exit={{opacity:0, transition: {duration:0.2}}}
+        >
+            <div className="z-20 bg-black w-full h-full opacity-50 animate-in fade-in duration-500" onClick={hideModal} />
+            <motion.div 
+                animate={{translateX: '-50%', translateY: '-50%', }}
+                exit={{ scale:0}}
+                className="flex flex-col px-8 py-8 fixed top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 z-30 bg-slate-300 dark:bg-slate-700  w-[95%]  max-w-[500px] max-h-[400px] rounded-lg shadow-xl drop-shadow-xl"
+            >
+                <div className="mb-auto animate-in zoom-in-0 transition-all duration-300">
                     <p className="flex flex-row text-lg mb-aut border-b-2 border-gray-400">
                         <span className="me-auto font-bold text-green-700 dark:text-green-400">add unit</span>
                         <span className="font-semibold">CTRL + SHIFT + F</span>
@@ -48,7 +55,7 @@ export default function HotkeyModal({setShowModal}: HotkeyModalProps) {
                         close
                     </button>
                 </div>
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     )
 }

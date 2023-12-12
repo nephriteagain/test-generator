@@ -1,3 +1,4 @@
+import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import { ChangeEvent } from 'react'
 
 import { matchingUnit, actions, unitType } from "@/types/types";
@@ -102,8 +103,11 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit}: 
     }
 
     if (matchingUnit) return (
-        <section
-            className='mt-4 bg-zinc-200 dark:bg-zinc-700 p-2 shadow-lg border-4 border-transparent focus-within:border-cyan-600 transition-all duration-100'
+        <motion.section
+            layout
+            transition={{layout: {duration:0.2, ease: 'linear'}}}
+            exit={{opacity:0}}
+            className='mt-4 bg-zinc-200 dark:bg-zinc-700 p-2 shadow-lg border-4 border-transparent focus-within:border-cyan-600 transition-all duration-200 animate-in fade-in'
             onFocus={() => setFocus({unit:unitId, question: '', type: unitType.matching})}
         >
             <textarea 
@@ -114,12 +118,21 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit}: 
                 name={`unit-${unitId}`}
                 onChange={(e) => handleChange(e,unitId)}
             />
-            <div className='flex flex-row gap-6 my-4 bg-slate-200 dark:bg-slate-700 p-2 shadow-lg'>
+            <motion.div 
+                className='flex flex-row gap-6 my-4 bg-slate-200 dark:bg-slate-700 p-2 shadow-lg'
+                layout
+                transition={{layout: {duration:0.2, ease: 'linear'}}}
+            >
                 <div className='basis-3/5'>
+
+                    <AnimatePresence>
+
                     {matchingUnit.questions.map(q => {
                         const { id, item:question } = q
                         return (
-                            <div className='flex flex-row items-center justify-center my-2 transition-all duration-100 cursor-pointer relative'
+                            <motion.div 
+                                exit={{x:'-200%', opacity:0}}
+                                className='flex flex-row items-center justify-center my-2 transition-all duration-200 cursor-pointer relative animate-in slide-in-from-left'
                                 key={id}
                             >
                                 <textarea 
@@ -135,9 +148,11 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit}: 
                                     >
                                         X
                                 </Button>
-                            </div>
+                            </motion.div>
                         )
                     })}
+                    </AnimatePresence>
+
                     <Button 
                         classes="font-semibold bg-green-300 dark:bg-green-600 my-2 ms-4 px-2 py-[2px] rounded-md shadow-lg drop-shadow-lg hover:scale-105 hover:bg-green-400 transition-all duration-150"
                         handleClick={handleAddQuestion}
@@ -147,10 +162,14 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit}: 
                     </Button>
                 </div>
                 <div className='basis-2/5'>
+                    <AnimatePresence>
+
                     {matchingUnit.choices.map(c => {
                         const { id, item:choice } = c
                         return (
-                            <div className='flex flex-row items-center justify-center my-2 transition-all duration-100 cursor-pointer relative'
+                            <motion.div 
+                                exit={{y:'-200%', opacity:0}}
+                                className='flex flex-row items-center justify-center my-2 transition-all duration-100 cursor-pointer relative animate-in slide-in-from-top'
                                 key={id}                            
                             >
                                 <textarea 
@@ -166,9 +185,10 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit}: 
                                 >
                                     X
                                 </Button>
-                            </div>
+                            </motion.div>
                         )
                     })}
+                    </AnimatePresence>
                     <Button 
                         classes="font-semibold text-sm bg-blue-300 dark:bg-blue-600 px-2 py-[2px] ms-6 mt-3 rounded-md hover:scale-105 hover:bg-blue-400 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
                         handleClick={handleAddChoice}
@@ -177,7 +197,7 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit}: 
                         add choice
                     </Button>
                 </div>
-            </div>
+            </motion.div>
             <div className='flex'>
                 <Button 
                     classes='bg-red-300 dark:bg-red-600 ms-auto px-2 py-[1px] text-sm rounded-md shadow-md drop-shadow-md hover:scale-105 hover:bg-red-400 active:scale-95 transition-all duration-150'
@@ -187,7 +207,7 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit}: 
                     delete unit
                 </Button>
             </div>
-        </section>
+        </motion.section>
     )
     return null
 }

@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { ChangeEvent } from 'react'
 import { useGlobalContext } from '@/context/Context';
 import  { question, unitType, matchingUnit, actions } from "../../types/types";
@@ -40,9 +41,12 @@ export default function Unit ({id, questions, instructions,index, type, matching
     }
 
     return (
-        <section 
+        <motion.section 
+                layout
+                transition={{layout: {duration:0.2, ease: 'linear'}}}
+                exit={{opacity:0}}
                 key={id}
-                className='mt-4 bg-zinc-200 dark:bg-zinc-700 p-2 shadow-lg border-4 border-transparent focus-within:border-cyan-600 transition-all duration-100'
+                className='mt-4 bg-zinc-200 dark:bg-zinc-700 p-2 shadow-lg border-4 border-transparent focus-within:border-cyan-600 transition-all duration-200 animate-in fade-in'
                 onFocus={() => {
                     setFocus({question: '', unit: id, type})}
                 }
@@ -71,6 +75,6 @@ export default function Unit ({id, questions, instructions,index, type, matching
                     delete unit
                 </Button>
             </div>
-            </section>
+            </motion.section>
     )
 }

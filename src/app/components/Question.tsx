@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import  { choice, question, unitType, actions } from "../../types/types"
 import { ChangeEvent, DragEvent, } from "react";
 
@@ -73,7 +74,10 @@ export default function Question({question, choices, index, id, unitId, question
 
 
     return (
-        <div className="mx-4 my-2 bg-zinc-200 dark:bg-zinc-800 p-2 shadow-lg  border-transparent border-4 focus-within:border-cyan-400 transition-all duration-100"
+        <motion.div 
+            layout
+            transition={{layout: {duration:0.2, ease: 'linear'}}}
+            className="mx-4 my-2 bg-zinc-200 dark:bg-zinc-800 p-2 shadow-lg  border-transparent border-4 focus-within:border-cyan-400 transition-all duration-200 animate-in slide-in-from-left"
             // draggable
             // onDragStart={(e) => handleDragStart(e, questionObj, id, unitId)}
             // onDrop={(e) => {handleDrop(e, id, unitId, index)}}
@@ -106,6 +110,6 @@ export default function Question({question, choices, index, id, unitId, question
                     delete question
                 </Button>
             </div>
-        </div>
+        </motion.div>
     )
 }
