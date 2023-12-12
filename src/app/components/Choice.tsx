@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import {ChangeEvent, DragEvent, useRef,} from 'react'
+import {ChangeEvent, DragEvent, useRef} from 'react'
 
 
 import Button from "./Button"
@@ -113,8 +113,7 @@ export default function Choice({id, choice, unitId, questionId, index, }: Choice
 
 
     return (
-        <motion.div
-            exit={{opacity:0}}
+        <div
             className="flex flex-row items-center justify-center my-2 transition-all duration-200 cursor-pointer relative animate-in slide-in-from-top"
             ref={dragRef}
             draggable
@@ -143,7 +142,7 @@ export default function Choice({id, choice, unitId, questionId, index, }: Choice
             >
                 X
             </Button>
-        </motion.div>
+        </div>
 
     )
 }
