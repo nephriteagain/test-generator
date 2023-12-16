@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion'
 import {ChangeEvent, DragEvent, useRef} from 'react'
+import { IoClose } from "react-icons/io5";
+
 
 
 import Button from "./Button"
@@ -136,11 +138,11 @@ export default function Choice({id, choice, unitId, questionId, index, }: Choice
                 onChange={(e) => handleChange(e, id)}
             />
             <Button
-                classes="bg-red-300 dark:bg-red-600 px-2 py-[1px] text-sm rounded-full hover:bg-red-700 hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
+                classes="bg-red-300 dark:bg-red-600 px-1 py-[1px] text-base aspect-square rounded-full hover:bg-red-700 hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
                 handleClick={handleDeleteChoice}
                 args={[id, unitId, questionId]}
             >
-                X
+                <IoClose />
             </Button>
         </div>
 

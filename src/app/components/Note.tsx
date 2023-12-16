@@ -24,7 +24,7 @@ export default function Note() {
             <p className="font-semibold text-lg text-center">
                 Bug Alert, docx library is broken, opening directly at Microsoft word is bugged, to use this, you must open the document first at wordpad then copy paste to MS Word
             </p>
-            <button className="absolute top-4 right-4 text-xl text-white dark bg-red-300 dark:bg-red-800 rounded-full p-1 hover:scale-110 transition-all duration-150"
+            <button className="absolute top-4 right-4 text-xl text-white dark bg-red-300 dark:bg-red-700  rounded-full p-1 hover:scale-110 transition-all duration-150"
                 onClick={() => {
                     setShowNote(false)
                     if (isChecked) {
@@ -36,7 +36,7 @@ export default function Note() {
             </button>
             <div className="flex flex-row gap-2 items-center justify-center text-lg ">
                 { isChecked ? 
-                    <ImCheckboxChecked onClick={() => setIsChecked(false)} className="fill-red-400 dark:fill-red-800" /> : 
+                    <ImCheckboxChecked onClick={() => setIsChecked(false)} className="fill-red-400 dark:fill-red-700" /> : 
                     <ImCheckboxUnchecked onClick={() => setIsChecked(true)} /> 
                 }
                 <p className="opacity-80">dont show this again</p>

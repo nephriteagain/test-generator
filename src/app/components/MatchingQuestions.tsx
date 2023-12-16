@@ -6,6 +6,8 @@ import { matchingUnit, actions, unitType } from "@/types/types";
 import { checkScrollHeight } from "../helpers";
 import { useGlobalContext } from '@/context/Context';
 
+import { IoClose } from "react-icons/io5";
+
 import Button from './Button';
 
 interface MatchingQuestionsProps {
@@ -142,11 +144,11 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit}: 
                                     onChange={(e) => handleChangeQuestion(e, unitId, id)}
                                 />
                                 <Button
-                                        classes="bg-red-300 dark:bg-red-600 px-2 py-[1px] text-sm rounded-full hover:bg-red-700 hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"                                        
+                                        classes="bg-red-300 dark:bg-red-600 p-1 aspect-square rounded-full hover:bg-red-700 hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"                                        
                                         handleClick={handleDeleteQuestion}
                                         args={[unitId, id]}
                                     >
-                                        X
+                                        <IoClose />
                                 </Button>
                             </motion.div>
                         )
@@ -179,11 +181,11 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit}: 
                                     onChange={(e) => handleChangeChoice(e, unitId, id)}
                                 />
                                 <Button
-                                    classes="bg-red-300 dark:bg-red-600 px-2 py-[1px] text-sm rounded-full hover:bg-red-700 hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
+                                    classes="bg-red-300 dark:bg-red-600 px-1 aspect-square rounded-full hover:bg-red-700 hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
                                     handleClick={handleDeleteChoice}
                                     args={[unitId, id]}
                                 >
-                                    X
+                                    <IoClose />
                                 </Button>
                             </motion.div>
                         )
