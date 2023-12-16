@@ -9,7 +9,7 @@ type ControlsProps = {
     test:test,
     disabledBtn: boolean;
     showModal: boolean;
-    setShowModal: Dispatch<SetStateAction<boolean>>
+    setShowModal: Dispatch<SetStateAction<boolean>>;
 }
 
 export default function Controls ({
@@ -17,7 +17,7 @@ export default function Controls ({
     test,
     disabledBtn,
     showModal,
-    setShowModal
+    setShowModal,
 
 }: ControlsProps ) {
     return (<div className="px-4 py-2 fixed top-0 left-0 gap-4 w-screen flex flex-row items-center">

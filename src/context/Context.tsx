@@ -4,7 +4,8 @@ import { test, focus, action, unitType, actions } from '@/types/types'
 import { TestHistory } from '@/app/History'
 import { useContext, createContext, useReducer, useState, ReactNode, Dispatch, SetStateAction , useEffect} from 'react'
 import Reducer from '../reducers/testReducer'
-
+import Note from '@/app/components/Note'
+import { AnimatePresence } from 'framer-motion'
 
 const initial : test = {
     subject : '',
@@ -21,6 +22,8 @@ interface GlobalContextValue {
     focus: focus;
     setFocus: Dispatch<SetStateAction<focus>>
     History: TestHistory<test>
+    showNote: boolean;
+    setShowNote : Dispatch<SetStateAction<boolean>>
 }
 
 interface GlobalProviderProps {
@@ -40,7 +43,8 @@ export function GlobalProvider({children}: GlobalProviderProps) {
         unit: '',
         question: '',
         type: unitType.multipleChoice
-      })
+    })
+    const [ showNote, setShowNote ] = useState(false)
 
     // auto saves to localstorage incase of accidentally closing window
     useEffect(() => {
@@ -62,8 +66,13 @@ export function GlobalProvider({children}: GlobalProviderProps) {
             dispatch,
             setFocus,
             History,
+            showNote,
+            setShowNote
         } as GlobalContextValue}>
             {children}
+            <AnimatePresence>
+                { showNote && <Note />}
+            </AnimatePresence>
         </GlobalContext.Provider>
     )
 }

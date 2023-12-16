@@ -18,7 +18,7 @@ import { useGlobalContext } from "@/context/Context"
 
 
 export default function Home() {
-  const {test, dispatch, focus,  History} = useGlobalContext()
+  const {test, dispatch, focus,  History, setShowNote} = useGlobalContext()
 
   const [ disabledBtn, setDisableBtn ] = useState(false)
   const [ showModal, setShowModal ] = useState(false)
@@ -28,6 +28,11 @@ export default function Home() {
     setDisableBtn(true);
     const document = new TestAsDocX(test);
     document.download();
+
+    if (!localStorage.getItem('never-show-note')) {
+      setShowNote(true)
+    }
+
     setTimeout(() => {
       setDisableBtn(false)
     }, 3000)
