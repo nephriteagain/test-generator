@@ -24,7 +24,7 @@ export default function Controls ({
       <Button 
         handleClick={downloadTextAsDocX}
         args={[test]}
-        classes="bg-blue-300 dark:bg-blue-600 px-2 py-[1px] rounded-md shadow-md hover:scale-105 hover:bg-blue-400 active:scale-95 transition-all duration-100 disabled:opacity-50"
+        className="bg-blue-300 dark:bg-blue-600 px-2 py-[1px] rounded-md shadow-md hover:scale-105 hover:bg-blue-400 active:scale-95 transition-all duration-100 disabled:opacity-50"
         disabled={disabledBtn}
         >
         Download as Word File
@@ -33,7 +33,7 @@ export default function Controls ({
       <Button
         handleClick={setShowModal}
         args={[showModal? false: true]}      
-        classes="ms-auto bg-blue-300 dark:bg-blue-600 px-2 py-[2px] rounded-md shadow-md hover:scale-105 hover:bg-blue-400 active:scale-95 transition-all duration-100"
+        className="ms-auto bg-blue-300 dark:bg-blue-600 px-2 py-[2px] rounded-md shadow-md hover:scale-105 hover:bg-blue-400 active:scale-95 transition-all duration-100"
         >
         Hotkeys
       </Button>

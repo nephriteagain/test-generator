@@ -144,7 +144,7 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit}: 
                                     onChange={(e) => handleChangeQuestion(e, unitId, id)}
                                 />
                                 <Button
-                                        classes="bg-red-300 dark:bg-red-600 p-1 aspect-square rounded-full hover:bg-red-700 hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"                                        
+                                        className="bg-red-300 dark:bg-red-600 p-1 aspect-square rounded-full hover:bg-red-700 hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"                                        
                                         handleClick={handleDeleteQuestion}
                                         args={[unitId, id]}
                                     >
@@ -156,7 +156,7 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit}: 
                     </AnimatePresence>
 
                     <Button 
-                        classes="font-semibold bg-green-300 dark:bg-green-600 my-2 ms-4 px-2 py-[2px] rounded-md shadow-lg drop-shadow-lg hover:scale-105 hover:bg-green-400 transition-all duration-150"
+                        className="font-semibold bg-green-300 dark:bg-green-600 my-2 ms-4 px-2 py-[2px] rounded-md shadow-lg drop-shadow-lg hover:scale-105 hover:bg-green-400 transition-all duration-150"
                         handleClick={handleAddQuestion}
                         args={[unitId]}
                     >
@@ -181,7 +181,7 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit}: 
                                     onChange={(e) => handleChangeChoice(e, unitId, id)}
                                 />
                                 <Button
-                                    classes="bg-red-300 dark:bg-red-600 px-1 aspect-square rounded-full hover:bg-red-700 hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
+                                    className="bg-red-300 dark:bg-red-600 px-1 aspect-square rounded-full hover:bg-red-700 hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
                                     handleClick={handleDeleteChoice}
                                     args={[unitId, id]}
                                 >
@@ -192,7 +192,7 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit}: 
                     })}
                     </AnimatePresence>
                     <Button 
-                        classes="font-semibold text-sm bg-blue-300 dark:bg-blue-600 px-2 py-[2px] ms-6 mt-3 rounded-md hover:scale-105 hover:bg-blue-400 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
+                        className="font-semibold text-sm bg-blue-300 dark:bg-blue-600 px-2 py-[2px] ms-6 mt-3 rounded-md hover:scale-105 hover:bg-blue-400 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
                         handleClick={handleAddChoice}
                         args={[unitId]}
                     >
@@ -202,7 +202,7 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit}: 
             </motion.div>
             <div className='flex'>
                 <Button 
-                    classes='bg-red-300 dark:bg-red-600 ms-auto px-2 py-[1px] text-sm rounded-md shadow-md drop-shadow-md hover:scale-105 hover:bg-red-400 active:scale-95 transition-all duration-150'
+                    className='bg-red-300 dark:bg-red-600 ms-auto px-2 py-[1px] text-sm rounded-md shadow-md drop-shadow-md hover:scale-105 hover:bg-red-400 active:scale-95 transition-all duration-150'
                     handleClick={handleDeleteUnit}                    
                     args={[unitId]}
                     >

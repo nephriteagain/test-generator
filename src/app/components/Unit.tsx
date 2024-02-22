@@ -68,7 +68,7 @@ export default function Unit ({id, questions, instructions,index, type, matching
             />
             <div className='flex'>
                 <Button 
-                    classes='bg-red-300 dark:bg-red-800 ms-auto px-2 py-[1px] text-sm rounded-md shadow-md drop-shadow-md hover:scale-105 hover:bg-red-400 active:scale-95 transition-all duration-150'
+                    className='bg-red-300 dark:bg-red-800 ms-auto px-2 py-[1px] text-sm rounded-md shadow-md drop-shadow-md hover:scale-105 hover:bg-red-400 active:scale-95 transition-all duration-150'
                     handleClick={handleDeleteUnit}                    
                     args={[id]}
                     >

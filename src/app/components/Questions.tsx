@@ -57,7 +57,7 @@ export default function Questions({questions, index, id, type}: QuestionsProps) 
                 </AnimatePresence>
             </motion.section>
             <Button 
-                classes="font-semibold bg-green-300 dark:bg-green-700 my-2 ms-4 px-2 py-[2px] rounded-md shadow-lg drop-shadow-lg hover:scale-105 hover:bg-green-400 transition-all duration-150"
+                className="font-semibold bg-green-300 dark:bg-green-700 my-2 ms-4 px-2 py-[2px] rounded-md shadow-lg drop-shadow-lg hover:scale-105 hover:bg-green-400 transition-all duration-150"
                 handleClick={handleClick}
                 args={[id]}
             >

@@ -103,7 +103,7 @@ export default function Question({question, choices, index, id, unitId, question
             />
             <div className="flex">
                 <Button 
-                    classes="bg-orange-200 dark:bg-orange-700  px-2 py-[1px] text-sm ms-auto hover:scale-105 hover:bg-orange-300 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
+                    className="bg-orange-200 dark:bg-orange-700  px-2 py-[1px] text-sm ms-auto hover:scale-105 hover:bg-orange-300 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
                     handleClick={handleDeleteQuestion}
                     args={[id, unitId]}
                     >
