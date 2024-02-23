@@ -22,6 +22,7 @@ export default function HotkeyModal({setShowModal}: HotkeyModalProps) {
     return (
         <motion.div className="fixed top-0 left-0 w-[100vw] h-[100vh] z-10 " 
             exit={{opacity:0, transition: {duration:0.2}}}
+            data-testid="hotkey-modal"
         >
             <div className="z-20 bg-black w-full h-full opacity-50 animate-in fade-in duration-500" onClick={hideModal} />
             <motion.div 
