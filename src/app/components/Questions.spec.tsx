@@ -2,8 +2,8 @@ import '@testing-library/jest-dom'
 import { fireEvent, getByTestId, render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
 import React from 'react'
 import Questions from './Questions';
-import { unitType } from '@/types/types';
 import { fakeContext } from '@/utils/testHelpers/fakeData';
+import { unitType } from '@/types/types';
 
 describe('Questions', () => {    
     beforeEach(() => {

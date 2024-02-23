@@ -27,12 +27,17 @@ export default function Switch() {
 
 
     return (
-        <div className="flex flex-col justify-center text-3xl">
-            <button onClick={() => setMode(m => m === 'light' ? 'dark' : 'light')}>
+        <div 
+        className="flex flex-col justify-center text-3xl"
+        data-testid="mode"
+        >
+            <button onClick={() => setMode(m => m === 'light' ? 'dark' : 'light')}
+            data-testid="switch-btn"
+            >
                 {
                 mode === 'light' ?
-                <MdOutlineLightMode className="dark:text-white" />  :
-                <MdOutlineDarkMode className="dark:text-white" />
+                <MdOutlineLightMode className="dark:text-white" data-testid="light" />  :
+                <MdOutlineDarkMode className="dark:text-white" data-testid="dark" />
                 }
             </button>
         </div>
