@@ -83,9 +83,10 @@ export default function Question({question, choices, index, id, unitId, question
             // onDrop={(e) => {handleDrop(e, id, unitId, index)}}
             onFocus={() => {
                 setTimeout(() => {
-                    setFocus({unit: unitId, question: id, type})
+                    setFocus({unit: unitId, question: id, type})                    
                 })
             }}
+            data-testid="question"
         >       
             <textarea 
                 className="dark:bg-black px-2 py-[2px] w-[90%] outline-none resize-none my-2 shadow-md"
