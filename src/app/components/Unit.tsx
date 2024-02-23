@@ -50,6 +50,7 @@ export default function Unit ({id, questions, instructions,index, type, matching
                 onFocus={() => {
                     setFocus({question: '', unit: id, type})}
                 }
+                data-testid="unit"
         >   
             <textarea 
                 className="font-semibold dark:bg-black  px-2 py-1 outline-none w-[90%] resize-none shadow-md"                 

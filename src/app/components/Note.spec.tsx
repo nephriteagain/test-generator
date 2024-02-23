@@ -51,10 +51,10 @@ describe('Note', () => {
         )
 
         expect(fakeData.setShowNote).toHaveBeenCalledWith(false)
-        setTimeout(() => {
+        waitFor(() => {
             const note = screen.queryByTestId('note')            
             expect(note).toBeNull()
-        },500)
+        })
 
     })
 })
