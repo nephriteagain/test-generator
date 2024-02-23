@@ -28,6 +28,7 @@ export default function Questions({questions, index, id, type}: QuestionsProps) 
             layout
             transition={{layout: {duration:0.2, ease: 'linear'}}}
             className="my-4 bg-slate-200 dark:bg-slate-700 p-2 shadow-lg"
+            data-testid="questions"
         >
             
             
