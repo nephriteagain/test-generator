@@ -15,7 +15,9 @@ export default function UndoRedo() {
     }    
 
     return (        
-        <div className="absolute top-2 right-2">
+        <div className="absolute top-2 right-2"
+        data-testid="undo-redo"
+        >
             <Button 
                 className="bg-gray-700 text-white px-3 py-1 rounded-lg m-1 shadow-lg drop-shadow-lg hover:scale-105 actiove:scale-95 transition-all duration-150 disabled:opacity-50"
                 handleClick={handleUndo}

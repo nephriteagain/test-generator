@@ -4,7 +4,7 @@ export const fakeContext = {
     History: {
         add: jest.fn(),  
         undo: jest.fn(),
-        hasUndo: jest.fn()         
+        hasUndo: () => true,
     } as any,
     dispatch: jest.fn(),
     test: {
