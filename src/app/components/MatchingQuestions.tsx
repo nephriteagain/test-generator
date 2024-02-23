@@ -16,7 +16,7 @@ interface MatchingQuestionsProps {
     matchingUnit: matchingUnit|undefined;
 }
 
-export default function MatchingQuestions({unitId, instructions, matchingUnit}: MatchingQuestionsProps) {    
+export default function MatchingQuestions({unitId, instructions, matchingUnit}: MatchingQuestionsProps) {
     const { dispatch, History, test, setFocus } = useGlobalContext()
 
 
@@ -111,6 +111,7 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit}: 
             exit={{opacity:0}}
             className='mt-4 bg-zinc-200 dark:bg-zinc-700 p-2 shadow-lg border-4 border-transparent focus-within:border-cyan-600 transition-all duration-200 animate-in fade-in'
             onFocus={() => setFocus({unit:unitId, question: '', type: unitType.matching})}
+            data-testid="matching-questions"
         >
             <textarea 
                 className="dark:bg-black font-semibold  px-2 py-1 outline-none w-[90%] resize-none shadow-md"                 
