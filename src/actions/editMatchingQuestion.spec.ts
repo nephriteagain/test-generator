@@ -1,7 +1,6 @@
 import { test,  action, question, unit, unitType, actions, choice } from "../types/types";
-import editMatchingChoice from "./editMatchingChoice";
-
-describe('editMatchingChoice', () => {
+import editMatchingQuestion from "./editMatchingQuestion";
+describe('editMatchingQuestion', () => {
     const state : test = {
         subject: 'Math',
         author: 'Jade',
@@ -25,16 +24,16 @@ describe('editMatchingChoice', () => {
         currentUnit: unitType.multipleChoice
     }
     const action : action = {
-        type: actions.editMatchingChoice,
+        type: actions.editMatchingQuestion,
         payload: {
             unitId: 'unitId2',
-            choiceId: 'mc_1',
+            questionId: 'mq_1',
             text: 'test'
         }
     }
     it('should edit the selected choice', () => {
-        const res = editMatchingChoice(state, action)
+        const res = editMatchingQuestion(state, action)
         const unit = res.units[0].matchingUnit
-        expect(unit!.choices[0].item).toBe('test')
+        expect(unit!.questions[0].item).toBe('test')
     });
 });
