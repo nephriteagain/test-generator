@@ -6,7 +6,7 @@ import deleteQuestion from "./deleteQuestion";
 export default function insertQuestion(state: test, action: action) : test {
     const index = action.payload?.index as number;
     const unitId = action.payload?.unitId as string;
-    const questionId = action.payload?.questionId as string;
+    const questionId = action.payload?.questionId as string; // for deleteQuestion
     const items = action.payload?.json as question;
 
     const testWithDelete = deleteQuestion(state, action)
@@ -14,6 +14,10 @@ export default function insertQuestion(state: test, action: action) : test {
         if (unit.id === unitId && unit.questions) {
             const newQ = [...unit.questions]
             newQ.splice(index, 0 ,items)
+            return {
+                ...unit,
+                questions: newQ
+            }
         }
 
         return unit;

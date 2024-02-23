@@ -39,7 +39,6 @@ describe('insertChoice', () => {
         const res = insertChoice(state, action)
         const qs = res.units[0].questions as question[];
         const choices = qs[0].choices as choice[]
-        console.log(choices)
         expect(choices[0].choice).toBe('c3')
 
     });
