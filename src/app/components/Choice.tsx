@@ -122,9 +122,9 @@ export default function Choice({id, choice, unitId, questionId, index, }: Choice
             onDragStart={(e) => handleDragStart(e, id, questionId, unitId, index)}
             onDrop={(e) => handleDrop(e, id, questionId, unitId, index)}
             // for styling
-            onDragEnd={(e) => handleDragEnd(e)}
-            onDragEnter={(e) => hoverEnter(e)}
-            onDragLeave={(e) => handleDragLeave(e)}            
+            onDragEnd={handleDragEnd}
+            onDragEnter={hoverEnter}
+            onDragLeave={handleDragLeave}  
             data-id={id}
             data-questionid={questionId}
             data-unitid={unitId}

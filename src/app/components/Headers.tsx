@@ -8,7 +8,10 @@ export default function Headers() {
     const {  test , dispatch } = useGlobalContext()
 
     return (
-        <div className="my-4">
+        <div 
+        className="my-4"
+        data-testid="headers"
+        >
             <input 
             placeholder="SUBJECT..."
             type='text' 
@@ -20,6 +23,7 @@ export default function Headers() {
                 })
             }}
             className="font-bold dark:bg-black text-lg block mb-2 px-2 w-[50%] shadow-sm"
+            data-testid="input-subject"
             />
             
             <input 
@@ -31,6 +35,7 @@ export default function Headers() {
                 type: actions.changeName, payload: { name: e.currentTarget.value }
             })}
             className="font-semibold dark:bg-black block mb-2 px-2 w-[50%] shadow-sm"
+            data-testid="input-author"
             />           
         </div>
     )
