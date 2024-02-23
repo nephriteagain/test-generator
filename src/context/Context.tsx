@@ -15,8 +15,8 @@ const initial : test = {
   }
   
 
-
-interface GlobalContextValue {
+// for testing
+export interface GlobalContextValue {
     test: test;
     dispatch: Dispatch<action>;
     focus: focus;
