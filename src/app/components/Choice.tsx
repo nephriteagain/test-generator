@@ -115,7 +115,7 @@ export default function Choice({id, choice, unitId, questionId, index, }: Choice
 
 
     return (
-        <div
+        <div            
             className="flex flex-row items-center justify-center my-2 transition-all duration-200 cursor-pointer relative animate-in slide-in-from-top"
             ref={dragRef}
             draggable
@@ -129,6 +129,7 @@ export default function Choice({id, choice, unitId, questionId, index, }: Choice
             data-questionid={questionId}
             data-unitid={unitId}
             data-index={index}
+            data-testid={'choice'}
         >
             <textarea 
                 ref={textareaRef}            
