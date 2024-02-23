@@ -6,6 +6,7 @@ export default function insertChoice(state: test, action: action): test {
     const index = action.payload?.index as number;
     const unitId = action.payload?.unitId;
     const questionId = action?.payload?.questionId;
+    const choiceId = action.payload?.choiceId // this is for deleteChoice
     const text = action.payload?.text as string;
 
     const testWithDelete = deleteChoice(state, action);
