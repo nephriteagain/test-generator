@@ -1,3 +1,5 @@
+import { unitType } from "@/types/types";
+
 export const fakeContext = {
     History: {
         add: jest.fn(),  
@@ -5,7 +7,12 @@ export const fakeContext = {
         hasUndo: jest.fn()         
     } as any,
     dispatch: jest.fn(),
-    test: {} as any,
+    test: {
+        currentUnit: unitType.multipleChoice,
+        subjest: 'Math',
+        author: 'kidneygod',
+        units: []
+    } as any,
     focus: {} as any,
     setFocus: jest.fn(),
     showNote: true,

@@ -19,7 +19,10 @@ export default function Templates() {
     const { test } = useGlobalContext()
 
     return (
-        <div className="bg-gray-200 dark:bg-gray-800 flex sm:flex-col items-center justify-between sm:justify-center overflow-y-scroll rounded-t-md w-full sm:py-4">
+        <div 
+        className="bg-gray-200 dark:bg-gray-800 flex sm:flex-col items-center justify-between sm:justify-center overflow-y-scroll rounded-t-md w-full sm:py-4"
+        data-testid="templates"
+        >
             <div className='mx-auto flex flex-col w-[18%] sm:w-[70%] aspect-square text- justify-center items-center my-2 bg-gray-600 rounded-md shadow-md text-white py-1 text-center border-4 border-transparent'>
                 <p className="text-gray-200 invisible w-0 h-0 sm:visible sm:w-auto sm:h-auto">Current Unit:</p>
                 <p className="font-semibold">{test.currentUnit}</p>
