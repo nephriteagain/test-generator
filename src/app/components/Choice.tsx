@@ -137,11 +137,13 @@ export default function Choice({id, choice, unitId, questionId, index, }: Choice
                 rows={1}
                 value={choice}
                 onChange={(e) => handleChange(e, id)}
+                data-testid="choice-textarea"
             />
             <Button
                 className="bg-red-300 dark:bg-red-600 px-1 py-[1px] text-base aspect-square rounded-full hover:bg-red-700 hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
                 handleClick={handleDeleteChoice}
                 args={[id, unitId, questionId]}
+                data-testid="delete-choice"
             >
                 <IoClose />
             </Button>
