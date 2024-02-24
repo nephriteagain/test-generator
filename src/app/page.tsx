@@ -6,7 +6,7 @@ import { test, focus, actions, unitType } from "../types/types"
 
 
 import Main from "./Main"
-import Side from "./Side"
+import Side from "./components/Side"
 import Button from "./components/Button"
 import HotkeyModal from "./components/HokeyModal"
 import Switch from "./components/Switch"
