@@ -150,8 +150,9 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit, t
                                         className="bg-red-300 dark:bg-red-600 p-1 aspect-square rounded-full hover:bg-red-700 hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"                                        
                                         handleClick={handleDeleteQuestion}
                                         args={[unitId, id]}
+                                        data-testid="delete-matching-question"
                                     >
-                                        <IoClose  data-testid="delete-matching-question" />
+                                        <IoClose   />
                                 </Button>
                             </motion.div>
                         )
@@ -183,13 +184,15 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit, t
                                     value={choice}
                                     rows={1}
                                     onChange={(e) => handleChangeChoice(e, unitId, id)}
+                                    data-testid="matching-choice-textarea"
                                 />
                                 <Button
                                     className="bg-red-300 dark:bg-red-600 px-1 aspect-square rounded-full hover:bg-red-700 hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
                                     handleClick={handleDeleteChoice}
                                     args={[unitId, id]}
+                                    data-testid="delete-matching-choice"
                                 >
-                                    <IoClose />
+                                    <IoClose  />
                                 </Button>
                             </motion.div>
                         )
@@ -199,6 +202,7 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit, t
                         className="font-semibold text-sm bg-blue-300 dark:bg-blue-600 px-2 py-[2px] ms-6 mt-3 rounded-md hover:scale-105 hover:bg-blue-400 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
                         handleClick={handleAddChoice}
                         args={[unitId]}
+                        data-testid="new-matching-choice"
                     >
                         add choice
                     </Button>

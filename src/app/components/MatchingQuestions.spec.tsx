@@ -2,6 +2,7 @@ import '@testing-library/jest-dom'
 import { fireEvent, getByTestId, render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
 import React from 'react'
 import MatchingQuestions from './MatchingQuestions'
+import { unitType } from '@/types/types';
 
 
 describe('MatchingQuestions', () => {
@@ -28,6 +29,7 @@ describe('MatchingQuestions', () => {
                 questions: [],
                 choices: []
             },
+            type: unitType.matching,
         }
         render(<MatchingQuestions {...Props} />)
 
@@ -44,7 +46,8 @@ describe('MatchingQuestions', () => {
         const Props = {
             unitId: 'id',
             instructions: 'some instructions',
-            matchingUnit: undefined
+            matchingUnit: undefined,
+            type: unitType.matching,
         }
         render(<MatchingQuestions {...Props} />)
 
