@@ -48,6 +48,7 @@ export default function Main() {
                     unitId={id}
                     instructions={instructions}
                     matchingUnit={matchingUnit}
+                    type={type}
 
                 />
             }

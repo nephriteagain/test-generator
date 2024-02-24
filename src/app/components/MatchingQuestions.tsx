@@ -1,7 +1,7 @@
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import { ChangeEvent } from 'react'
 
-import { matchingUnit, actions, unitType } from "@/types/types";
+import { matchingUnit, actions, unitType,  } from "@/types/types";
 
 import { checkScrollHeight } from "../helpers";
 import { useGlobalContext } from '@/context/Context';
@@ -14,9 +14,10 @@ interface MatchingQuestionsProps {
     unitId: string;
     instructions: string;
     matchingUnit: matchingUnit|undefined;
+    type: unitType
 }
 
-export default function MatchingQuestions({unitId, instructions, matchingUnit}: MatchingQuestionsProps) {
+export default function MatchingQuestions({unitId, instructions, matchingUnit, type}: MatchingQuestionsProps) {
     const { dispatch, History, test, setFocus } = useGlobalContext()
 
 
@@ -210,6 +211,8 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit}: 
                     delete unit
                 </Button>
             </div>
+            {/**Note: this is for testing purposes */}
+            <div className='hidden' data-testid={type} />
         </motion.section>
     )
     return null
