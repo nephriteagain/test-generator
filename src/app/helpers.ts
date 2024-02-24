@@ -14,7 +14,7 @@ export function checkScrollHeight(e: ChangeEvent) {
     }
 }
 
-function isHTMLElement(node: any): node is HTMLElement {
+export function isHTMLElement(node: any): node is HTMLElement {
     return (node as HTMLElement).style !== undefined;
 }
 
