@@ -144,13 +144,14 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit, t
                                     value={question}
                                     rows={1}
                                     onChange={(e) => handleChangeQuestion(e, unitId, id)}
+                                    data-testid="matching-question-textarea"
                                 />
                                 <Button
                                         className="bg-red-300 dark:bg-red-600 p-1 aspect-square rounded-full hover:bg-red-700 hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"                                        
                                         handleClick={handleDeleteQuestion}
                                         args={[unitId, id]}
                                     >
-                                        <IoClose />
+                                        <IoClose  data-testid="delete-matching-question" />
                                 </Button>
                             </motion.div>
                         )
@@ -161,6 +162,7 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit, t
                         className="font-semibold bg-green-300 dark:bg-green-600 my-2 ms-4 px-2 py-[2px] rounded-md shadow-lg drop-shadow-lg hover:scale-105 hover:bg-green-400 transition-all duration-150"
                         handleClick={handleAddQuestion}
                         args={[unitId]}
+                        data-testid="new-matching-question"
                     >
                         new question
                     </Button>

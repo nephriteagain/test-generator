@@ -8,7 +8,11 @@ describe('unit', () => {
 
 
     it('should have no current unit active', async () => {
-        
+        render(
+            <RootLayout>
+                <Home />
+            </RootLayout>
+        )
         
         await waitFor(() => {
             const units = screen.queryAllByTestId('unit')

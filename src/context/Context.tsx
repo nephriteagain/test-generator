@@ -7,7 +7,7 @@ import Reducer from '../reducers/testReducer'
 import Note from '@/app/components/Note'
 import { AnimatePresence } from 'framer-motion'
 
-const initial : test = {
+export const initial : test = {
     subject : '',
     author : '',
     units: [],
