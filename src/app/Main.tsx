@@ -34,6 +34,7 @@ export default function Main() {
             <Button
                 handleClick={handleClick}
                 className='bg-green-400 dark:bg-green-800 px-3 py-[2px] rounded-md shadow-md drop-shadow-md hover:scale-105 active:scale-95 transition-all duration-150'
+                data-testid="add-unit"
             >
                 add unit
             </Button>
