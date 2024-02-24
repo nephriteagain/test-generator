@@ -39,6 +39,7 @@ export default function Controls ({
             handleClick={setShowModal}
             args={[showModal? false: true]}      
             className="ms-auto bg-blue-300 dark:bg-blue-600 px-2 py-[2px] rounded-md shadow-md hover:scale-105 hover:bg-blue-400 active:scale-95 transition-all duration-100"
+            data-testid="hotkeys-btn"
             >
             Hotkeys
             </Button>

@@ -24,7 +24,7 @@ export default function HotkeyModal({setShowModal}: HotkeyModalProps) {
             exit={{opacity:0, transition: {duration:0.2}}}
             data-testid="hotkey-modal"
         >
-            <div className="z-20 bg-black w-full h-full opacity-50 animate-in fade-in duration-500" onClick={hideModal} />
+            <div className="z-20 bg-black w-full h-full opacity-50 animate-in fade-in duration-500" onClick={hideModal} data-testid="hotkey-modal-background" />
             <motion.div 
                 animate={{translateX: '-50%', translateY: '-50%', }}
                 exit={{ scale:0}}
@@ -52,6 +52,7 @@ export default function HotkeyModal({setShowModal}: HotkeyModalProps) {
                     <button
                         onClick={(e) => hideModal(e)}
                         className="mt-12 text-lg bg-red-400 dark:bg-red-700 px-3 py-[2px] rounded-md shadow-md drop-shadow-md hover:scale-105 active:scale-95 transition-all duration-150"
+                        data-testid="hotkey-modal-close"
                     >
                         close
                     </button>
