@@ -1,8 +1,8 @@
-import type { test, action, unit } from "../../types/types";
+import type { test, action, unit, delete_question_action } from "../../types/types";
 
-export default function deleteQuestion(state: test, action: action) : test {
-    const questionId = action?.payload?.questionId as string;
-        const unitId = action?.payload?.unitId as string;
+export default function deleteQuestion(state: test, action: delete_question_action) : test {
+    const questionId = action.payload.questionId
+        const unitId = action.payload.unitId
 
         const newUnit: unit[] = state.units.map(unit => {
             if (unit.id === unitId && unit.questions) {

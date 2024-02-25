@@ -1,4 +1,4 @@
-import { action, actions, test, unitType } from '../../types/types';
+import { action, actions, set_unit_action, test, unitType } from '../../types/types';
 import setUnitType from './setUnitType';
 
 describe('setUnitType', () => {
@@ -8,7 +8,7 @@ describe('setUnitType', () => {
         units: [],
         currentUnit: unitType.multipleChoice
     }
-    const action = {
+    const action : set_unit_action  = {
         type: actions.setUnit,
         payload: {
             unitType: unitType.matching

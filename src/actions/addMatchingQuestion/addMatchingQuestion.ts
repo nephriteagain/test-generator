@@ -1,9 +1,9 @@
-import { action, test, unit, matching } from '@/types/types';
+import { action, test, unit, matching, add_matching_question_action } from '@/types/types';
 
 import { generateId } from '@/utils/helpers';
 
-export default function addMatchingQuestion(state: test, action: action) : test {
-    const unitId = action.payload?.unitId as string;
+export default function addMatchingQuestion(state: test, action: add_matching_question_action) : test {
+    const unitId = action.payload.unitId 
     const newQuestion : matching = {
         item: '',
         id: generateId()

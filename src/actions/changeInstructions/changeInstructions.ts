@@ -1,8 +1,8 @@
-import type { test, action, unit } from "../../types/types";
+import type { test, action, unit, change_instructions_action } from "../../types/types";
 
-export default function changeInstructions(state: test, action: action) : test {
-    const value = action.payload?.instructions as string
-        const id = action.payload?.id as string
+export default function changeInstructions(state: test, action: change_instructions_action) : test {
+    const value = action.payload.instructions
+        const id = action.payload.id
         const newUnits : unit[] = state.units.map(unit => {
             if (unit.id === id) {
                 return {

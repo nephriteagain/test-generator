@@ -1,15 +1,25 @@
-import type { test, action, unit, choice } from "../../types/types";
+import { type test, type action, type unit, type choice, type insert_choice_action, actions } from "../../types/types";
 import { generateId } from "../../utils/helpers";
 import deleteChoice from "../deleteChoice/deleteChoice";
 
-export default function insertChoice(state: test, action: action): test {
-    const index = action.payload?.index as number;
+export default function insertChoice(state: test, action: insert_choice_action): test {
+    const index = action.payload?.index
     const unitId = action.payload?.unitId;
     const questionId = action?.payload?.questionId;
     const choiceId = action.payload?.choiceId // this is for deleteChoice
-    const text = action.payload?.text as string;
+    const text = action.payload?.text
 
-    const testWithDelete = deleteChoice(state, action);
+    const testWithDelete = deleteChoice(
+        state, 
+        {
+            type: actions.deleteChoice, 
+            payload: {
+                unitId,
+                questionId,
+                choiceId
+            }
+        }
+    );
     const unitWithInsert = testWithDelete.units.map((unit) => {
         if (unit.id === unitId && unit.questions) {
             const newQ = unit.questions.map((q) => {

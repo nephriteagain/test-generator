@@ -1,7 +1,7 @@
-import type { test, action } from "../../types/types"
+import type { test, change_name_action } from "../../types/types"
 
-export default function (state: test, action: action) : test{
-    const value = action?.payload?.name as string
+export default function (state: test, action: change_name_action) : test{
+    const value = action.payload.name
         
     return {
         ...state,

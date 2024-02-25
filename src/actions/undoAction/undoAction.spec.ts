@@ -1,4 +1,4 @@
-import { test, action, unitType, actions } from "../../types/types";
+import { test, action, unitType, actions, undo_action } from "../../types/types";
 import undoAction from "./undoAction";
 
 
@@ -30,13 +30,13 @@ describe('undoAction', () => {
         units: [],
         currentUnit: unitType.multipleChoice
     }
-    const action : action = {
+    const action : undo_action = {
         type: actions.undoAction,
         payload: {
             testData: undefined
         }
     }
-    const action2 : action = {
+    const action2 : undo_action = {
         type: actions.undoAction,
         payload: {
             testData

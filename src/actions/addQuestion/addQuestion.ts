@@ -1,7 +1,7 @@
-import type { test,  action, question, unit } from "../../types/types";
+import type { test,  action, question, unit, add_question_action } from "../../types/types";
 import { generateId } from "../../utils/helpers";
 
-export default function addQuestion(state: test, action: action) : test {
+export default function addQuestion(state: test, action: add_question_action) : test {
     const question : question = {
         id: generateId(),
         question: '',
@@ -11,7 +11,7 @@ export default function addQuestion(state: test, action: action) : test {
             {id: generateId(), choice: ''},
         ]
     }        
-    const unitId = action.payload?.id as string
+    const unitId = action.payload.id
     const newUnits : unit[] = state.units.map(unit => {
         if (unit.id === unitId && unit.questions) {
             return {

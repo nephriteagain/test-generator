@@ -1,4 +1,4 @@
-import { test,  action, question, unit, unitType, actions } from "../../types/types";
+import { test,  action, question, unit, unitType, actions, change_name_action } from "../../types/types";
 import changeName from "./changeName";
 
 describe('changeName', () => {
@@ -15,11 +15,11 @@ describe('changeName', () => {
             }
         ]
     }
-    const action : action = {
+    const action : change_name_action = {
         type: actions.changeName,
         payload: {
             name: 'Kidney'
-        }
+        } 
     }
     it('should change the author to "Kidney"', () => {
         const res = changeName(test, action)

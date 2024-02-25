@@ -1,4 +1,4 @@
-import { test,  action, question, unit, unitType, actions } from "../../types/types";
+import { test,  action, question, unit, unitType, actions, change_instructions_action } from "../../types/types";
 import changeInstructions from "./changeInstructions";
 
 describe('changeInstructions', () => {
@@ -15,7 +15,7 @@ describe('changeInstructions', () => {
             }
         ]
     }
-    const action : action = {
+    const action : change_instructions_action = {
         type: actions.changeInstructions,
         payload: {
             id: '1',

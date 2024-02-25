@@ -1,9 +1,9 @@
-import type { test, action, unit } from "../../types/types";
+import type { test, action, unit, edit_question_action } from "../../types/types";
 
-export default function editQuestion(state: test, action: action) : test {
-    const newQuestion = action.payload?.question as string;
-        const unitId = action.payload?.unitId as string;
-        const questionId = action.payload?.questionId as string
+export default function editQuestion(state: test, action: edit_question_action) : test {
+    const newQuestion = action.payload.question
+        const unitId = action.payload.unitId;
+        const questionId = action.payload.questionId
 
         const newUnits: unit[] = state.units.map(unit => {
             if (unit.id === unitId && unit.questions) {

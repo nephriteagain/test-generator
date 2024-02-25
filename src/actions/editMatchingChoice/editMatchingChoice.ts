@@ -1,9 +1,9 @@
-import type { test, action, unit,} from "../../types/types";
+import type { test, action, unit, edit_matching_choice_action,} from "../../types/types";
 
-export default function editMatchingChoice(state: test, action: action) : test {
-    const unitId = action?.payload?.unitId as string;
-    const choiceId = action.payload?.choiceId as string;
-    const text = action.payload?.text as string;
+export default function editMatchingChoice(state: test, action: edit_matching_choice_action) : test {
+    const unitId = action.payload.unitId
+    const choiceId = action.payload.choiceId
+    const text = action.payload.text
 
         const newUnit: unit[] = state.units.map(unit => {
             if (unit.id === unitId && unit.matchingUnit) {

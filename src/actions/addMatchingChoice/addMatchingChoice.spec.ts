@@ -1,4 +1,4 @@
-import { unitType, action, actions, test } from "@/types/types";
+import { unitType, action, actions, test, add_matching_choice_action } from "@/types/types";
 import addMatchingChoice from "./addMatchingChoice";
 
 
@@ -25,7 +25,7 @@ describe('addMatchingChoice', () => {
         ],
         currentUnit: unitType.multipleChoice
     }
-    const action : action = {
+    const action : add_matching_choice_action = {
         type: actions.addMatchingChoice,
         payload: {
             unitId: 'unitId2',

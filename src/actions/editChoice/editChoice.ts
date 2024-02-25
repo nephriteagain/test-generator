@@ -1,10 +1,10 @@
-import type { test, action, unit, choice } from "../../types/types";
+import type { test, action, unit, choice, edit_choice_action } from "../../types/types";
 
-export default function editChoice(state: test, action: action) : test {
-    const unitId = action?.payload?.unitId as string;
-        const questionId = action?.payload?.questionId as string;
-        const choiceId = action?.payload?.choiceId as string;
-        const value = action?.payload?.text as string;
+export default function editChoice(state: test, action: edit_choice_action) : test {
+    const unitId = action.payload.unitId
+        const questionId = action.payload.questionId
+        const choiceId = action.payload.choiceId
+        const value = action.payload.text
 
         const newUnit: unit[] = state.units.map(unit => {
             if (unit.id === unitId && unit.questions) {

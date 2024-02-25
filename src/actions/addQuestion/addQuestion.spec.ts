@@ -1,4 +1,4 @@
-import { test,  action, question, unit, unitType, actions } from "../../types/types";
+import { test,  action, question, unit, unitType, actions, add_question_action } from "../../types/types";
 import addQuestion from "./addQuestion";
 
 describe('addQuestion', () => {
@@ -21,7 +21,7 @@ describe('addQuestion', () => {
         ],
         currentUnit: unitType.multipleChoice
     }
-    const action : action = {
+    const action : add_question_action = {
         type: actions.addQuestion,
         payload: {
             id: 'unitId',

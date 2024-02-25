@@ -1,7 +1,7 @@
-import { test,  action, question, unit, unitType, actions } from "../../types/types";
-import changeName from "../changeName/changeName";
+import { test,  action, question, unit, unitType, actions, change_subject_action } from "../../types/types";
+import changeSubject from "./changeSubject";
 
-describe('changeName', () => {
+describe('changeSubject', () => {
     const test : test = {
         subject: 'Math',
         author: 'Jade',
@@ -15,14 +15,14 @@ describe('changeName', () => {
             }
         ]
     }
-    const action : action = {
-        type: actions.changeName,
+    const action : change_subject_action = {
+        type: actions.changeSubject,
         payload: {
-            name: 'Kidney'
+            subject: 'English'
         }
     }
-    it('should change the author to "Kidney"', () => {
-        const res = changeName(test, action)
-        expect(res.author).toBe('Kidney')
+    it('should change the subject to "English"', () => {
+        const res = changeSubject(test, action)
+        expect(res.subject).toBe('English')
     });
 });
