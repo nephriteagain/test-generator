@@ -1,5 +1,5 @@
 import type { test, action, unit, choice, question } from "../../types/types";
-import { generateId } from "../../app/helpers";
+import { generateId } from "../../utils/helpers";
 import deleteQuestion from "../deleteQuestion/deleteQuestion";
 
 

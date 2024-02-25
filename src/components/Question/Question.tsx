@@ -5,7 +5,7 @@ import { ChangeEvent, DragEvent, } from "react";
 import Choices from "../Choices/Choices"
 import Button from "../Button/Button";
 
-import { checkScrollHeight } from "../../app/helpers";
+import { checkScrollHeight } from "../../utils/helpers";
 import { useGlobalContext } from "@/context/Context";
 type QuestionProps = {
     question: string;

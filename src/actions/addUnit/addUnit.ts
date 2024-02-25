@@ -1,5 +1,5 @@
 import { test, unit, question, matchingUnit, matching, unitType } from '../../types/types';
-import { generateId } from '../../app/helpers';
+import { generateId } from '../../utils/helpers';
 
 
 export default function addUnit(state: test) : test {

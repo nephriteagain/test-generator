@@ -1,5 +1,5 @@
 import type { test, action, unit, choice } from "../../types/types";
-import { generateId } from "../../app/helpers";
+import { generateId } from "../../utils/helpers";
 
 export default function addChoice(state: test, action: action) : test {
     const newChoice : choice = {

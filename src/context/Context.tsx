@@ -1,10 +1,10 @@
 "use client"
 
 import { test, focus, action, unitType, actions } from '@/types/types'
-import { TestHistory } from '@/app/History'
+import { TestHistory } from '@/utils/History'
 import { useContext, createContext, useReducer, useState, ReactNode, Dispatch, SetStateAction , useEffect} from 'react'
-import Reducer from '../reducers/testReducer'
-import Note from '@/components/Note/Note'
+import Reducer from '../reducers'
+import Note from '@/components/Note'
 import { AnimatePresence } from 'framer-motion'
 
 export const initial : test = {

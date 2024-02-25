@@ -1,6 +1,6 @@
 import { action, test, unit, matching } from '@/types/types';
 
-import { generateId } from '@/app/helpers';
+import { generateId } from '@/utils/helpers';
 
 export default function addMatchingChoice(state: test, action: action) : test {
     const unitId = action.payload?.unitId as string;

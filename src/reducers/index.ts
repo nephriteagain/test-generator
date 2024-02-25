@@ -1,29 +1,29 @@
 
 import { test, action, actions } from "../types/types";
 
-import changeName from "../actions/changeName/changeName";
-import changeSubject from "../actions/changeSubject/changeSubject";
-import addUnit from "../actions/addUnit/addUnit";
-import deleteUnit from "../actions/deleteUnit/deleteUnit";
-import changeInstructions from "../actions/changeInstructions/changeInstructions";
-import addQuestion from "../actions/addQuestion/addQuestion";
-import editQuestion from "../actions/editQuestion/editQuestion";
-import deleteQuestion from "../actions/deleteQuestion/deleteQuestion";
-import addChoice from "../actions/addChoice/addChoice";
-import deleteChoice from "../actions/deleteChoice/deleteChoice";
-import editChoice from "../actions/editChoice/editChoice";
-import undoAction from "../actions/undoAction/undoAction";
-import redoAction from "../actions/redoAction/redoAction";
-import insertChoice from "../actions/insertChoice/insertChoice";
-import insertQuestion from "../actions/insertQuestion/insertQuestion";
-import setUnitType from "../actions/setUnitType/setUnitType";
-import editMatchingQuestion from '../actions/editMatchingQuestion/editMatchingQuestion'
+import changeName from "../actions/changeName";
+import changeSubject from "../actions/changeSubject";
+import addUnit from "../actions/addUnit";
+import deleteUnit from "../actions/deleteUnit";
+import changeInstructions from "../actions/changeInstructions";
+import addQuestion from "../actions/addQuestion";
+import editQuestion from "../actions/editQuestion";
+import deleteQuestion from "../actions/deleteQuestion";
+import addChoice from "../actions/addChoice";
+import deleteChoice from "../actions/deleteChoice";
+import editChoice from "../actions/editChoice";
+import undoAction from "../actions/undoAction";
+import redoAction from "../actions/redoAction";
+import insertChoice from "../actions/insertChoice";
+import insertQuestion from "../actions/insertQuestion";
+import setUnitType from "../actions/setUnitType";
+import editMatchingQuestion from '../actions/editMatchingQuestion'
 import editMatchingChoice from "@/actions/editMatchingChoice/editMatchingChoice";
-import addMatchingQuestion from "@/actions/addMatchingQuestion/addMatchingQuestion";
-import addMatchingChoice from "@/actions/addMatchingChoice/addMatchingChoice";
-import deleteMatchingQuestion from "@/actions/deleteMatchingQuestion/deleteMatchingQuestion";
+import addMatchingQuestion from "@/actions/addMatchingQuestion";
+import addMatchingChoice from "@/actions/addMatchingChoice";
+import deleteMatchingQuestion from "@/actions/deleteMatchingQuestion";
 import deleteMatchingChoice from "@/actions/deleteMatchingChoice";
-import checkLocalStorage from "@/actions/checkLocalStorage/checkLocalStorage";
+import checkLocalStorage from "@/actions/checkLocalStorage";
 
 export default function (state: test, action: action) : test {
     if (action.type === actions.changeName) {

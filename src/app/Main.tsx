@@ -4,11 +4,11 @@ import  { unit, actions } from "../types/types";
 import { useGlobalContext } from '@/context/Context';
 
 
-import Headers from '../components/Headers/Headers';
-import UndoRedo from '../components/UndoRedo/UndoRedo';
-import Unit from '../components/Unit/Unit';
-import Button from '../components/Button/Button';
-import MatchingQuestions from "../components/MatchingQuestions/MatchingQuestions";
+import Headers from '../components/Headers';
+import UndoRedo from '../components/UndoRedo';
+import Unit from '../components/Unit';
+import Button from '../components/Button';
+import MatchingQuestions from "../components/MatchingQuestions";
 
 export default function Main() {
     

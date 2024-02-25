@@ -3,7 +3,7 @@ import { ChangeEvent } from 'react'
 import { useGlobalContext } from '@/context/Context';
 import  { question, unitType, matchingUnit, actions } from "../../types/types";
 
-import { checkScrollHeight } from '../../app/helpers';
+import { checkScrollHeight } from '../../utils/helpers';
 
 import Questions from '../Questions/Questions';
 import Button from '../Button/Button';

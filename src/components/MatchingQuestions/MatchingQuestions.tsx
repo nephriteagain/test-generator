@@ -3,7 +3,7 @@ import { ChangeEvent } from 'react'
 
 import { matchingUnit, actions, unitType,  } from "@/types/types";
 
-import { checkScrollHeight } from "../../app/helpers";
+import { checkScrollHeight } from "../../utils/helpers";
 import { useGlobalContext } from '@/context/Context';
 
 import { IoClose } from "react-icons/io5";
