@@ -1,4 +1,4 @@
-import { unitType } from "@/types/types";
+import { unitType } from "@/types";
 
 export const fakeContext = {
     History: {

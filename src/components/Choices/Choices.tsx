@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { choice, unitType, actions, } from "../../types/types"
+import { choice, unitType, actions, } from "../../types"
 
 import { useGlobalContext } from "@/context/Context";
 

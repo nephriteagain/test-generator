@@ -1,4 +1,4 @@
-import type { test, change_subject_action } from "../../types/types"
+import type { test, change_subject_action } from "../../types"
 
 export default function changeSubject(state: test, action: change_subject_action) : test {
     const value = action.payload.subject

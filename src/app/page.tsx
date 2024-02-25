@@ -2,7 +2,7 @@
 import { AnimatePresence } from "framer-motion"
 import {useEffect, useState, KeyboardEvent, useRef, useLayoutEffect} from "react"
 
-import { test, focus, actions, unitType } from "../types/types"
+import { test, focus, actions, unitType } from "../types"
 
 
 import Main from "./Main"

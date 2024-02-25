@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import  { choice, question, unitType, actions } from "../../types/types"
+import  { choice, question, unitType, actions } from "../../types"
 import { ChangeEvent, DragEvent, } from "react";
 
 import Choices from "../Choices/Choices"

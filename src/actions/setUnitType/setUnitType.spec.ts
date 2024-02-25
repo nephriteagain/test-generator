@@ -1,4 +1,4 @@
-import { action, actions, set_unit_action, test, unitType } from '../../types/types';
+import { action, actions, set_unit_action, test, unitType } from '../../types';
 import setUnitType from './setUnitType';
 
 describe('setUnitType', () => {

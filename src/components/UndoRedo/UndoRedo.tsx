@@ -1,6 +1,6 @@
 import { Dispatch } from 'react'
 import type { TestHistory } from "../../utils/History"
-import  { action, test, actions } from '../../types/types'
+import  { action, test, actions } from '../../types'
 import { useGlobalContext } from '@/context/Context'
 
 import Button from '../Button/Button'

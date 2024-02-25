@@ -1,4 +1,4 @@
-import { test,  action, question, unit, unitType, actions } from "../../types/types";
+import { test,  action, question, unit, unitType, actions } from "../../types";
 import checkLocalStorage from "./checkLocalStorage";
 
 describe('checkLocalStorage', () => {

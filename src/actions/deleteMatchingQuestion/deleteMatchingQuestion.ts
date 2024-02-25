@@ -1,4 +1,4 @@
-import type { test, action, unit, delete_matching_question_action,} from "../../types/types";
+import type { test, action, unit, delete_matching_question_action,} from "../../types";
 
 export default function deleteMatchingQuestion(state: test, action: delete_matching_question_action) : test {
     const unitId = action.payload.unitId

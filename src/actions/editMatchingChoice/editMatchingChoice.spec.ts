@@ -1,4 +1,4 @@
-import { test,  action, question, unit, unitType, actions, choice, edit_matching_choice_action } from "../../types/types";
+import { test,  action, question, unit, unitType, actions, choice, edit_matching_choice_action } from "../../types";
 import editMatchingChoice from "./editMatchingChoice";
 
 describe('editMatchingChoice', () => {

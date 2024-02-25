@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 import { fireEvent, render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
 import Unit from './Unit'
 import React from 'react'
-import { unitType } from '@/types/types';
+import { unitType } from '@/types';
 
 
 describe('Unit', () => {

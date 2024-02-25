@@ -1,4 +1,4 @@
-import  {  actions } from "../../types/types";
+import  {  actions } from "../../types";
 
 import { useGlobalContext } from "@/context/Context";
 

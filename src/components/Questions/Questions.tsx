@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import  { question, unitType, actions } from "../../types/types"
+import  { question, unitType, actions } from "../../types"
 
 import Question from "../Question/Question"
 import Button from "../Button/Button";

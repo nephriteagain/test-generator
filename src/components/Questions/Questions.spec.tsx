@@ -3,7 +3,7 @@ import { fireEvent, getByTestId, render, screen, waitFor, waitForElementToBeRemo
 import React from 'react'
 import Questions from './Questions';
 import { fakeContext } from '@/utils/fakeData';
-import { unitType } from '@/types/types';
+import { unitType } from '@/types';
 
 describe('Questions', () => {    
     beforeEach(() => {

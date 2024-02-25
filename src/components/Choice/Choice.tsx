@@ -9,7 +9,7 @@ import Button from "../Button/Button"
 import { useGlobalContext } from "@/context/Context"
 
 import { checkScrollHeight, resetOpacityElement } from "../../utils/helpers"
-import { actions } from '@/types/types'
+import { actions } from '@/types'
 
 interface ChoiceProps {
     id: string;

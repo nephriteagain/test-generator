@@ -1,4 +1,4 @@
-import { test,  action, question, unit, unitType, actions, choice, delete_choice_action } from "../../types/types";
+import { test,  action, question, unit, unitType, actions, choice, delete_choice_action } from "../../types";
 import deleteChoice from "./deleteChoice";
 
 

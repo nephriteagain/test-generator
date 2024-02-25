@@ -1,4 +1,4 @@
-import type { test, action, unit, change_instructions_action } from "../../types/types";
+import type { test, action, unit, change_instructions_action } from "../../types";
 
 export default function changeInstructions(state: test, action: change_instructions_action) : test {
     const value = action.payload.instructions

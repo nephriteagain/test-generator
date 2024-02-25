@@ -1,4 +1,4 @@
-import { test, unit, question, matchingUnit, matching, unitType } from '../../types/types';
+import { test, unit, question, matchingUnit, matching, unitType } from '../../types';
 import { generateId } from '../../utils/helpers';
 
 

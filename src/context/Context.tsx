@@ -1,6 +1,6 @@
 "use client"
 
-import { test, focus, action, unitType, actions } from '@/types/types'
+import { test, focus, action, unitType, actions } from '@/types'
 import { TestHistory } from '@/utils/History'
 import { useContext, createContext, useReducer, useState, ReactNode, Dispatch, SetStateAction , useEffect} from 'react'
 import Reducer from '../reducers'

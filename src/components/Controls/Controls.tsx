@@ -1,7 +1,7 @@
 import Button from "../Button/Button"
 import Switch from "../Switch/Switch"
 
-import type { test } from "@/types/types"
+import type { test } from "@/types"
 import { Dispatch, SetStateAction } from "react"
 
 type ControlsProps = {

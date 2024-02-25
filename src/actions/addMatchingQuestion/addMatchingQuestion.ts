@@ -1,4 +1,4 @@
-import { action, test, unit, matching, add_matching_question_action } from '@/types/types';
+import { action, test, unit, matching, add_matching_question_action } from '@/types';
 
 import { generateId } from '@/utils/helpers';
 

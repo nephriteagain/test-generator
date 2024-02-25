@@ -1,4 +1,4 @@
-import { unitType, action, actions, add_choice_action } from "@/types/types";
+import { unitType, action, actions, add_choice_action } from "@/types";
 import addChoice from "./addChoice";
 
 describe('addChoice', () => {

@@ -1,4 +1,4 @@
-import { test } from "@/types/types";
+import { test } from "@/types";
 import { TestHistory } from "./History";
 
 describe('TestHistory', () => {

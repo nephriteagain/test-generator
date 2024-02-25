@@ -1,4 +1,4 @@
-import { test,  action, question, unit, unitType, actions, choice, insert_question_action } from "../../types/types";
+import { test,  action, question, unit, unitType, actions, choice, insert_question_action } from "../../types";
 import insertQuestion from "./insertQuestion";
 
 describe('insertChoice', () => {

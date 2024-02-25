@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { ChangeEvent } from 'react'
 import { useGlobalContext } from '@/context/Context';
-import  { question, unitType, matchingUnit, actions } from "../../types/types";
+import  { question, unitType, matchingUnit, actions } from "../../types";
 
 import { checkScrollHeight } from '../../utils/helpers';
 

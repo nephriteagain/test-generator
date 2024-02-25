@@ -1,4 +1,4 @@
-import { type test, type action, type unit, type choice, type question, type insert_question_action, actions } from "../../types/types";
+import { type test, type action, type unit, type choice, type question, type insert_question_action, actions } from "../../types";
 import { generateId } from "../../utils/helpers";
 import deleteQuestion from "../deleteQuestion/deleteQuestion";
 

@@ -1,4 +1,4 @@
-import type { test, action, redo_action } from "../../types/types";
+import type { test, action, redo_action } from "../../types";
 
 export default function redoAction(state: test, action: redo_action) : test {
     if (action.payload?.testData === undefined) {

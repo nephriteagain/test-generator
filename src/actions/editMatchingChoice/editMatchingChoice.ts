@@ -1,4 +1,4 @@
-import type { test, action, unit, edit_matching_choice_action,} from "../../types/types";
+import type { test, action, unit, edit_matching_choice_action,} from "../../types";
 
 export default function editMatchingChoice(state: test, action: edit_matching_choice_action) : test {
     const unitId = action.payload.unitId

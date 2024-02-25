@@ -1,4 +1,4 @@
-import { choice, matching, question, test, unit, unitType } from '@/types/types';
+import { choice, matching, question, test, unit, unitType } from '@/types';
 import {
     Document,
     Paragraph,

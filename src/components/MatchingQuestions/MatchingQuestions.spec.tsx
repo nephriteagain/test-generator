@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 import { fireEvent, getByTestId, render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
 import React from 'react'
 import MatchingQuestions from './MatchingQuestions'
-import { unitType } from '@/types/types';
+import { unitType } from '@/types';
 
 
 describe('MatchingQuestions', () => {

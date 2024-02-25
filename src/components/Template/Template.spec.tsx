@@ -3,7 +3,7 @@ import { fireEvent, getByTestId, render, screen, waitFor, waitForElementToBeRemo
 import React from 'react'
 import Template from './Template';
 import { fakeContext } from '@/utils/fakeData';
-import { actions } from '@/types/types';
+import { actions } from '@/types';
 
 
 describe('Template', () => {

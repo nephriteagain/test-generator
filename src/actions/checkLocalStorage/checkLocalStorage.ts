@@ -1,4 +1,4 @@
-import { test } from "@/types/types"
+import { test } from "@/types"
 
 export default function checkLocalStorage(state: test) : test {
     const savedData = localStorage.getItem('current_test')

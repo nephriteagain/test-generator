@@ -1,5 +1,5 @@
 import { useState, Dispatch } from "react"
-import { test, action, unitType } from '../../types/types'
+import { test, action, unitType } from '../../types'
 
 import { useGlobalContext } from "@/context/Context"
 import Template from "../Template/Template"

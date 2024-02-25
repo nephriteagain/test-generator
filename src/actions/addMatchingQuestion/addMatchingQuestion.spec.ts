@@ -1,4 +1,4 @@
-import { unitType, action, actions, test, add_matching_question_action } from "@/types/types";
+import { unitType, action, actions, test, add_matching_question_action } from "@/types";
 import addMatchingQuestion from "./addMatchingQuestion";
 
 

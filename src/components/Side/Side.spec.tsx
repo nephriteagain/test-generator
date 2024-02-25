@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 import { render, screen, waitFor } from '@testing-library/react'
 import Side from '../Side'
 import React from 'react';
-import { unitType } from '@/types/types';
+import { unitType } from '@/types';
 
 describe('Side', () => {
     jest.spyOn(React, 'useContext').mockReturnValueOnce({

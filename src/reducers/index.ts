@@ -1,5 +1,5 @@
 
-import { test, action, actions } from "../types/types";
+import { test, action, actions } from "../types";
 
 import changeName from "../actions/changeName";
 import changeSubject from "../actions/changeSubject";

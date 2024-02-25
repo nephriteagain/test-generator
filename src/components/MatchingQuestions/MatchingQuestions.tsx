@@ -1,7 +1,7 @@
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import { ChangeEvent } from 'react'
 
-import { matchingUnit, actions, unitType,  } from "@/types/types";
+import { matchingUnit, actions, unitType,  } from "@/types";
 
 import { checkScrollHeight } from "../../utils/helpers";
 import { useGlobalContext } from '@/context/Context';
