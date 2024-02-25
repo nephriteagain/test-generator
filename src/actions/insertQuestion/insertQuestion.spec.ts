@@ -1,7 +1,8 @@
-import { test,  action, question, unit, unitType, actions, choice, insert_question_action } from "../../types";
+import { insert_question_action } from "@/types/actions";
+import { test,  action, question, unit, unitType, actions, choice,  } from "../../types";
 import insertQuestion from "./insertQuestion";
 
-describe('insertChoice', () => {
+describe('insertQuestion', () => {
     const state: test = {
         subject: 'Math',
         author: 'Jade',

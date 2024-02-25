@@ -1,5 +1,6 @@
-import { unitType, action, actions, test, add_matching_question_action } from "@/types";
+import { unitType, action, actions, test } from "@/types";
 import addMatchingQuestion from "./addMatchingQuestion";
+import { add_matching_question_action } from "@/types/actions";
 
 
 describe('addMatchingQuestion', () => {

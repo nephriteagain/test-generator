@@ -1,4 +1,5 @@
-import type { test, action, unit, choice, add_choice_action } from "../../types";
+import type { test, action, unit, choice } from "../../types";
+import { add_choice_action } from "@/types/actions"
 import { generateId } from "../../utils/helpers";
 
 export default function addChoice(state: test, action: add_choice_action) : test {

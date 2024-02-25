@@ -1,4 +1,5 @@
-import type { test, action, unit, choice, delete_choice_action } from "../../types";
+import { delete_choice_action } from "@/types/actions";
+import type { test, action, unit, choice,  } from "../../types";
 
 export default function deleteChoice(state: test, action: delete_choice_action) : test {
     const unitId = action.payload.unitId

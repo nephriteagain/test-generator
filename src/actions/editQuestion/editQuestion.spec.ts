@@ -1,4 +1,5 @@
-import { test,  action, question, unit, unitType, actions, edit_question_action } from "../../types";
+import { edit_question_action } from "@/types/actions";
+import { test,  action, question, unit, unitType, actions } from "../../types";
 import editQuestion from "./editQuestion";
 
 describe('editQuestion', () => {

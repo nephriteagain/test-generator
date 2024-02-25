@@ -1,4 +1,4 @@
-import  {  actions } from "../../types";
+import  {  actions, unitType } from "../../types";
 import { Dispatch, SetStateAction } from "react";
 
 import { useGlobalContext } from "@/context/Context";
@@ -7,7 +7,7 @@ interface TemplateProps {
     id: number;
     setSelected: Dispatch<SetStateAction<number>>
     selected: number;
-    unitType: string;
+    unitType: unitType;
 }
 
 export default function Template({id, setSelected, selected, unitType}: TemplateProps) {

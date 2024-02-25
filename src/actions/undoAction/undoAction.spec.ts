@@ -1,4 +1,5 @@
-import { test, action, unitType, actions, undo_action } from "../../types";
+import { undo_action } from "@/types/actions";
+import { test, action, unitType, actions } from "../../types";
 import undoAction from "./undoAction";
 
 

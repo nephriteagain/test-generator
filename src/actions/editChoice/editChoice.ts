@@ -1,4 +1,5 @@
-import type { test, action, unit, choice, edit_choice_action } from "../../types";
+import { edit_choice_action } from "@/types/actions";
+import type { test, action, unit, choice,  } from "../../types";
 
 export default function editChoice(state: test, action: edit_choice_action) : test {
     const unitId = action.payload.unitId

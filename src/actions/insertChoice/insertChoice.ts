@@ -1,4 +1,5 @@
-import { type test, type action, type unit, type choice, type insert_choice_action, actions } from "../../types";
+import { insert_choice_action } from "@/types/actions";
+import { type test, type action, type unit, type choice, actions } from "../../types";
 import { generateId } from "../../utils/helpers";
 import deleteChoice from "../deleteChoice/deleteChoice";
 

@@ -1,5 +1,6 @@
-import { unitType, action, actions, test, add_matching_choice_action } from "@/types";
+import { unitType, action, actions, test } from "@/types";
 import addMatchingChoice from "./addMatchingChoice";
+import { add_matching_choice_action } from "@/types/actions";
 
 
 describe('addMatchingChoice', () => {

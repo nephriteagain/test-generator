@@ -1,7 +1,8 @@
-import type { test,  action, question, unit, add_question_action } from "../../types";
+import { add_question_action } from "@/types/actions";
+import type { test,  action, question, unit,  } from "../../types";
 import { generateId } from "../../utils/helpers";
 
-export default function addQuestion(state: test, action: add_question_action) : test {
+export default function addQuestion(state: test, action: add_question_action ) : test {
     const question : question = {
         id: generateId(),
         question: '',

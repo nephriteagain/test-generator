@@ -1,4 +1,5 @@
-import { test,  action, question, unit, unitType, actions, choice, edit_matching_question_action } from "../../types";
+import { edit_matching_question_action } from "@/types/actions";
+import { test,  action, question, unit, unitType, actions, choice,  } from "../../types";
 import editMatchingQuestion from "./editMatchingQuestion";
 describe('editMatchingQuestion', () => {
     const state : test = {

@@ -1,4 +1,5 @@
-import { test,  action, question, unit, unitType, actions, choice, matchingUnit, delete_matching_question_action } from "../../types";
+import { delete_matching_question_action } from "@/types/actions";
+import { test,  action, question, unit, unitType, actions, choice, matchingUnit } from "../../types";
 import deleteMatchingQuestion from "./deleteMatchingQuestion";
 
 
