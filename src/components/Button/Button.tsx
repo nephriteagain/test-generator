@@ -1,27 +1,27 @@
 import { ReactNode, ButtonHTMLAttributes } from 'react'
 //TODO: fix this abomination of a component
-type ButtonProps = {
-    handleClick?: (...args: any) => any;
-    args?: any[]
+type ButtonProps = {    
     classes?: string;
     children?: ReactNode
     style?: Record<string,string>
     disabled?: boolean;
 } &  ButtonHTMLAttributes<HTMLButtonElement>
 
-export default function Button({handleClick, args = [], className = '',  children, style = {}, disabled = false, ...rest}: ButtonProps) {
-    function runFunc() {
-        if (typeof handleClick === 'function') {
-            handleClick(...args)
-        }
-    }
+export default function Button({
+    onClick,
+    className = '',  
+    children, 
+    style = {}, 
+    disabled = false, 
+    ...rest
+}: ButtonProps) {
 
 
     return (
         <button
             data-testid="button"
             className={className}
-            onClick={runFunc}
+            onClick={onClick}
             style={style}
             disabled={disabled}
             {...rest}

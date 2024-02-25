@@ -32,7 +32,7 @@ export default function Main() {
                 transition={{layout: {duration:0.1, ease: 'linear'}}}
             >
             <Button
-                handleClick={handleClick}
+                onClick={handleClick}
                 className='bg-green-400 dark:bg-green-800 px-3 py-[2px] rounded-md shadow-md drop-shadow-md hover:scale-105 active:scale-95 transition-all duration-150'
                 data-testid="add-unit"
             >
@@ -67,8 +67,8 @@ export default function Main() {
             })}
             </AnimatePresence>
             { test.units.length !== 0 && <Button
-                handleClick={handleClick}
-                className='bg-green-400 dark:bg-green-800 mt-4 px-3 py-[2px] rounded-md shadow-md drop-shadow-md hover:scale-105 active:scale-95 transition-all duration-150'
+                onClick={handleClick}
+                className='bg-green-400 dark:bg-green-800 mt-4 px-3 py-[2px] rounded-md shadow-md drop-shadow-md hover:scale-105 active:scale-95 transition-all duration-150'                
             >
                 add unit
             </Button>}

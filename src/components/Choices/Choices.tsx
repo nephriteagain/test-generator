@@ -64,8 +64,7 @@ export default function Choices({choices, unitId, questionId, type}: ChoicesProp
             </motion.section>
             <Button 
                 className="text-sm bg-blue-300 dark:bg-blue-600 px-2 py-[2px] ms-12 mt-3 rounded-md hover:scale-105 hover:bg-blue-400 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
-                handleClick={handleAddChoice}
-                args={[unitId, questionId]}
+                onClick={() => handleAddChoice(unitId, questionId)}
                 data-testid="btn-add-choice"
             >
                 add choices

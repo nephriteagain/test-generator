@@ -148,8 +148,7 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit, t
                                 />
                                 <Button
                                         className="bg-red-300 dark:bg-red-600 p-1 aspect-square rounded-full hover:bg-red-700 hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"                                        
-                                        handleClick={handleDeleteQuestion}
-                                        args={[unitId, id]}
+                                        onClick={() => handleDeleteQuestion(unitId, id)}
                                         data-testid="delete-matching-question"
                                     >
                                         <IoClose   />
@@ -161,8 +160,7 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit, t
 
                     <Button 
                         className="font-semibold bg-green-300 dark:bg-green-600 my-2 ms-4 px-2 py-[2px] rounded-md shadow-lg drop-shadow-lg hover:scale-105 hover:bg-green-400 transition-all duration-150"
-                        handleClick={handleAddQuestion}
-                        args={[unitId]}
+                        onClick={() => handleAddQuestion(unitId)}
                         data-testid="new-matching-question"
                     >
                         new question
@@ -188,8 +186,7 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit, t
                                 />
                                 <Button
                                     className="bg-red-300 dark:bg-red-600 px-1 aspect-square rounded-full hover:bg-red-700 hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
-                                    handleClick={handleDeleteChoice}
-                                    args={[unitId, id]}
+                                    onClick={() => handleDeleteChoice(unitId, id)}
                                     data-testid="delete-matching-choice"
                                 >
                                     <IoClose  />
@@ -200,8 +197,7 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit, t
                     </AnimatePresence>
                     <Button 
                         className="font-semibold text-sm bg-blue-300 dark:bg-blue-600 px-2 py-[2px] ms-6 mt-3 rounded-md hover:scale-105 hover:bg-blue-400 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
-                        handleClick={handleAddChoice}
-                        args={[unitId]}
+                        onClick={() => handleAddChoice(unitId)}
                         data-testid="new-matching-choice"
                     >
                         add choice
@@ -211,8 +207,7 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit, t
             <div className='flex'>
                 <Button 
                     className='bg-red-300 dark:bg-red-600 ms-auto px-2 py-[1px] text-sm rounded-md shadow-md drop-shadow-md hover:scale-105 hover:bg-red-400 active:scale-95 transition-all duration-150'
-                    handleClick={handleDeleteUnit}                    
-                    args={[unitId]}
+                    onClick={() => handleDeleteUnit(unitId)}
                     >
                     delete unit
                 </Button>
