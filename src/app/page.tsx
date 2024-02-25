@@ -6,11 +6,11 @@ import { test, focus, actions, unitType } from "../types/types"
 
 
 import Main from "./Main"
-import Side from "./components/Side"
-import Button from "./components/Button"
-import HotkeyModal from "./components/HokeyModal"
-import Switch from "./components/Switch"
-import Controls from "./components/Controls"
+import Side from "../components/Side"
+import Button from "../components/Button/Button"
+import HotkeyModal from "../components/HotkeyModal/HokeyModal"
+import Switch from "../components/Switch/Switch"
+import Controls from "../components/Controls"
 
 import { TestAsDocX } from '@/docx/generateDocument'
 import { useGlobalContext } from "@/context/Context"

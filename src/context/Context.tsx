@@ -4,7 +4,7 @@ import { test, focus, action, unitType, actions } from '@/types/types'
 import { TestHistory } from '@/app/History'
 import { useContext, createContext, useReducer, useState, ReactNode, Dispatch, SetStateAction , useEffect} from 'react'
 import Reducer from '../reducers/testReducer'
-import Note from '@/app/components/Note'
+import Note from '@/components/Note/Note'
 import { AnimatePresence } from 'framer-motion'
 
 export const initial : test = {
