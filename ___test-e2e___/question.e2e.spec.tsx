@@ -1,6 +1,5 @@
 import RootLayout from "@/app/layout";
 import Home from "@/app/page";
-import { unitType } from "@/types/types";
 import { screen, render, waitFor, fireEvent } from "@testing-library/react";
 
 

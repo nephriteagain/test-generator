@@ -31,6 +31,7 @@ export default function Controls ({
             args={[test]}
             className="bg-blue-300 dark:bg-blue-600 px-2 py-[1px] rounded-md shadow-md hover:scale-105 hover:bg-blue-400 active:scale-95 transition-all duration-100 disabled:opacity-50"
             disabled={disabledBtn}
+            data-testid="download"
             >
             Download as Word File
             </Button>

@@ -20,10 +20,12 @@ describe('Controls', () => {
 
         await waitFor(() => {
             const controls = screen.getByTestId('controls')
-            const btns = screen.getAllByTestId('button')
+            const hotkeyBtn = screen.getByTestId('hotkeys-btn')
+            const download = screen.getByTestId('download')
 
             expect(controls).toBeInTheDocument()
-            expect(btns).toHaveLength(2)
+            expect(hotkeyBtn).toBeInTheDocument()
+            expect(download).toBeInTheDocument()
             
         })
     });
