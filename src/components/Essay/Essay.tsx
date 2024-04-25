@@ -1,7 +1,7 @@
 export default function Essay() {
     return (
         <textarea 
-        className="dark:bg-black font-semibold  px-2 py-1 outline-none w-[90%] resize-none shadow-md"
+        className="bg-transparent border-2 border-gray-300 dark:border-gray-700 font-semibold  px-2 py-1 outline-none w-[90%] resize-none"
         rows={5}
         value={''}
         readOnly

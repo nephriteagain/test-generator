@@ -46,14 +46,14 @@ export default function Unit ({id, questions, instructions,index, type, matching
                 transition={{layout: {duration:0.2, ease: 'linear'}}}
                 exit={{opacity:0}}
                 key={id}
-                className='mt-4 bg-zinc-200 dark:bg-zinc-700 p-2 shadow-lg border-4 border-transparent focus-within:border-cyan-600 transition-all duration-200 animate-in fade-in'
+                className='mt-4 border-zinc-200 border:bg-zinc-700 p-2 border-4 border-transparent focus-within:border-cyan-600 transition-all duration-200 animate-in fade-in'
                 onFocus={() => {
                     setFocus({question: '', unit: id, type})}
                 }
                 data-testid="unit"
         >               
             <textarea 
-                className="font-semibold dark:bg-black  px-2 py-1 outline-none w-[90%] resize-none shadow-md"                 
+                className="font-semibold border-2 border-gray-300 dark:border-gray-500 bg-transparent  px-2 py-1 outline-none w-[90%] resize-none"                 
                 placeholder="instructions"
                 rows={1}
                 value={instructions}
@@ -69,7 +69,7 @@ export default function Unit ({id, questions, instructions,index, type, matching
             />
             <div className='flex'>
                 <Button 
-                    className='bg-red-300 dark:bg-red-800 ms-auto px-2 py-[1px] text-sm rounded-md shadow-md drop-shadow-md hover:scale-105 hover:bg-red-400 active:scale-95 transition-all duration-150'
+                    className='border-2 border-red-300 dark:border-red-800 ms-auto px-2 py-[1px] text-sm rounded-md hover:scale-105 hover:bg-red-200 dark:hover:bg-red-950 active:scale-95 transition-all duration-150'
                     onClick={() => handleDeleteUnit(id)}
                     >
                     delete unit

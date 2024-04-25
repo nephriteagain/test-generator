@@ -63,11 +63,11 @@ export default function Choices({choices, unitId, questionId, type}: ChoicesProp
                 </AnimatePresence>
             </motion.section>
             <Button 
-                className="text-sm bg-blue-300 dark:bg-blue-600 px-2 py-[2px] ms-12 mt-3 rounded-md hover:scale-105 hover:bg-blue-400 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
+                className="text-sm border-2 border-blue-300 dark:border-blue-600 px-2 py-[2px] ms-12 mt-3 rounded-md hover:scale-105 hover:border-blue-400 active:scale-95 transition-all duration-150"
                 onClick={() => handleAddChoice(unitId, questionId)}
                 data-testid="btn-add-choice"
             >
-                add choices
+                add choice
             </Button>
         </motion.div>
     )

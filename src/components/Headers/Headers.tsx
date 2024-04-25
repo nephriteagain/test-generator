@@ -22,7 +22,7 @@ export default function Headers() {
                     type: actions.changeSubject, payload: { subject: e.currentTarget.value }
                 })
             }}
-            className="font-bold dark:bg-black text-lg block mb-2 px-2 w-[50%] shadow-sm"
+            className="font-bold bg-transparent text-lg block mb-2 px-2 w-[50%] border-2 border-gray-200 dark:border-gray-600"
             data-testid="input-subject"
             />
             
@@ -34,7 +34,7 @@ export default function Headers() {
             onChange={(e) => dispatch({
                 type: actions.changeName, payload: { name: e.currentTarget.value }
             })}
-            className="font-semibold dark:bg-black block mb-2 px-2 w-[50%] shadow-sm"
+            className="font-semibold bg-transparent block mb-2 px-2 w-[50%] border-2 border-gray-200 dark:border-gray-600"
             data-testid="input-author"
             />           
         </div>

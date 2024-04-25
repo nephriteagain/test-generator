@@ -77,7 +77,7 @@ export default function Question({question, choices, index, id, unitId, question
         <motion.div 
             layout
             transition={{layout: {duration:0.2, ease: 'linear'}}}
-            className="mx-4 my-2 bg-zinc-200 dark:bg-zinc-800 p-2 shadow-lg  border-transparent border-4 focus-within:border-cyan-400 transition-all duration-200 animate-in slide-in-from-left"
+            className="mx-4 my-2 border-zinc-200 dark:border-zinc-800 p-2  border-transparent border-4 focus-within:border-cyan-400 transition-all duration-200 animate-in slide-in-from-left"
             // draggable
             // onDragStart={(e) => handleDragStart(e, questionObj, id, unitId)}
             // onDrop={(e) => {handleDrop(e, id, unitId, index)}}
@@ -89,7 +89,7 @@ export default function Question({question, choices, index, id, unitId, question
             data-testid="question"
         >       
             <textarea 
-                className="dark:bg-black px-2 py-[2px] w-[90%] outline-none resize-none my-2 shadow-md"
+                className="border-2 border-gray-300 dark:border-gray-700 bg-transparent px-2 py-[2px] w-[90%] outline-none resize-none my-2"
                 rows={1}
                 placeholder="question"
                 value={question} 
@@ -104,7 +104,7 @@ export default function Question({question, choices, index, id, unitId, question
             />
             <div className="flex">
                 <Button 
-                    className="bg-orange-200 dark:bg-orange-700  px-2 py-[1px] text-sm ms-auto hover:scale-105 hover:bg-orange-300 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
+                    className="border-2 border-orange-200 dark:border-orange-700  px-2 py-[1px] text-sm ms-auto hover:scale-105 hover:border-orange-300 active:scale-95 transition-all duration-150"
                     onClick={() => handleDeleteQuestion(id, unitId)}
                     data-testid="delete-question"
                     >

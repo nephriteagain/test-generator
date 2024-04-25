@@ -104,18 +104,18 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit, t
         })
         History.add(test)
     }
-
-    if (matchingUnit) return (
+    if (!matchingUnit) return null
+     return (
         <motion.section
             layout
             transition={{layout: {duration:0.2, ease: 'linear'}}}
             exit={{opacity:0}}
-            className='mt-4 bg-zinc-200 dark:bg-zinc-700 p-2 shadow-lg border-4 border-transparent focus-within:border-cyan-600 transition-all duration-200 animate-in fade-in'
+            className='mt-4 border-zinc-200 dark:border-zinc-700 p-2 border-4 border-transparent focus-within:border-cyan-600 transition-all duration-200 animate-in fade-in'
             onFocus={() => setFocus({unit:unitId, question: '', type: unitType.matching})}
             data-testid="matching-questions"
         >
             <textarea 
-                className="dark:bg-black font-semibold  px-2 py-1 outline-none w-[90%] resize-none shadow-md"                 
+                className="border-2 border-gray-300 dark:border-gray-700 bg-transparent font-semibold  px-2 py-1 outline-none w-[90%] resize-none"                 
                 placeholder="instructions"
                 rows={1}
                 value={instructions}
@@ -123,7 +123,7 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit, t
                 onChange={(e) => handleChange(e,unitId)}
             />
             <motion.div 
-                className='flex flex-row gap-6 my-4 bg-slate-200 dark:bg-slate-700 p-2 shadow-lg'
+                className='flex flex-row gap-6 my-4 border-slate-200 dark:border-slate-700 p-2'
                 layout
                 transition={{layout: {duration:0.2, ease: 'linear'}}}
             >
@@ -140,14 +140,14 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit, t
                                 key={id}
                             >
                                 <textarea 
-                                    className="dark:bg-black me-2 font-semibold  px-2 py-1 outline-none w-[90%] resize-none shadow-md"                 
+                                    className="border-2 border-gray-300 dark:border-gray-700 me-2 font-semibold  px-2 py-1 outline-none w-[90%] resize-none bg-transparent"  
                                     value={question}
                                     rows={1}
                                     onChange={(e) => handleChangeQuestion(e, unitId, id)}
                                     data-testid="matching-question-textarea"
                                 />
                                 <Button
-                                        className="bg-red-300 dark:bg-red-600 p-1 aspect-square rounded-full hover:bg-red-700 hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"                                        
+                                        className="border-2 text-red-400 dark:text-red-700 border-red-400 dark:border-red-700 p-1 aspect-square rounded-full hover:bg-red-300 dark:hover:bg-red-950  hover:scale-105 active:scale-95 transition-all duration-150"    
                                         onClick={() => handleDeleteQuestion(unitId, id)}
                                         data-testid="delete-matching-question"
                                     >
@@ -159,7 +159,7 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit, t
                     </AnimatePresence>
 
                     <Button 
-                        className="font-semibold bg-green-300 dark:bg-green-600 my-2 ms-4 px-2 py-[2px] rounded-md shadow-lg drop-shadow-lg hover:scale-105 hover:bg-green-400 transition-all duration-150"
+                        className="font-semibold border-2 border-green-300 dark:border-green-600 my-2 ms-4 px-2 py-[2px] rounded-md drop hover:scale-105 hover:border-green-400 transition-all duration-150"
                         onClick={() => handleAddQuestion(unitId)}
                         data-testid="new-matching-question"
                     >
@@ -178,14 +178,14 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit, t
                                 key={id}                            
                             >
                                 <textarea 
-                                    className="dark:bg-black me-2 font-semibold  px-2 py-1 outline-none w-[90%] resize-none shadow-md"                 
+                                    className="bg-transparent border-2 border-gray-300 dark:border-gray-700 me-2 font-semibold  px-2 py-1 outline-none w-[90%] resize-none"                 
                                     value={choice}
                                     rows={1}
                                     onChange={(e) => handleChangeChoice(e, unitId, id)}
                                     data-testid="matching-choice-textarea"
                                 />
                                 <Button
-                                    className="bg-red-300 dark:bg-red-600 px-1 aspect-square rounded-full hover:bg-red-700 hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
+                                    className="border-2 text-red-400 dark:text-red-700  border-red-400 dark:border-red-700 px-1 aspect-square rounded-full  hover:bg-red-300 dark:hover:bg-red-950  hover:scale-105 active:scale-95 transition-all duration-150"
                                     onClick={() => handleDeleteChoice(unitId, id)}
                                     data-testid="delete-matching-choice"
                                 >
@@ -196,7 +196,7 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit, t
                     })}
                     </AnimatePresence>
                     <Button 
-                        className="font-semibold text-sm bg-blue-300 dark:bg-blue-600 px-2 py-[2px] ms-6 mt-3 rounded-md hover:scale-105 hover:bg-blue-400 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
+                        className="border-2 font-semibold border-blue-300 dark:border-blue-600 px-2 py-[2px] ms-6 mt-3 rounded-md hover:scale-105 hover:border-blue-400 active:scale-95 transition-all duration-150"
                         onClick={() => handleAddChoice(unitId)}
                         data-testid="new-matching-choice"
                     >
@@ -206,7 +206,7 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit, t
             </motion.div>
             <div className='flex'>
                 <Button 
-                    className='bg-red-300 dark:bg-red-600 ms-auto px-2 py-[1px] text-sm rounded-md shadow-md drop-shadow-md hover:scale-105 hover:bg-red-400 active:scale-95 transition-all duration-150'
+                    className='border-2 border-red-400 dark:border-red-700 ms-auto px-2 py-[1px] text-sm rounded-md hover:scale-105 hover:border-red-400 active:scale-95 transition-all duration-150'
                     onClick={() => handleDeleteUnit(unitId)}
                     >
                     delete unit
@@ -216,5 +216,4 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit, t
             <div className='hidden' data-testid={type} />
         </motion.section>
     )
-    return null
 }

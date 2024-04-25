@@ -133,14 +133,14 @@ export default function Choice({id, choice, unitId, questionId, index, }: Choice
         >
             <textarea 
                 ref={textareaRef}            
-                className={`dark:bg-black text-sm px-2 py-[2px] w-[80%] outline-none resize-none me-2 shadow-md border-t-transparent border-t-4 transition-all duration-75 ${false ? 'cursor-grab' : 'cursor-auto'}`}
+                className={`bg-transparent text-sm px-2 py-[2px] w-[80%] outline-none resize-none me-2 border border-gray-300 dark:border-gray-700  transition-all duration-75 ${false ? 'cursor-grab' : 'cursor-auto'}`}
                 rows={1}
                 value={choice}
                 onChange={(e) => handleChange(e, id)}
                 data-testid="choice-textarea"
             />
             <Button
-                className="bg-red-300 dark:bg-red-600 px-1 py-[1px] text-base aspect-square rounded-full hover:bg-red-700 hover:text-white hover:scale-105 active:scale-95 transition-all duration-150 shadow-md drop-shadow-md"
+                className="border-2 border-red-400 dark:border-red-600 px-1 py-[1px] text-base aspect-square rounded-full text-red-400 dark:text-red-700 hover:bg-red-200 dark:hover:bg-red-950 dark:hover:text-red-700 hover:scale-105 active:scale-95 transition-all duration-150"
                 onClick={() => handleDeleteChoice(id, unitId, questionId)}
                 data-testid="delete-choice"
             >

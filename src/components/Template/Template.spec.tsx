@@ -4,6 +4,7 @@ import React from 'react'
 import Template from './Template';
 import { fakeContext } from '@/utils/fakeData';
 import { actions } from '@/types';
+import { unitType } from '@/types';
 
 
 describe('Template', () => {
@@ -17,7 +18,8 @@ describe('Template', () => {
             id: 0,
             setSelected: jest.fn(),
             selected: 0,
-            unitType: 'multiple choice'
+            unitType: unitType.multipleChoice,
+            Icon: () => <p>p</p>
         }
 
         render(<Template {...Props} />)

@@ -27,7 +27,7 @@ export default function Questions({questions, index, id, type}: QuestionsProps) 
         <motion.div 
             layout
             transition={{layout: {duration:0.2, ease: 'linear'}}}
-            className="my-4 bg-slate-200 dark:bg-slate-700 p-2 shadow-lg"
+            className="my-4 border-2 border-slate-200 dark:border-slate-700 p-2"
             data-testid="questions"
         >
             
@@ -58,7 +58,7 @@ export default function Questions({questions, index, id, type}: QuestionsProps) 
                 </AnimatePresence>
             </motion.section>
             <Button 
-                className="font-semibold bg-green-300 dark:bg-green-700 my-2 ms-4 px-2 py-[2px] rounded-md shadow-lg drop-shadow-lg hover:scale-105 hover:bg-green-400 transition-all duration-150"
+                className="font-semibold border-2 border-green-300 dark:border-green-700 my-2 ms-4 px-2 py-[2px] rounded-md drop hover:scale-105 hover:border-green-400 transition-all duration-150"
                 onClick={() => handleClick(id)}
                 data-testid="new-question"
             >

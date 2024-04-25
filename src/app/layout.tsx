@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en ">
-            <body className={`${inter.className} bg-slate-300 dark:bg-slate-950 dark:text-white`}
+            <body className={`${inter.className} bg-zinc-300 dark:bg-zinc-800 dark:text-white`}
             data-testid="root"
             >
                 <GlobalProvider>

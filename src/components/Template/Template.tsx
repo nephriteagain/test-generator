@@ -1,5 +1,5 @@
 import  {  actions, unitType } from "../../types";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction,  ElementType } from "react";
 
 import { useGlobalContext } from "@/context/Context";
 
@@ -8,9 +8,10 @@ interface TemplateProps {
     setSelected: Dispatch<SetStateAction<number>>
     selected: number;
     unitType: unitType;
+    Icon: ElementType
 }
 
-export default function Template({id, setSelected, selected, unitType}: TemplateProps) {
+export default function Template({id, setSelected, selected, unitType, Icon}: TemplateProps) {
     const { dispatch, History, test} = useGlobalContext()
 
     function handleDoubleClick() {
@@ -19,7 +20,9 @@ export default function Template({id, setSelected, selected, unitType}: Template
     }
 
     return (
-        <div className={`dark:bg-slate-700 cursor-pointer mx-auto flex w-[18%] sm:w-[70%] aspect-square text-center justify-center shadow-md items-center hover:bg-blue-100 bg-gray-100 my-2 rounded-md border-4 ${selected === id ? 'border-blue-800' : 'border-transparent'}  transition-all duration-100`}
+        <div className={`bg-transparent cursor-pointer mx-auto flex flex-col gap-1 w-[18%] sm:w-[70%] aspect-square text-center justify-center shadow-md items-center hover:border-slate-300 dark:hover:border-slate-700 bg-gray-100 my-2 rounded-md border-4 
+        ${selected === id ? 'border-slate-400 dark:border-slate-500' : 'border-slate-100 dark:border-slate-800 '}
+          transition-all duration-100`}
             // draggable
             // onDragStart={() => console.log('dragging')}
             data-testid={`template-${unitType}`}
@@ -29,7 +32,10 @@ export default function Template({id, setSelected, selected, unitType}: Template
             }}
             onDoubleClick={handleDoubleClick}
         >
-            {unitType}
+            <Icon />
+            <p className="text-sm">{unitType}</p>
+
+            
         </div>
     )
 }

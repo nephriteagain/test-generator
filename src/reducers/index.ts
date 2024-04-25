@@ -25,7 +25,7 @@ import deleteMatchingQuestion from "@/actions/deleteMatchingQuestion";
 import deleteMatchingChoice from "@/actions/deleteMatchingChoice";
 import checkLocalStorage from "@/actions/checkLocalStorage";
 
-export default function (state: test, action: action) : test {
+export default function testReducer(state: test, action: action) : test {
     if (action.type === actions.changeName) {
         return changeName(state, action)
     }
