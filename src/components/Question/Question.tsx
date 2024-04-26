@@ -7,6 +7,7 @@ import Button from "../Button/Button";
 
 import { checkScrollHeight } from "../../utils/helpers";
 import { useGlobalContext } from "@/context/Context";
+import { useTranslation } from "react-i18next";
 type QuestionProps = {
     question: string;
     choices: choice[]|undefined;
@@ -21,6 +22,7 @@ type QuestionProps = {
 
 export default function Question({question, choices, index, id, unitId, questionObj, type}: QuestionProps) {
     const { History, dispatch, test, focus, setFocus } = useGlobalContext()
+    const {t} = useTranslation("data")
 
     function handleDeleteQuestion(id: string, unitId: string) {
         dispatch({
@@ -77,7 +79,7 @@ export default function Question({question, choices, index, id, unitId, question
         <motion.div 
             layout
             transition={{layout: {duration:0.2, ease: 'linear'}}}
-            className="mx-4 my-2 border-zinc-200 dark:border-zinc-800 p-2  border-transparent border-4 focus-within:border-cyan-400 transition-all duration-200 animate-in slide-in-from-left"
+            className="mx-4 my-2 border-zinc-200 dark:border-zinc-800 p-2  border-transparent border-2 focus-within:border-cyan-400 transition-all duration-200 animate-in slide-in-from-left"
             // draggable
             // onDragStart={(e) => handleDragStart(e, questionObj, id, unitId)}
             // onDrop={(e) => {handleDrop(e, id, unitId, index)}}
@@ -91,7 +93,7 @@ export default function Question({question, choices, index, id, unitId, question
             <textarea 
                 className="border-2 border-gray-300 dark:border-gray-700 bg-transparent px-2 py-[2px] w-[90%] outline-none resize-none my-2"
                 rows={1}
-                placeholder="question"
+                placeholder={t("question")}
                 value={question} 
                 name={`q-${id}`}                
                 onChange={(e) => handleChange(e, unitId, id)}
@@ -108,7 +110,7 @@ export default function Question({question, choices, index, id, unitId, question
                     onClick={() => handleDeleteQuestion(id, unitId)}
                     data-testid="delete-question"
                     >
-                    delete question
+                    {t("delete-question")}
                 </Button>
             </div>
         </motion.div>

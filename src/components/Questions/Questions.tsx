@@ -5,6 +5,7 @@ import Question from "../Question/Question"
 import Button from "../Button/Button";
 
 import { useGlobalContext } from "@/context/Context";
+import { useTranslation } from "react-i18next";
 
 type QuestionsProps = {
     questions: question[]|undefined;
@@ -15,6 +16,7 @@ type QuestionsProps = {
 
 export default function Questions({questions, index, id, type}: QuestionsProps) {
     const { History, dispatch, test, focus, setFocus } = useGlobalContext()
+    const {t} = useTranslation("data")
     
     function handleClick(id: string) {
         dispatch({type: actions.addQuestion, payload: {id}})
@@ -62,7 +64,7 @@ export default function Questions({questions, index, id, type}: QuestionsProps) 
                 onClick={() => handleClick(id)}
                 data-testid="new-question"
             >
-                new question
+                {t("new-question")}
             </Button>
         </motion.div>
     )

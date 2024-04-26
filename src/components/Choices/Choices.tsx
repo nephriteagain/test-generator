@@ -6,6 +6,7 @@ import { useGlobalContext } from "@/context/Context";
 import Button from "../Button/Button";
 import Choice from "../Choice";
 import Essay from "../Essay/Essay";
+import { useTranslation } from "react-i18next";
 
 
 type ChoicesProps = {
@@ -17,6 +18,7 @@ type ChoicesProps = {
 
 export default function Choices({choices, unitId, questionId, type}: ChoicesProps) {
     const { History, dispatch, test } = useGlobalContext()
+    const {t} = useTranslation("data")
 
     function handleAddChoice(unitId: string, questionId: string) {
         dispatch({
@@ -67,7 +69,7 @@ export default function Choices({choices, unitId, questionId, type}: ChoicesProp
                 onClick={() => handleAddChoice(unitId, questionId)}
                 data-testid="btn-add-choice"
             >
-                add choice
+                {t("add-choice")}
             </Button>
         </motion.div>
     )

@@ -9,6 +9,7 @@ import { useGlobalContext } from '@/context/Context';
 import { IoClose } from "react-icons/io5";
 
 import Button from '../Button/Button';
+import { useTranslation } from 'react-i18next';
 
 interface MatchingQuestionsProps {
     unitId: string;
@@ -19,6 +20,7 @@ interface MatchingQuestionsProps {
 
 export default function MatchingQuestions({unitId, instructions, matchingUnit, type}: MatchingQuestionsProps) {
     const { dispatch, History, test, setFocus } = useGlobalContext()
+    const {t} = useTranslation("data")
 
 
     function handleChange(e: ChangeEvent<HTMLTextAreaElement>, id:string) {
@@ -110,13 +112,13 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit, t
             layout
             transition={{layout: {duration:0.2, ease: 'linear'}}}
             exit={{opacity:0}}
-            className='mt-4 border-zinc-200 dark:border-zinc-700 p-2 border-4 border-transparent focus-within:border-cyan-600 transition-all duration-200 animate-in fade-in'
+            className='mt-4 border-zinc-200 dark:border-zinc-700 p-2 border-2 border-transparent focus-within:border-cyan-600 transition-all duration-200 animate-in fade-in'
             onFocus={() => setFocus({unit:unitId, question: '', type: unitType.matching})}
             data-testid="matching-questions"
         >
             <textarea 
                 className="border-2 border-gray-300 dark:border-gray-700 bg-transparent font-semibold  px-2 py-1 outline-none w-[90%] resize-none"                 
-                placeholder="instructions"
+                placeholder={t("instructions")}
                 rows={1}
                 value={instructions}
                 name={`unit-${unitId}`}
@@ -163,7 +165,7 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit, t
                         onClick={() => handleAddQuestion(unitId)}
                         data-testid="new-matching-question"
                     >
-                        new question
+                        {t("new-question")}
                     </Button>
                 </div>
                 <div className='basis-2/5'>
@@ -200,7 +202,7 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit, t
                         onClick={() => handleAddChoice(unitId)}
                         data-testid="new-matching-choice"
                     >
-                        add choice
+                        {t("add-choice")}
                     </Button>
                 </div>
             </motion.div>
@@ -209,7 +211,7 @@ export default function MatchingQuestions({unitId, instructions, matchingUnit, t
                     className='border-2 border-red-400 dark:border-red-700 ms-auto px-2 py-[1px] text-sm rounded-md hover:scale-105 hover:border-red-400 active:scale-95 transition-all duration-150'
                     onClick={() => handleDeleteUnit(unitId)}
                     >
-                    delete unit
+                    {t("delete-unit")}
                 </Button>
             </div>
             {/**Note: this is for testing purposes */}

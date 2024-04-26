@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Dispatch, SetStateAction, MouseEvent } from "react"
+import { useTranslation } from "react-i18next";
 
 
 interface HotkeyModalProps {
@@ -9,6 +10,7 @@ interface HotkeyModalProps {
 
 
 export default function HotkeyModal({setShowModal}: HotkeyModalProps) {
+    const {t} = useTranslation("data")
 
     function hideModal(e: MouseEvent) {
         e.preventDefault();
@@ -32,19 +34,19 @@ export default function HotkeyModal({setShowModal}: HotkeyModalProps) {
             >
                 <div className="mb-auto animate-in zoom-in-0 transition-all duration-300">
                     <p className="flex flex-row text-lg mb-aut border-b-2 border-gray-400">
-                        <span className="me-auto font-bold text-green-700 dark:text-green-400">add unit</span>
+                        <span className="me-auto font-bold text-green-700 dark:text-green-400">{t("add-unit")}</span>
                         <span className="font-semibold">CTRL + SHIFT + F</span>
                     </p>
                     <p className="flex flex-row text-lg border-b-2 border-gray-400">
-                        <span className="me-auto font-bold text-green-700 dark:text-green-400">add question</span>
+                        <span className="me-auto font-bold text-green-700 dark:text-green-400">{t("add-question")}</span>
                         <span className="font-semibold">CTRL + SHIFT + L</span>
                     </p>
                     <p className="flex flex-row text-lg border-b-2 border-gray-400">
-                        <span className="me-auto font-bold text-green-700 dark:text-green-400">add choice</span>
+                        <span className="me-auto font-bold text-green-700 dark:text-green-400">{t("add-choice")}</span>
                         <span className="font-semibold">CTRL + SHIFT + S</span>
                     </p>
                     <p className="flex flex-row text-lg border-b-2 border-gray-400">
-                        <span className="me-auto font-bold text-gray-700 dark:text-gray-300">undo</span>
+                        <span className="me-auto font-bold text-gray-700 dark:text-gray-300">{t("undo")}</span>
                         <span className="font-semibold">CTRL + SHIFT + U</span>
                     </p>
                 </div>
@@ -54,7 +56,7 @@ export default function HotkeyModal({setShowModal}: HotkeyModalProps) {
                         className="mt-12 text-lg bg-red-400 dark:bg-red-700 px-3 py-[2px] rounded-md shadow-md drop-shadow-md hover:scale-105 active:scale-95 transition-all duration-150"
                         data-testid="hotkey-modal-close"
                     >
-                        close
+                        {t("close")}
                     </button>
                 </div>
             </motion.div>

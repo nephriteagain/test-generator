@@ -6,6 +6,8 @@ import { useContext, createContext, useReducer, useState, ReactNode, Dispatch, S
 import Reducer from '../reducers'
 import Note from '@/components/Note'
 import { AnimatePresence } from 'framer-motion'
+import i18n from '@/translation/i18n'
+import { I18nextProvider } from 'react-i18next'
 
 export const initial : test = {
     subject : '',
@@ -60,6 +62,7 @@ export function GlobalProvider({children}: GlobalProviderProps) {
     }, [])
 
     return (
+        
         <GlobalContext.Provider value={{
             test,
             focus,
@@ -69,11 +72,14 @@ export function GlobalProvider({children}: GlobalProviderProps) {
             showNote,
             setShowNote
         } as GlobalContextValue}>
+            <I18nextProvider i18n={i18n}>
             {children}
+            </I18nextProvider>
             <AnimatePresence>
                 { showNote && <Note />}
             </AnimatePresence>
         </GlobalContext.Provider>
+        
     )
 }
 

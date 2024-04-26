@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import  {  actions } from "../../types";
 
 import { useGlobalContext } from "@/context/Context";
@@ -6,6 +7,7 @@ import { useGlobalContext } from "@/context/Context";
 
 export default function Headers() {        
     const {  test , dispatch } = useGlobalContext()
+    const {t} = useTranslation("data")
 
     return (
         <div 
@@ -13,7 +15,7 @@ export default function Headers() {
         data-testid="headers"
         >
             <input 
-            placeholder="SUBJECT..."
+            placeholder={t("subject")}
             type='text' 
             value={test.subject} 
             name='subject' 
@@ -27,7 +29,7 @@ export default function Headers() {
             />
             
             <input 
-            placeholder="AUTHOR..."
+            placeholder={t("author")}
             type='text' 
             value={test.author} 
             name='author' 

@@ -4,10 +4,12 @@ import  { action, test, actions } from '../../types'
 import { useGlobalContext } from '@/context/Context'
 
 import Button from '../Button/Button'
+import { useTranslation } from 'react-i18next'
 
 
 export default function UndoRedo() {
     const { History, dispatch } = useGlobalContext()
+    const {t} = useTranslation("data")
 
     function handleUndo(history: TestHistory<test>, dispatch: Dispatch<action>) {
         const undo = history.undo()
@@ -23,7 +25,7 @@ export default function UndoRedo() {
                 onClick={() => handleUndo(History, dispatch)}
                 disabled={!History.hasUndo()}
             >
-                undo
+                {t("undo")}
             </Button>
       </div>
     )

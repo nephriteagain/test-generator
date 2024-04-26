@@ -6,6 +6,7 @@ import { GiChoice } from "react-icons/gi";
 
 import { useGlobalContext } from "@/context/Context"
 import Template from "../Template/Template"
+import { useTranslation } from "react-i18next";
 
 const template = [
     {id: 123, type: unitType.multipleChoice, icon: () => <TbAbc className="text-3xl" />},
@@ -18,8 +19,16 @@ const template = [
 
 export default function Templates() {
     const [ selected, setSelected ] = useState(123)
+    const {t} = useTranslation("data")
 
     const { test } = useGlobalContext()
+
+    const localeType : Record<unitType, unitType> = {
+        "Multiple Choice" : t("multiple-choice"),
+        "Short Answer" : t("short-answer"),
+        "Matching": t("matching"),
+        "Essay": t("essay")
+    }
 
     return (
         <div 
@@ -37,7 +46,7 @@ export default function Templates() {
                         id={t.id}
                         setSelected={setSelected}
                         selected={selected}
-                        unitType={t.type}
+                        unitType={localeType[t.type]}
                         Icon={t.icon}
                     />
                 )

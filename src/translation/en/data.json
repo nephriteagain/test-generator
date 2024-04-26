@@ -1,0 +1,22 @@
+{
+    "download": "Download as Word File",
+    "hotkeys": "Hotkeys",
+    "subject": "SUBJECT...",
+    "author": "AUTHOR...",
+    "add-unit": "add unit",
+    "undo": "undo",
+    "instructions": "instructions",
+    "question": "question",
+    "add-choice": "add choice",
+    "delete-question": "delete question",
+    "delete-unit": "delete-unit",
+    "new-question": "new question",
+    "add-question": "add question",
+    "essay": "Essay",
+    "multiple-choice": "Multiple Choice",
+    "short-answer": "Short Answer",
+    "matching": "Matching",
+    "bug": "Bug Alert, docx library is broken, opening directly at Microsoft word is bugged, to use this, you must open the document first at wordpad then copy paste to MS Word",
+    "dont-show": "dont show this again",
+    "close": "close"    
+}

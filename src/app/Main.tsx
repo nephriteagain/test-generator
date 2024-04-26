@@ -9,10 +9,12 @@ import UndoRedo from '../components/UndoRedo';
 import Unit from '../components/Unit';
 import Button from '../components/Button';
 import MatchingQuestions from "../components/MatchingQuestions";
+import { useTranslation } from "react-i18next";
 
 export default function Main() {
     
     const { History, test, dispatch } = useGlobalContext()
+    const {t} = useTranslation("data")
 
     function handleClick() {
         dispatch({type: actions.addUnit})
@@ -36,7 +38,7 @@ export default function Main() {
                 className='border-2 border-green-400 dark:bg-border-800 px-3 py-[2px] rounded-md hover:scale-105 active:scale-95 transition-all duration-150'
                 data-testid="add-unit"
             >
-                add unit
+                {t("add-unit")}
             </Button>
             <AnimatePresence>
 
@@ -70,7 +72,7 @@ export default function Main() {
                 onClick={handleClick}
                 className='border-2 border-green-400 dark:bg-border-800 mt-4 px-3 py-[2px] rounded-md hover:scale-105 active:scale-95 transition-all duration-150'                
             >
-                add unit
+                {t("add-unit")}
             </Button>}
             </motion.div>
         </motion.div>
